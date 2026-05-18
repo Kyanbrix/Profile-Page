@@ -1,8 +1,3 @@
 # [Kyanbrix - Personal Portfolio](https://kyanbrix.com/)
 
-
-## 📂 Project Structure
-```text
-├── index.html       # Main application layout, styles, and asset structures
-├── audio.js         # Core music player logic, playlist definitions, and controls
-└── README.md        # Project documentation
+### Im just a lazy mfking dev who loves java but hate it at the same time. I'm going to learn rust soon, hope I make it 🙏
