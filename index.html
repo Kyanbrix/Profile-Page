@@ -1,411 +1,654 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kian</title>
-    <meta name="description" content="Kian's personal profile page.">
-    <meta property="og:title" content="Kian's Profile">
-    <meta property="og:description" content="Hello! I'm Kian, a developer based in the Philippines. I love Java because it was the first programming language I learned, and I quickly fell in love with it. I spend most of my time learning backend frameworks like Spring Boot. I also build custom Discord bots for fun creating everything from moderation and leveling systems to entertainment and economy features. If you're interested in working together, feel free to reach out via email or add me on Discord!">
-    <meta property="og:image" content="https://avatars.githubusercontent.com/u/100282972?v=4">
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Kian's Profile">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kian</title>
 
-    <meta name="theme-color" content="#8B0000">
+  <meta name="description" content="Kian's personal profile page.">
+  <meta property="og:title" content="Kian's Profile">
+  <meta property="og:description" content="Hello! I'm Kian, a developer based in the Philippines. I love Java because it was the first programming language I learned, and I quickly fell in love with it. I spend most of my time learning backend frameworks like Spring Boot. I also build custom Discord bots for fun creating everything from moderation and leveling systems to entertainment and economy features. If you're interested in working together, feel free to reach out via email or add me on Discord!">
+  <meta property="og:image" content="https://avatars.githubusercontent.com/u/100282972?v=4">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Kian's Profile">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta name="theme-color" content="#8B0000">
 
-    <link rel="icon" href="https://avatars.githubusercontent.com/u/100282972?v=4" type="image/png">
-    <style>
-        /* Base Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
-        }
+  <link rel="icon" href="https://avatars.githubusercontent.com/u/100282972?v=4" type="image/png">
 
-        /* Color System & Theme Variables */
-        :root {
-            /* Current Dark Theme (Default) */
-            --bg-main: #0a0b10;
-            --card-bg: #11131e;
-            --text-primary: #ffffff;
-            --text-muted: #6c7283;
-            --accent-purple: #9d4edd;
-            --border-color: rgba(255, 255, 255, 0.07);
-            --tag-bg: rgba(255, 255, 255, 0.04);
-            
-            /* Button Elements */
-            --btn-dark-slate: #1b1e2e;
-            --btn-text: #ffffff;
-            --github-bg: #ffffff;
-            --github-text: #000000;
-            --brand-spotify: #1db954;
-            --brand-discord: #5865F2;
-        }
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        /* Clean Light Theme Override */
-        [data-theme="light"] {
-            --bg-main: #f4f5f8;
-            --card-bg: #ffffff;
-            --text-primary: #12131a;
-            --text-muted: #5c6170;
-            --accent-purple: #7b2cbf;
-            --border-color: rgba(0, 0, 0, 0.08);
-            --tag-bg: rgba(0, 0, 0, 0.04);
-            
-            /* Button Elements */
-            --btn-dark-slate: #e4e6f0;
-            --btn-text: #12131a;
-            --github-bg: #12131a;
-            --github-text: #ffffff;
-        }
+    :root {
+      --transition: 200ms ease;
+    }
 
-        body {
-            background-color: var(--bg-main);
-            color: var(--text-primary);
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            min-height: 100vh;
-            padding: 40px 20px 60px;
-            transition: background-color 0.2s ease, color 0.2s ease;
-        }
+    [data-theme="dark"] {
+      --bg:         #18171e;
+      --surface:    #201f29;
+      --border:     #2e2c3a;
+      --accent:     #8b5cf6;
+      --accent-dim: #6d44c8;
+      --text:       #e4e1f0;
+      --muted:      #8f8ba3;
+      --hover-bg:   #27263200;
+    }
 
-        /* Wide Dashboard Layout Wrapper */
-        .dashboard-container {
-            width: 100%;
-            max-width: 820px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+    [data-theme="light"] {
+      --bg:         #f3f1f8;
+      --surface:    #ffffff;
+      --border:     #dbd8ea;
+      --accent:     #6d28d9;
+      --accent-dim: #5b21b6;
+      --text:       #1c1929;
+      --muted:      #6e6887;
+      --hover-bg:   #ede9f800;
+    }
 
-        /* Top Controls Bar (Theme & Invites) */
-        .top-controls {
-            width: 100%;
-            display: flex;
-            justify-content: flex-end;
-            gap: 12px;
-            margin-bottom: 10px;
-        }
+    html {
+      background: var(--bg);
+      transition: background var(--transition), color var(--transition);
+    }
 
-        .action-btn {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            color: var(--text-primary);
-            padding: 10px 14px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 0.95rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.15s ease;
-        }
+    body {
+      font-family: 'Outfit', sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      min-height: 100vh;
+      padding: 48px 16px 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: background var(--transition), color var(--transition);
+    }
 
-        .action-btn:hover {
-            transform: translateY(-1px);
-            background-color: var(--btn-dark-slate);
-        }
+    /* ── CARD ── */
+    .card {
+      width: 100%;
+      max-width: 440px;
+    }
 
-        .discord-invite-btn {
-            background-color: var(--brand-discord);
-            border-color: var(--brand-discord);
-            color: #ffffff;
-        }
+    /* ── HEADER ── */
+    .header {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
 
-        /* Discord specific top button hover */
-        .discord-invite-btn:hover {
-            background-color: var(--brand-discord);
-            filter: brightness(1.1);
-        }
-        /* Header Layout */
-        .profile-header {
-            text-align: center;
-            margin-bottom: 20px;
-        }
+    .avatar-wrap {
+      position: relative;
+      flex-shrink: 0;
+    }
 
-        .avatar-wrapper {
-            position: relative;
-            width: 110px;
-            height: 110px;
-            margin: 0 auto 18px;
-        }
+    .avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: var(--surface);
+      border: 2px solid var(--border);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-        .avatar-circle {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            border: 2.5px solid var(--accent-purple);
-            background-color: var(--card-bg);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 38px;
-            color: var(--text-muted);
-            overflow: hidden;
-        }
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
 
-        .avatar-circle img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+    .avatar-initials {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      color: var(--accent);
+      user-select: none;
+    }
 
+    /* Theme toggle — sits beside avatar, top-right of header */
+    .theme-toggle {
+      margin-left: auto;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      width: 36px;
+      height: 36px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      transition: color var(--transition), border-color var(--transition), background var(--transition);
+      flex-shrink: 0;
+    }
 
-        .init-tag {
-            font-family: 'Courier New', Courier, monospace;
-            font-weight: bold;
-            font-size: 0.85rem;
-            color: var(--accent-purple);
-            letter-spacing: 2px;
-            margin-bottom: 6px;
-        }
+    .theme-toggle:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
 
-        .name {
-            font-size: 2.2rem;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            margin-bottom: 8px;
-        }
+    .theme-toggle svg {
+      width: 16px;
+      height: 16px;
+    }
 
-        .bio {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            font-weight: 400;
-        }
+    .icon-sun  { display: none; }
+    .icon-moon { display: block; }
 
-        /* Horizontal Layout Section Dividers */
-        .section-divider {
-            display: flex;
-            align-items: center;
-            width: 100%;
-            margin: 35px 0 20px;
-        }
+    [data-theme="light"] .icon-sun  { display: block; }
+    [data-theme="light"] .icon-moon { display: none; }
 
-        .section-title {
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--text-muted);
-            white-space: nowrap;
-        }
+    /* ── NAME BLOCK ── */
+    .name-block {
+      flex: 1;
+      padding-top: 6px;
+    }
 
-        .section-line {
-            flex-grow: 1;
-            height: 1px;
-            background-color: var(--border-color);
-            margin-left: 15px;
-        }
+    .name {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 600;
+      line-height: 1.2;
+      color: var(--text);
+    }
 
-        /* About Me Module */
-        .about-wrapper {
-            width: 100%;
-        }
+    .handle {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--muted);
+      margin-top: 3px;
+    }
 
-        .about-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 14px;
-            padding: 28px;
-            width: 100%;
-            color: var(--text-muted);
-            font-size: 1rem;
-            line-height: 1.7;
-            text-align: justify;
-        }
+    /* ── DIVIDER ── */
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: var(--border);
+      margin: 4px 0 24px;
+    }
 
-        .about-card p {
-            margin-bottom: 15px;
-        }
+    /* ── SECTION LABEL ── */
+    .section-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
 
-        .about-card p:last-child {
-            margin-bottom: 0;
-        }
+    /* ── ABOUT ── */
+    .about {
+      margin-bottom: 24px;
+    }
 
-        .about-highlight {
-            color: var(--text-primary);
-            font-weight: 500;
-        }
+    .about p {
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.7;
+      color: var(--muted);
+    }
 
-        /* Links Section (Horizontal Grid Layout) */
-        .links-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            width: 100%;
-            justify-content: center;
-        }
+    /* ── EMAIL ── */
+    .email-row {
+      margin-bottom: 28px;
+    }
 
-        .link-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            text-decoration: none;
-            padding: 14px 24px;
-            border-radius: 10px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            flex: 1;
-            min-width: 140px;
-            transition: transform 0.15s ease, filter 0.15s ease, background-color 0.2s ease, color 0.2s ease;
-        }
+    .email-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text);
+      text-decoration: none;
+      padding: 10px 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      transition: border-color var(--transition), color var(--transition);
+    }
 
-        .link-btn i {
-            font-size: 1.15rem;
-        }
+    .email-link svg {
+      color: var(--accent);
+      flex-shrink: 0;
+    }
 
-        .link-btn:hover {
-            transform: translateY(-2px);
-            filter: brightness(1.1);
-        }
+    .email-link:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
 
-        /* Color Variations Mapping to Theme State */
-        .link-btn.github {
-            background-color: var(--github-bg);
-            color: var(--github-text);
-        }
+    /* ── SOCIALS ── */
+    .socials {
+      margin-bottom: 28px;
+    }
 
-        .link-btn.discord,
-        .link-btn.facebook,
-        .link-btn.instagram,
-        .link-btn.email-box {
-            background-color: var(--btn-dark-slate);
-            color: var(--btn-text);
-            border: 1px solid var(--border-color);
-        }
+    .social-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
 
-        .link-btn.email-box {
-            font-weight: 500;
-            letter-spacing: 0.5px;
-        }
+    .social-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 13px 16px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 14px;
+      font-weight: 500;
+      transition: border-color var(--transition), color var(--transition), transform 100ms ease;
+    }
 
-        .link-btn.spotify {
-            background-color: var(--brand-spotify);
-            color: #000000;
-        }
-    </style>
+    .social-link:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateX(3px);
+    }
+
+    .social-link:hover .social-icon {
+      color: var(--accent);
+    }
+
+    .social-icon {
+      width: 18px;
+      height: 18px;
+      color: var(--muted);
+      flex-shrink: 0;
+      transition: color var(--transition);
+    }
+
+    .social-arrow {
+      margin-left: auto;
+      color: var(--border);
+      transition: color var(--transition);
+      width: 14px;
+      height: 14px;
+    }
+
+    .social-link:hover .social-arrow {
+      color: var(--accent);
+    }
+
+    /* ── DISCORD SERVER INVITE ── */
+    .discord-invite {
+      margin-bottom: 0;
+    }
+
+    .discord-card {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 13px 16px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 14px;
+      font-weight: 500;
+      transition: border-color var(--transition), color var(--transition);
+    }
+
+    .discord-card:hover {
+      border-color: #5865f2;
+      color: #5865f2;
+    }
+
+    .discord-card:hover .social-icon {
+      color: #5865f2;
+    }
+
+    .discord-card:hover .social-arrow {
+      color: #5865f2;
+    }
+
+    .discord-badge {
+      margin-left: auto;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 3px 7px;
+      background: #5865f220;
+      color: #5865f2;
+      border-radius: 4px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      margin-top: 40px;
+      font-size: 11px;
+      color: var(--muted);
+      opacity: 0.5;
+    }
+
+    /* ── FADE-IN ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .card > * {
+      animation: fadeUp 0.4s ease both;
+    }
+
+    .card .header          { animation-delay: 0ms; }
+    .card .divider         { animation-delay: 40ms; }
+    .card .about           { animation-delay: 80ms; }
+    .card .techstack       { animation-delay: 110ms; }
+    .card .email-row       { animation-delay: 140ms; }
+    .card .socials         { animation-delay: 170ms; }
+    .card .discord-invite  { animation-delay: 200ms; }
+
+    /* ── TECH STACK ── */
+    .techstack {
+      margin-bottom: 24px;
+    }
+
+    .tech-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .tech-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 11px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--muted);
+      cursor: default;
+      transition: color var(--transition), border-color var(--transition);
+    }
+
+    .tech-badge:hover {
+      color: var(--text);
+      border-color: var(--accent);
+    }
+
+    .tech-badge svg {
+      width: 13px;
+      height: 13px;
+      flex-shrink: 0;
+    }
+  </style>
+
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+
 </head>
 <body>
 
-    <div class="dashboard-container">
-        
-        <div class="top-controls">
-            <a href="https://discord.com/invite/qyU8RHFktw" target="_blank" class="action-btn discord-invite-btn" aria-label="Join Discord Server">
-                <i class="fa-brands fa-discord"></i>
-                <span>Join My Server</span>
-            </a>
+  <div class="card">
 
-            <button class="action-btn" id="themeToggle" aria-label="Toggle theme">
-                <i class="fa-solid fa-sun" id="themeIcon"></i>
-                <span id="themeText">Light Mode</span>
-            </button>
+    <div class="header">
+      <div class="avatar-wrap">
+        <div class="avatar">
+            <img src="https://avatars.githubusercontent.com/u/100282972?v=4" alt="Kyanbrix avatar" />
         </div>
-        
-        <header class="profile-header">
-            <div class="avatar-wrapper">
-                <div class="avatar-circle">
-                    <img src="https://avatars.githubusercontent.com/u/100282972?v=4" alt="Kian's Avatar">
-                </div>
-                <div class="status-dot"></div>
-            </div>
-            <h1 class="name">Kian</h1>
-            <p class="bio">Java Enthusiast</p>
-        </header>
+      </div>
 
-        <div class="section-divider">
-            <h2 class="section-title">About Me</h2>
-            <div class="section-line"></div>
-        </div>
+      <div class="name-block">
+        <div class="name">Kian</div>
+        <div class="handle" style="margin: 5px 0;">Java Enthusiast & Accenture AmplifAI Program Alumni</div>
+      </div>
 
-        <div class="about-wrapper">
-            <div class="about-card">
-                <p>Hello! I'm Kian, a developer based in the Philippines. I love Java because it was the first programming language I learned, and I quickly fell in love with it. I spend most of my time learning backend frameworks like Spring Boot.</p>
-                <p>I also build custom Discord bots for fun creating everything from moderation and leveling systems to entertainment and economy features. If you're interested in working together, feel free to reach out via email or add me on Discord!</p>
-            </div>
-        </div>
-
-        <div class="section-divider">
-            <h2 class="section-title">Email</h2>
-            <div class="section-line"></div>
-        </div>
-
-        <nav class="links-grid">
-            <a href="mailto:conagkyanbrix@gmail.com" class="link-btn email-box">
-                <i class="fa-brands fa-google" style="color: #ea4335;"></i> conagkyanbrix@gmail.com
-            </a>
-
-            <a href="mailto:kyanbrix@yahoomail.com" class="link-btn email-box">
-                <i class="fa-brands fa-yahoo" style="color: #720e9e;"></i> kyanbrix@yahoomail.com
-            </a>
-        </nav>
-
-        <div class="section-divider">
-            <h2 class="section-title">Connect</h2>
-            <div class="section-line"></div>
-        </div>
-
-        <nav class="links-grid">
-            <a href="https://github.com/Kyanbrix" target="_blank" class="link-btn github">
-                <i class="fa-brands fa-github"></i> GitHub
-            </a>
-
-            <a href="https://discord.com/users/683613536823279794" target="_blank" class="link-btn discord">
-                <i class="fa-brands fa-discord"></i> Discord
-            </a>
-            
-            <a href="https://www.facebook.com/kyanbrix" target="_blank" class="link-btn facebook">
-                <i class="fa-brands fa-facebook"></i> Facebook
-            </a>
-            
-            <a href="https://www.instagram.com/kyanbrix/" target="_blank" class="link-btn instagram">
-                <i class="fa-brands fa-instagram"></i> Instagram
-            </a>
-            
-            <a href="https://open.spotify.com/user/htn77af91xmzf2aewwccixtd9?si=b3668e26ea8843f4" target="_blank" class="link-btn spotify">
-                <i class="fa-brands fa-spotify"></i> Spotify
-            </a>
-        </nav>
-
+      <button class="theme-toggle" id="themeBtn" aria-label="Toggle theme">
+        <!-- Moon icon (shown in dark mode) -->
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+        <!-- Sun icon (shown in light mode) -->
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"/>
+          <line x1="12" y1="1" x2="12" y2="3"/>
+          <line x1="12" y1="21" x2="12" y2="23"/>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+          <line x1="1" y1="12" x2="3" y2="12"/>
+          <line x1="21" y1="12" x2="23" y2="12"/>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+      </button>
     </div>
 
-    <script>
-        const themeToggle = document.getElementById('themeToggle');
-        const themeIcon = document.getElementById('themeIcon');
-        const themeText = document.getElementById('themeText');
+    <div class="divider"></div>
 
-        // Check if user has an existing saved theme preference
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'light') {
-            document.documentElement.setAttribute('data-theme', 'light');
-            themeIcon.className = 'fa-solid fa-moon';
-            themeText.textContent = 'Dark Mode';
-        }
+    <!-- ABOUT -->
+    <div class="about">
+      <div class="section-label">About</div>
+      <p>Hey, I'm Kian a Java developer from Cebu City, Philippines.
+I fell in love with Java from the start and now specialize in backend development with Spring Boot. I also enjoy building custom Discord bots (moderation, leveling, economy, and fun features).
+Open to projects or just chatting. Reach me out via email or Discord!</p>
+    </div>
 
-        // Click interaction handler
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            
-            if (currentTheme === 'light') {
-                // Switch to default Dark Theme
-                document.documentElement.removeAttribute('data-theme');
-                themeIcon.className = 'fa-solid fa-sun';
-                themeText.textContent = 'Light Mode';
-                localStorage.setItem('theme', 'dark');
-            } else {
-                // Switch to Light Theme
-                document.documentElement.setAttribute('data-theme', 'light');
-                themeIcon.className = 'fa-solid fa-moon';
-                themeText.textContent = 'Dark Mode';
-                localStorage.setItem('theme', 'light');
-            }
-        });
-    </script>
+    <!-- TECH STACK -->
+    <div class="techstack">
+      <div class="section-label">Technologies i use</div>
+      <div class="tech-grid">
+
+        <!-- Java -->
+        <span class="tech-badge">
+          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8.851 18.56s-.917.534.653.714c1.902.218 2.874.187 4.969-.211 0 0 .552.346 1.321.646-4.699 2.013-10.633-.118-6.943-1.149zm-.29-2.627s-1.028.761.542.924c2.032.209 3.636.227 6.413-.308 0 0 .384.389.987.602-5.679 1.661-12.007.13-7.942-1.218zm4.555-2.058c1.158 1.333-.304 2.533-.304 2.533s2.939-1.518 1.589-3.418c-1.261-1.772-2.228-2.652 3.007-5.688 0 0-8.216 2.051-4.292 6.573zm4.208 9.654s.679.559-.747.991c-2.712.822-11.288 1.069-13.669.033-.856-.373.75-.89 1.254-.998.527-.114.828-.093.828-.093-.953-.671-6.156 1.317-2.643 1.887 9.58 1.553 17.462-.7 14.977-1.82zm-8.332-3.79s-4.362 1.036-1.544 1.412c1.189.159 3.561.123 5.77-.062 1.806-.152 3.618-.477 3.618-.477s-.637.272-1.098.587c-4.429 1.165-12.986.623-10.522-.568 2.082-1.006 3.776-.892 3.776-.892zm7.824 3.991c4.503-2.34 2.421-4.589.968-4.285-.355.074-.515.138-.515.138s.132-.207.385-.297c2.875-1.011 5.086 2.981-.928 4.562 0-.001.07-.062.09-.118zM14.401 0s2.494 2.494-2.365 6.33c-3.896 3.077-.888 4.832-.001 6.836-2.274-2.053-3.943-3.858-2.824-5.539C10.855 5.158 15.408 3.962 14.401 0zm-3.066 22.747c4.322.277 10.959-.153 11.116-2.198 0 0-.302.775-3.572 1.391-3.688.694-8.239.613-10.937.168 0 0 .553.457 3.393.639z"/>
+          </svg>
+          Java
+        </span>
+
+        <!-- Python -->
+        <span class="tech-badge">
+          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M11.914 0C5.82 0 6.2 2.656 6.2 2.656l.007 2.752h5.814v.826H3.9S0 5.789 0 11.969c0 6.18 3.403 5.96 3.403 5.96h2.031v-2.867s-.109-3.402 3.35-3.402h5.769s3.24.052 3.24-3.13V3.13S18.28 0 11.914 0zm-3.124 1.814a1.028 1.028 0 110 2.057 1.028 1.028 0 010-2.057z"/>
+            <path d="M12.086 24c6.094 0 5.714-2.656 5.714-2.656l-.007-2.752H11.98v-.826h8.12S24 18.211 24 12.031c0-6.18-3.403-5.96-3.403-5.96h-2.031v2.867s.109 3.402-3.35 3.402H9.447s-3.24-.052-3.24 3.13V20.87S5.72 24 12.086 24zm3.124-1.814a1.028 1.028 0 110-2.056 1.028 1.028 0 010 2.056z"/>
+          </svg>
+          Python
+        </span>
+
+        <!-- HTML -->
+        <span class="tech-badge">
+          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.565-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.23-2.622L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.804-2.955-.81-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443.744-8.157H8.531z"/>
+          </svg>
+          HTML
+        </span>
+
+        <!-- CSS -->
+        <span class="tech-badge">
+          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.565-2.438L1.5 0zm17.09 4.413L5.41 4.41l.213 2.622 10.125.002-.255 2.716h-6.64l.24 2.573h6.182l-.366 3.523-2.91.804-2.956-.81-.188-2.11H6.107l.29 3.855L12 19.288l5.373-1.53L18.59 4.414z"/>
+          </svg>
+          CSS
+        </span>
+
+        <!-- Docker -->
+        <span class="tech-badge">
+          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M13.983 11.078h2.119a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.119a.185.185 0 00-.185.185v1.888c0 .102.083.185.185.185m-2.954-5.43h2.118a.186.186 0 00.186-.186V3.574a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.185m0 2.716h2.118a.187.187 0 00.186-.186V6.29a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.887c0 .102.082.185.185.186m-2.93 0h2.12a.186.186 0 00.184-.186V6.29a.185.185 0 00-.185-.185H8.1a.185.185 0 00-.185.185v1.887c0 .102.083.185.185.186m-2.964 0h2.119a.186.186 0 00.185-.186V6.29a.185.185 0 00-.185-.185H5.136a.186.186 0 00-.186.185v1.887c0 .102.084.185.186.186m5.893 2.715h2.118a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.185m-2.93 0h2.12a.185.185 0 00.184-.185V9.006a.185.185 0 00-.184-.186h-2.12a.185.185 0 00-.184.185v1.888c0 .102.083.185.185.185m-2.964 0h2.119a.185.185 0 00.185-.185V9.006a.185.185 0 00-.184-.186h-2.12a.186.186 0 00-.186.185v1.888c0 .102.084.185.186.185m-2.92 0h2.12a.186.186 0 00.184-.185V9.006a.185.185 0 00-.184-.186h-2.12a.185.185 0 00-.184.185v1.888c0 .102.082.185.185.185m2.92 2.716h2.12a.185.185 0 00.184-.185v-1.888a.185.185 0 00-.184-.185h-2.12a.185.185 0 00-.184.185v1.887c0 .102.082.185.185.186m2.964 0h2.119a.185.185 0 00.185-.185v-1.888a.185.185 0 00-.185-.185H8.1a.185.185 0 00-.185.185v1.887c0 .102.083.185.185.186m2.93 0h2.12a.185.185 0 00.184-.185v-1.888a.185.185 0 00-.184-.185h-2.12a.185.185 0 00-.184.185v1.887c0 .102.082.185.185.186m2.964 0h2.119a.186.186 0 00.186-.186v-1.887a.186.186 0 00-.186-.185h-2.119a.185.185 0 00-.185.185v1.887c0 .102.083.186.185.186M23.5 12.185c-.39-.056-.78-.09-1.164-.09-.27 0-.542.015-.808.046-.305-1.607-1.24-3.01-2.55-3.96l-.514-.365-.41.477a5.15 5.15 0 00-.978 2.139 4.733 4.733 0 00.192 2.798 7.808 7.808 0 01-1.064.063H.523A.523.523 0 000 13.815c-.016 1.47.247 2.937.774 4.294.603 1.517 1.557 2.637 2.834 3.326 1.426.767 3.012 1.148 4.788 1.148.893 0 1.787-.084 2.66-.252a13.21 13.21 0 003.485-1.267 11.31 11.31 0 003.05-2.406c1.45-1.64 2.302-3.473 2.763-5.09.152.007.304.01.455.01 1.368 0 2.648-.5 3.595-1.403.41-.385.731-.842.95-1.343l.157-.397-.4-.09z"/>
+          </svg>
+          Docker
+        </span>
+
+        <!-- Git -->
+        <span class="tech-badge">
+          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M23.546 10.93L13.067.452c-.604-.604-1.582-.604-2.188 0L8.708 2.627l2.76 2.76c.645-.215 1.379-.07 1.889.441.516.515.658 1.258.438 1.9l2.658 2.66c.645-.223 1.387-.078 1.9.435.721.72.721 1.884 0 2.604-.719.719-1.881.719-2.6 0-.539-.541-.674-1.337-.404-1.996L12.86 8.955v6.525c.176.086.342.203.488.348.713.721.713 1.883 0 2.6-.719.721-1.889.721-2.609 0-.719-.719-.719-1.879 0-2.598.182-.18.387-.316.605-.406V8.835c-.217-.091-.424-.222-.6-.401-.545-.545-.676-1.342-.396-2.009L7.636 3.7.45 10.881c-.6.605-.6 1.584 0 2.189l10.48 10.477c.604.604 1.582.604 2.186 0l10.43-10.43c.605-.603.605-1.582 0-2.187"/>
+          </svg>
+          Git
+        </span>
+
+        <!-- PostgreSQL -->
+        <span class="tech-badge">
+          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15.373 17.62c.105.093.218.122.331.086.127-.039.195-.162.198-.35.006-.376-.145-.93-.416-1.518a.545.545 0 00-.071.024c-.266.098-.484.281-.655.432.193.51.4.942.578 1.189l.035.137zm1.35-1.957c.073.282.104.58.101.855-.004.398-.1.746-.318.966a.72.72 0 01-.54.216.97.97 0 01-.612-.223l-.052-.052c-.22-.261-.43-.667-.623-1.163a3.657 3.657 0 01-.444.308c-.21.127-.439.23-.67.282.121.374.245.71.371.97.338.692.77 1.055 1.09 1.055.076 0 .147-.021.207-.064.12-.084.197-.245.227-.467.029-.207.021-.46-.012-.724-.009-.074-.02-.15-.035-.228.175.04.357.06.545.056.162-.005.321-.025.473-.063.032.11.054.218.065.318.038.352.018.693-.056.966-.074.271-.21.48-.401.592a.714.714 0 01-.36.088c-.51 0-1.1-.439-1.584-1.415-.176-.362-.338-.8-.483-1.295a5.99 5.99 0 01-.712.063 5.63 5.63 0 01-1.253-.14c-.01.07-.018.139-.024.208-.061.64.03 1.176.277 1.554.209.322.527.5.907.5.257 0 .527-.09.8-.269.131-.086.258-.186.379-.297.06.12.116.23.165.334.156.327.243.636.264.905.024.297-.031.544-.165.72a.57.57 0 01-.47.225c-.378 0-.783-.224-1.166-.648-.342-.38-.648-.912-.9-1.557-.087.016-.175.028-.265.036-.262.026-.524.011-.776-.044l-.115-.028.073.264c.175.62.404 1.162.674 1.58.427.655.948 1.034 1.5 1.1h.085c.348 0 .69-.13.981-.375.315-.267.553-.66.682-1.117.028-.1.05-.204.067-.31.057.068.116.134.178.196.492.49 1.034.739 1.562.739h.083c.553-.017 1.028-.32 1.338-.86.29-.506.407-1.188.339-1.964a4.85 4.85 0 00-.122-.697zM15.12 2.618c-.398-.203-.839-.35-1.316-.44-.064.237-.117.52-.152.847a7.34 7.34 0 011.118.334c1.283.49 1.952 1.196 1.833 1.945-.074.465-.45.88-1.06 1.19a6.62 6.62 0 01-.777.308c.004.03.006.062.006.095 0 .27-.048.528-.137.772.236-.071.47-.155.699-.254 1.055-.46 1.682-1.138 1.793-1.913.168-1.165-.735-2.24-2.007-2.884zm-3.044-.433a8.8 8.8 0 00-1.13.098c-.107.02-.21.039-.31.06-.188.04-.368.082-.542.127.08.14.163.29.25.452.08.146.163.302.248.466.252-.068.513-.124.78-.165a7.2 7.2 0 011.039-.082c.14 0 .277.007.412.02.004-.016.007-.031.01-.046.062-.302.163-.566.295-.781-.35-.1-.72-.15-1.052-.149zm5.35 3.35c.232-.456.322-.99.252-1.554-.141-1.143-1.012-2.194-2.454-2.962-.735-.393-1.58-.662-2.512-.8A10.73 10.73 0 0011.49 0c-.847 0-1.66.098-2.385.284C7.72.573 6.57 1.197 5.764 2.058 4.96 2.917 4.526 3.986 4.546 5.133c.007.424.084.848.228 1.258.027.078.057.155.09.232.006.019.013.037.02.055.135.322.322.636.555.932.022.028.043.057.066.085C5.9 8.01 5.18 8.57 4.81 9.306c-.343.692-.395 1.468-.15 2.196.184.549.52 1.036.979 1.411.09.073.185.143.285.21-.067.164-.126.332-.176.503-.203.7-.224 1.44-.06 2.117.19.788.62 1.446 1.215 1.856.508.35 1.1.494 1.71.417a3.29 3.29 0 001.36-.544c.07.156.143.305.22.448.546 1.03 1.316 1.723 2.211 1.993.29.088.59.13.892.124.557-.012 1.099-.185 1.593-.503.49-.316.91-.776 1.23-1.354.106-.19.2-.396.282-.614.083.054.17.105.261.152.465.24.988.342 1.523.295.55-.049 1.075-.267 1.524-.633.87-.706 1.322-1.84 1.234-3.065-.028-.391-.117-.799-.264-1.21a5.208 5.208 0 00.302-.235c.611-.526 1.001-1.204 1.097-1.913.085-.634-.047-1.256-.379-1.8a3.166 3.166 0 00-.776-.84c.04-.19.064-.385.072-.58.023-.617-.135-1.19-.463-1.655zM9.55 18.75c-.388.24-.8.365-1.197.365-.36 0-.706-.097-1-.293-.424-.29-.722-.777-.866-1.408-.137-.57-.122-1.214.046-1.826.032-.111.069-.218.11-.324.18.08.366.148.557.203.506.146 1.043.2 1.566.16.052-.005.104-.01.155-.018.198.59.43 1.12.688 1.557.378.641.835 1.07 1.31 1.248a3.044 3.044 0 01-.37.336zm8.33-6.638c-.079.587-.413 1.14-.94 1.598a4.338 4.338 0 01-.438.315c-.17-.274-.378-.526-.622-.742a3.09 3.09 0 00-.875-.524c.049-.148.076-.304.076-.466 0-.038-.002-.077-.006-.115.195-.066.386-.143.57-.232.75-.367 1.22-.9 1.323-1.534.154-.967-.568-1.943-1.914-2.526a8.035 8.035 0 00-1.565-.44 7.527 7.527 0 00-1.274-.107c-.39 0-.771.037-1.127.108a6.95 6.95 0 00-1.045.305c-.163.063-.322.133-.475.21-.565.286-.972.64-1.19 1.032a1.723 1.723 0 00-.205.834c0 .44.153.885.447 1.296.254.355.614.68 1.065.963.057.035.116.07.176.103l-.008.057c-.099.566-.095 1.163.013 1.726a5.178 5.178 0 01-1.126-.15 4.57 4.57 0 01-.5-.165 4.198 4.198 0 01-.232-.098 3.517 3.517 0 01-.405-.22 2.65 2.65 0 01-.722-.694c-.378-.557-.528-1.265-.415-2.019.084-.568.321-1.089.682-1.497.017-.02.035-.039.053-.057a4.696 4.696 0 01-.258-.483 5.09 5.09 0 01-.273-.932 5.1 5.1 0 01-.074-.877c-.016-.9.325-1.739.984-2.44.662-.703 1.657-1.244 2.9-1.567a10.14 10.14 0 012.207-.26c.749 0 1.484.09 2.175.265 1.406.36 2.504 1.057 3.082 1.98.42.67.558 1.39.4 2.078a3.033 3.033 0 01-.318.784c.175.19.326.396.449.614.3.53.427 1.12.369 1.7z"/>
+          </svg>
+          PostgreSQL
+        </span>
+
+        <!-- SQLite -->
+        <span class="tech-badge">
+          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21.678.521C20.467-.296 19.043.021 17.998.757c-.062.043-.123.087-.182.133A8.754 8.754 0 0015.9 2.541c-.021.026-.042.052-.062.078-.426.562-.768 1.183-1.019 1.843-1.2 3.118.068 7.235.068 7.235s-.071-.07-.191-.203c-.009.105-.017.21-.022.317-.032.664.05 1.205.05 1.205s-.048-.094-.135-.265c-.038.498-.048.997-.007 1.51.239 3.056 2.048 5.527 4.433 6.28.019.006.038.012.058.017.057.017.115.033.174.047.029.007.059.015.089.021.054.011.109.022.164.031.04.008.081.013.121.019.054.008.107.016.161.021.047.005.094.009.141.013.053.004.106.007.159.009.049.002.099.004.149.004l.148-.002c.053-.002.106-.004.158-.008.054-.004.108-.01.162-.016.047-.006.094-.013.141-.02.06-.01.118-.021.176-.034.037-.008.074-.017.11-.026.074-.019.146-.041.218-.064.035-.012.07-.024.104-.037.07-.027.14-.056.208-.087a4.544 4.544 0 001.073-.69c.858-.765 1.39-1.882 1.542-3.193.487-4.219-.98-9.543-3.27-12.131zm-3.765 20.463c-.087.008-.176.013-.266.014-2.406.03-4.516-2.447-4.715-5.546-.022-.336-.02-.664.003-.982l.003-.035a9.66 9.66 0 01.033-.336c.018-.153.042-.303.071-.449.006-.026.011-.052.017-.079.014-.062.029-.122.045-.182.014-.055.03-.108.046-.162.023-.075.047-.149.073-.221.026-.073.054-.144.083-.214.013-.032.027-.064.041-.095.029-.066.06-.131.092-.195.036-.073.074-.144.114-.213.017-.031.034-.062.052-.093.056-.096.116-.19.18-.28.022-.032.045-.064.069-.095a5.38 5.38 0 01.23-.283c.03-.034.062-.068.094-.101.05-.053.101-.104.154-.154.04-.038.08-.076.122-.112.052-.046.105-.09.159-.134.048-.039.097-.077.147-.114.054-.041.108-.079.163-.117.05-.035.1-.069.151-.101.056-.036.113-.07.17-.104.05-.029.101-.058.153-.085.06-.031.12-.06.182-.089.052-.024.104-.047.158-.069.063-.025.127-.048.192-.07.054-.018.108-.036.163-.052.068-.02.136-.037.205-.053.055-.013.111-.025.168-.036.072-.013.145-.024.219-.033.057-.007.114-.013.171-.017.08-.006.16-.01.241-.01h.04c.11.001.22.007.33.018zm4.083-1.818c-.112.97-.44 1.73-.944 2.184a2.39 2.39 0 01-1.059.552c-.062.015-.125.028-.189.038-.03.005-.06.009-.09.013-.064.008-.129.014-.194.018-.04.003-.08.005-.12.006-.04.001-.079.002-.119.002-.016 0-.031 0-.047-.001-.057-.002-.114-.006-.171-.011-.028-.003-.056-.006-.084-.01-.058-.008-.116-.018-.173-.029-.03-.006-.06-.013-.089-.02a2.92 2.92 0 01-.178-.053l-.048-.017a3.2 3.2 0 01-.165-.072 3.105 3.105 0 01-.397-.239 3.26 3.26 0 01-.319-.288 3.748 3.748 0 01-.474-.717 5.647 5.647 0 01-.362-.953c-.033-.116-.062-.235-.089-.357-.02-.086-.038-.173-.054-.262-.028-.149-.05-.302-.069-.457-.01-.084-.019-.17-.027-.256-.014-.163-.023-.329-.028-.497-.003-.085-.004-.17-.004-.256 0-.084.001-.167.004-.25.005-.157.014-.311.028-.462.007-.077.016-.152.025-.228.019-.147.043-.292.071-.434.015-.073.031-.145.048-.217.032-.133.068-.263.108-.39.021-.065.043-.129.066-.193.043-.119.09-.236.14-.35.026-.059.052-.118.08-.175.055-.115.113-.227.175-.335.03-.053.061-.105.093-.157.067-.108.138-.213.213-.313.036-.05.074-.099.112-.147.08-.1.163-.196.25-.287.046-.048.092-.094.139-.139a5.04 5.04 0 01.311-.264c.057-.044.115-.086.174-.127.062-.042.125-.082.189-.12.065-.039.131-.075.198-.109.07-.036.141-.069.214-.1.076-.033.153-.062.232-.09.081-.027.163-.052.247-.074.086-.022.174-.04.263-.056.092-.016.186-.027.281-.034.052-.004.104-.007.157-.007h.039a4.3 4.3 0 01.319.017c.056.007.112.015.167.025.079.014.156.031.232.052a3.5 3.5 0 01.183.058c.056.02.111.043.165.067.057.026.112.054.165.085.053.03.104.063.153.098.046.033.09.069.133.107a2.78 2.78 0 01.248.262c.046.058.089.119.129.183.041.065.078.134.111.206.018.039.035.079.051.12.038.098.07.201.097.31.016.067.03.137.041.209.014.099.024.202.028.31.003.074.003.15.001.228-.004.107-.015.218-.033.332-.01.065-.022.131-.037.198-.021.094-.047.19-.079.288-.018.056-.038.111-.06.167a4.11 4.11 0 01-.104.224 3.89 3.89 0 01-.145.257 3.765 3.765 0 01-.358.464c-.049.053-.1.104-.153.152a3.224 3.224 0 01-.342.258l-.045.028a3.054 3.054 0 01-.37.186c-.044.018-.088.034-.133.049a3.047 3.047 0 01-.38.087 3.17 3.17 0 01-.396.029c-.049 0-.098-.002-.147-.005a3.35 3.35 0 01-.292-.036 3.52 3.52 0 01-.28-.07 3.637 3.637 0 01-.248-.093 3.614 3.614 0 01-.213-.111 3.56 3.56 0 01-.168-.115c-.05-.038-.098-.079-.144-.122-.045-.042-.087-.087-.126-.133-.038-.046-.074-.095-.107-.145-.032-.05-.062-.102-.089-.156-.027-.054-.051-.11-.072-.167-.021-.058-.039-.118-.054-.18-.015-.062-.027-.125-.035-.19-.009-.065-.014-.132-.015-.2-.001-.069.002-.14.009-.211.007-.073.018-.147.033-.221.015-.076.035-.152.059-.227.024-.077.053-.153.087-.228.034-.077.073-.152.117-.225.044-.074.093-.146.147-.215.054-.07.113-.137.177-.2.064-.064.132-.124.205-.18.073-.055.151-.107.233-.153.083-.047.169-.088.259-.123.091-.035.185-.064.282-.086.098-.022.199-.038.302-.045.103-.008.208-.007.314.002.106.009.213.027.318.054.107.027.212.063.313.107.103.045.202.098.296.16.095.062.184.132.267.21.083.077.159.162.228.253.07.092.133.19.188.295.056.105.103.216.142.332.02.058.037.118.053.179.03.124.051.253.063.387.006.065.009.133.009.201 0 .069-.003.139-.009.209-.006.07-.016.141-.029.212-.014.071-.03.142-.05.212-.02.071-.044.141-.072.21-.028.07-.059.138-.094.205-.035.067-.074.132-.116.194-.042.063-.088.123-.137.18-.049.057-.101.111-.156.162-.055.051-.113.099-.173.143-.061.044-.124.085-.19.121-.066.037-.134.069-.204.097-.071.029-.143.053-.217.073-.075.02-.15.036-.227.046-.078.01-.156.016-.234.016-.053 0-.106-.003-.158-.009-.053-.006-.105-.015-.156-.027-.051-.012-.101-.027-.149-.046-.049-.018-.096-.04-.141-.064-.046-.025-.089-.052-.13-.083-.041-.031-.079-.065-.114-.101-.036-.037-.069-.076-.099-.118-.031-.042-.059-.086-.083-.132-.025-.047-.047-.095-.065-.145-.019-.051-.034-.103-.046-.157-.012-.054-.02-.109-.025-.165-.005-.057-.006-.114-.004-.172.002-.058.008-.117.018-.175.01-.06.023-.119.04-.177.017-.059.037-.116.061-.172.024-.057.052-.112.083-.165.031-.054.066-.105.104-.153.038-.049.079-.095.123-.138.045-.043.093-.083.144-.119.051-.036.105-.069.162-.097.057-.029.117-.054.179-.074.062-.02.126-.035.192-.045.065-.01.132-.016.199-.016.068 0 .136.005.204.016.068.011.135.026.2.047.065.021.129.047.19.078.061.031.12.067.175.108.055.041.107.087.155.137.048.05.092.105.132.163.039.059.074.121.104.187.029.066.054.135.073.207.019.072.032.147.039.224.007.077.008.156.003.235-.005.079-.016.159-.034.238-.018.079-.041.158-.071.234-.03.077-.066.152-.107.224-.041.073-.088.143-.139.209-.051.067-.108.13-.168.188-.061.059-.126.113-.194.163-.068.05-.14.095-.215.135-.075.04-.153.075-.233.105-.08.03-.162.056-.245.076-.083.02-.167.035-.251.044-.084.009-.168.013-.252.012-.084-.001-.167-.007-.249-.018-.082-.011-.163-.027-.242-.048-.079-.021-.156-.047-.231-.078-.075-.031-.147-.067-.217-.108-.069-.041-.135-.087-.198-.137-.062-.051-.121-.106-.176-.165-.054-.059-.105-.122-.151-.188-.046-.067-.088-.137-.125-.21-.036-.074-.068-.15-.094-.229-.026-.08-.047-.161-.062-.244-.015-.083-.024-.168-.027-.254-.003-.086-.001-.173.007-.26.008-.086.022-.172.041-.257.019-.085.044-.169.074-.251.03-.083.066-.163.107-.241.041-.078.087-.153.137-.225.05-.072.104-.14.162-.205.058-.065.12-.126.185-.183.065-.057.134-.109.206-.157.072-.048.147-.091.224-.129.078-.038.158-.07.24-.097.082-.027.166-.049.251-.064.085-.016.171-.026.257-.029.086-.003.172.001.257.01.085.009.169.023.251.042.082.019.162.043.239.072.077.029.151.063.221.101.071.038.138.081.201.128.063.047.122.099.177.154.055.055.106.114.152.177.047.062.089.128.126.197.037.069.069.141.096.216.026.075.047.152.062.231.015.079.025.16.028.242.003.082 0 .165-.009.247-.009.082-.024.163-.044.242-.02.08-.046.157-.077.232-.031.075-.067.148-.108.217-.041.069-.087.135-.137.197-.05.062-.105.12-.163.174-.058.053-.12.103-.185.148-.065.044-.133.083-.203.118-.071.034-.144.063-.219.086-.075.023-.152.04-.23.052-.078.011-.157.016-.236.016-.029 0-.059-.001-.088-.003z"/>
+          </svg>
+          SQLite
+        </span>
+
+        <!-- MySQL -->
+        <span class="tech-badge">
+          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16.405 5.501c-.115 0-.193.014-.274.033v.013h.014c.054.104.146.18.214.273.054.107.1.214.154.32l.014-.015c.094-.066.14-.172.14-.333-.04-.047-.046-.094-.08-.14-.04-.067-.126-.1-.182-.151zM5.77 18.695h-.927a50.854 50.854 0 00-.27-4.41l-.007.014-1.674 4.396h-.71l-1.674-4.396-.013-.014a67.067 67.067 0 00-.206 4.41H0c.047-1.973.065-3.954.171-5.931h1.003l1.7 4.342 1.712-4.342h1.054c.065 1.977.13 3.958.13 5.931zm4.13 0h-.9c-.015-.12-.015-.267-.015-.387h-.015c-.263.307-.624.45-1.114.45-.568 0-1.069-.33-1.069-.985 0-.87.734-1.29 2.026-1.29v-.195c0-.434-.246-.637-.713-.637-.31 0-.505.062-.858.287l-.195-.595c.4-.228.8-.338 1.215-.338.784 0 1.317.354 1.317 1.24l.001 1.27c0 .398.012.787.12 1.18zm-1.51-.774c0-.434-.7-.504-1.152-.327-.37.148-.486.393-.486.642 0 .326.228.503.59.503.446 0 1.048-.272 1.048-.818zm5.508.774h-.882v-2.58c0-.648-.243-.983-.723-.983-.47 0-.765.333-.765.983v2.58h-.883v-2.785c0-.354-.013-.765-.025-1.147h.783l.043.478h.015c.243-.379.624-.54 1.096-.54.77 0 1.341.527 1.341 1.557zm2.36.154c-.497 0-.97-.148-1.27-.373l.2-.637c.27.184.624.305.968.305.505 0 .726-.184.726-.443 0-.26-.174-.405-.698-.573-.756-.24-1.11-.6-1.11-1.1 0-.658.54-1.122 1.41-1.122.44 0 .812.109 1.057.263l-.204.617c-.224-.135-.508-.233-.853-.233-.43 0-.633.2-.633.42 0 .245.18.373.678.543.744.254 1.133.614 1.133 1.155 0 .667-.52 1.178-1.404 1.178zm4.573-.154l-.044-.479h-.015c-.243.38-.584.54-1.067.54-.757 0-1.19-.525-1.19-1.292v-2.35h.883v2.23c0 .688.236 1.085.72 1.085.44 0 .692-.273.692-.745V15.63h.884v2.45c0 .36.012.737.025 1.09zm2.22-3.908c-.012.012-.025.012-.025.025v3.755h-.882v-5.753h.78l2.47 3.9h.013v-3.9h.882v5.753h-.744zm3.43 4.008c-.022.017-.04.031-.06.042-.1.065-.28.165-.33.198l.011.016c.049-.017.088-.025.12-.032.017-.004.033-.008.052-.013l.052-.015.063-.019.038-.014.048-.019.037-.016.046-.022.034-.018.037-.02.03-.018.034-.021.026-.017.03-.022.022-.016.025-.02.02-.018.021-.018.018-.017.016-.016.015-.014.015-.015.01-.012.01-.012.01-.013.007-.01.008-.01.006-.008.005-.008.004-.007.003-.006.003-.006.002-.005.002-.005.001-.004.001-.004v-.009z"/>
+          </svg>
+          MySQL
+        </span>
+
+        <!-- Ubuntu / Linux -->
+        <span class="tech-badge">
+          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 1.993c5.518 0 10.007 4.489 10.007 10.007 0 5.518-4.489 10.007-10.007 10.007C6.482 22.007 1.993 17.518 1.993 12 1.993 6.482 6.482 1.993 12 1.993zM7.898 5.695a1.588 1.588 0 100 3.176 1.588 1.588 0 000-3.176zm8.204 0a1.588 1.588 0 100 3.176 1.588 1.588 0 000-3.176zM7.21 9.696c-.28.005-.557.061-.82.17-1.19.496-1.754 1.868-1.258 3.058l.002.003a2.33 2.33 0 001.434 1.348 2.33 2.33 0 002.892-1.15l.003-.008.007-.01c.012-.026.023-.052.033-.078a2.317 2.317 0 00-1.283-3.043 2.329 2.329 0 00-1.01-.29zm9.58 0a2.33 2.33 0 00-2.293 2.37 2.33 2.33 0 001.28 2.072 2.33 2.33 0 002.892-1.15l.003-.006.008-.014.032-.078a2.317 2.317 0 00-1.283-3.043 2.329 2.329 0 00-.639-.151zM12 14.193a5.4 5.4 0 00-2.67.704l-.006.004a1.588 1.588 0 10.79 1.366 1.588 1.588 0 00-.19-.756l.006-.004A4.39 4.39 0 0112 15.203c.77 0 1.49.203 2.07.554l.006.004a1.588 1.588 0 10.79-1.366 1.588 1.588 0 00.19.756l-.006.004A5.4 5.4 0 0012 14.193z"/>
+          </svg>
+          Ubuntu
+        </span>
+
+        <!-- JetBrains -->
+        <span class="tech-badge">
+          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 0v24h24V0zm21.6 2.4v9.6l-3.2-1.6-1.6 3.2-3.2-1.6 1.6-3.2-3.2-1.6zm-12 2.4h2.4v1.6H8v1.6h3.2V9.6H8zm0 6.4h2.4V16H8v1.6h4V20H8zM2.4 4.8h4v1.6H4.8v1.6h1.6v1.6H4.8V12H2.4zm0 8h4v6.4H4.8v-4.8H2.4z"/>
+          </svg>
+          JetBrains
+        </span>
+
+      </div>
+    </div>
+
+    <!-- EMAIL -->
+    <div class="email-row">
+      <div class="section-label">Email</div>
+      <a class="email-link" href="mailto:conagkyanbrix@gmail.com">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="4" width="20" height="16" rx="2"/>
+          <polyline points="2,4 12,13 22,4"/>
+        </svg>
+        conagkyanbrix@gmail.com
+      </a>
+    </div>
+
+    <!-- SOCIALS -->
+    <div class="socials">
+      <div class="section-label">Socials</div>
+      <div class="social-list">
+
+        <!-- GitHub -->
+        <a class="social-link" href="https://github.com/Kyanbrix" target="_blank" rel="noopener">
+          <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C6.477 2 2 6.484 2 12.021c0 4.428 2.865 8.185 6.839 9.504.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.031 1.531 1.031.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.026 2.747-1.026.546 1.378.202 2.397.1 2.65.64.7 1.028 1.595 1.028 2.688 0 3.847-2.338 4.695-4.566 4.943.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.203 22 16.447 22 12.021 22 6.484 17.522 2 12 2z"/>
+          </svg>
+          GitHub
+          <svg class="social-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </a>
+
+        <!-- Discord Profile -->
+        <a class="social-link" href="https://discord.com/users/683613536823279794" target="_blank" rel="noopener">
+          <svg class="social-icon" viewBox="0 0 127.14 96.36" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,46,96.12,53,91.08,65.69,84.69,65.69Z"/>
+          </svg>
+          Discord
+          <svg class="social-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </a>
+
+        <!-- Facebook -->
+        <a class="social-link" href="https://www.facebook.com/kyanbrix" target="_blank" rel="noopener">
+          <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.791-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.886v2.267h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/>
+          </svg>
+          Facebook
+          <svg class="social-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </a>
+
+        <!-- Instagram -->
+        <a class="social-link" href="https://www.instagram.com/kyanbrix/" target="_blank" rel="noopener">
+          <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <circle cx="12" cy="12" r="4.5"/>
+            <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+          </svg>
+          Instagram
+          <svg class="social-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </a>
+
+        <!-- Spotify -->
+        <a class="social-link" href="https://open.spotify.com/user/htn77af91xmzf2aewwccixtd9?si=b3668e26ea8843f4" target="_blank" rel="noopener">
+          <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.424a.622.622 0 0 1-.857.207c-2.348-1.435-5.304-1.76-8.785-.964a.622.622 0 0 1-.277-1.215c3.809-.87 7.076-.496 9.712 1.115a.623.623 0 0 1 .207.857zm1.223-2.722a.78.78 0 0 1-1.072.257C14.101 12.18 10.442 11.7 7.6 12.54a.78.78 0 1 1-.453-1.492c3.226-.98 7.234-.505 9.979 1.082a.781.781 0 0 1 .257 1.072zm.105-2.835c-3.223-1.914-8.54-2.09-11.618-1.156a.935.935 0 1 1-.542-1.79c3.532-1.072 9.404-.866 13.115 1.337a.936.936 0 0 1-1.016 1.578l.061.031z"/>
+          </svg>
+          Spotify
+          <svg class="social-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- DISCORD SERVER INVITE -->
+    <div class="discord-invite">
+      <div class="section-label">Community</div>
+      <a class="discord-card" href="https://discord.com/invite/qyU8RHFktw" target="_blank" rel="noopener">
+        <svg class="social-icon" viewBox="0 0 127.14 96.36" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,46,96.12,53,91.08,65.69,84.69,65.69Z"/>
+        </svg>
+        Join my server
+        <span class="discord-badge">Invite</span>
+      </a>
+    </div>
+
+  </div>
+
+  <footer>Kian · miss you gina ♥</footer>
+
+  <script>
+    const btn = document.getElementById('themeBtn');
+    const html = document.documentElement;
+
+    // Load saved theme
+    const saved = localStorage.getItem('theme') || 'dark';
+    html.setAttribute('data-theme', saved);
+
+    btn.addEventListener('click', () => {
+      const current = html.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    });
+  </script>
+
 </body>
 </html>
