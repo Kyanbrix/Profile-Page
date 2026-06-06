@@ -65,13 +65,11 @@
       transition: background var(--transition), color var(--transition);
     }
 
-    /* ── CARD ── */
     .card {
       width: 100%;
       max-width: 440px;
     }
 
-    /* ── HEADER ── */
     .header {
       display: flex;
       align-items: flex-start;
@@ -109,7 +107,6 @@
       user-select: none;
     }
 
-    /* Theme toggle — sits beside avatar, top-right of header */
     .theme-toggle {
       margin-left: auto;
       background: var(--surface);
@@ -142,7 +139,6 @@
     [data-theme="light"] .icon-sun  { display: block; }
     [data-theme="light"] .icon-moon { display: none; }
 
-    /* ── NAME BLOCK ── */
     .name-block {
       flex: 1;
       padding-top: 6px;
@@ -163,7 +159,6 @@
       margin-top: 3px;
     }
 
-    /* ── DIVIDER ── */
     .divider {
       width: 100%;
       height: 1px;
@@ -171,7 +166,6 @@
       margin: 4px 0 24px;
     }
 
-    /* ── SECTION LABEL ── */
     .section-label {
       font-size: 10px;
       font-weight: 600;
@@ -181,7 +175,6 @@
       margin-bottom: 10px;
     }
 
-    /* ── ABOUT ── */
     .about {
       margin-bottom: 24px;
     }
@@ -193,7 +186,6 @@
       color: var(--muted);
     }
 
-    /* ── EMAIL ── */
     .email-row {
       margin-bottom: 28px;
     }
@@ -223,7 +215,6 @@
       color: var(--accent);
     }
 
-    /* ── SOCIALS ── */
     .socials {
       margin-bottom: 28px;
     }
@@ -392,7 +383,6 @@
       object-fit: contain;
     }
 
-    /* ── MODAL OVERLAY ── */
     .modal-overlay {
       display: none;
       position: fixed;
