@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A little confession 💌</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+  <main class="letter-container">
+
+    <!-- Polaroid / avatar (stays visible the whole time) -->
+    <div class="polaroid">
+      <div class="tape"></div>
+      <div class="avatar-frame">
+        <!-- AVATAR PLACEHOLDER: replace with <img src="your-photo.jpg" alt="Me" style="width:100%;height:100%;object-fit:cover;"> -->
+         <img src="./images/dp.png" alt="Me" style="width:100%;height:100%;object-fit:cover;">
+        <svg viewBox="0 0 100 100" role="img" aria-label="Photo placeholder">
+          <rect width="100" height="100" fill="#F1DCC0"/>
+          <circle cx="50" cy="38" r="17" fill="#C6597A" opacity="0.85"/>
+          <path d="M18 90 C18 62 82 62 82 90 Z" fill="#C6597A" opacity="0.85"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- ============== INTRO SCREEN ============== -->
+    <section id="intro" class="intro">
+      <p class="handwritten-line">Hi, I have a confession for you<br>.....</p>
+      <button id="openBtn" class="seal-btn" type="button">Click it</button>
+    </section>
+
+    <!-- ============== CONFESSION SCREEN ============== -->
+    <section id="confessionSection" class="confession-section">
+
+      <div class="letter-card">
+        <p class="salutation">Dear You,</p>
+
+        <!-- CONFESSION TEXT: edit freely, up to ~1000 words -->
+        <p id="confessionText">
+          I've rewritten this a few times in my head, so let me just say it plainly:
+          I like you. Not in the small, passing way — the kind where I catch myself
+          smiling at nothing because I'm remembering something you said. I notice
+          the way you laugh at your own jokes before you even finish telling them.
+          I notice how you always ask people how they're doing and actually wait
+          for the answer. Little things, but they've added up to something I can't
+          really pretend isn't there anymore.
+        </p>
+        <p>
+          I've been going back and forth about whether to say anything at all,
+          because honestly, things are good between us as they are, and I didn't
+          want to risk that. But I figured you deserve to know instead of me just
+          quietly hoping you'd somehow guess it. So — here it is, out in the open,
+          slightly nervous handwriting and all.
+        </p>
+        <p>
+          I'm not expecting a perfect answer. I just wanted to be honest with you,
+          because you're the kind of person worth being honest with.
+        </p>
+
+        <p class="signature">— Me</p>
+      </div>
+
+      <button id="nextPageBtn" class="seal-btn next-page-btn" type="button">Next Page</button>
+
+    </section>
+
+    <!-- ============== DATE QUESTION SCREEN ============== -->
+    <section id="dateSection" class="date-section">
+
+      <p class="big-question">Can I take you on a date?</p>
+      <p class="sub-note">(pick one — no pressure... okay maybe a little)</p>
+
+      <div class="decision-row">
+        <button id="noBtn" class="tag-btn no-btn" type="button">No</button>
+        <button id="yesBtn" class="tag-btn yes-btn" type="button">Yes</button>
+      </div>
+
+    </section>
+
+    <!-- ============== GIFT CHOICE SCREEN ============== -->
+    <section id="giftSection" class="gift-section">
+    
+      <p class="big-question">What should I bring on our date?</p>
+      <p class="sub-note">(choose wisely — this is basically a personality test 😏)</p>
+
+      <div class="choice-row">
+        <button id="flowersBtn" class="choice-btn" type="button">Flowers 💐</button>
+        <button id="chocolateBtn" class="choice-btn chocolate-btn" type="button">Chocolates 🍫</button>
+      </div>
+
+    </section>
+
+    <!-- ============== SCHEDULE SCREEN ============== -->
+    <section id="scheduleSection" class="schedule-section">
+
+      <p class="big-question">Why not both? You're kind of a big deal to me 😊</p>
+      <p class="sub-note">now pick a date and time that works for you</p>
+
+      <div class="datetime-row">
+        <div class="field-group">
+          <label for="dateInput">Date</label>
+          <input type="date" id="dateInput">
+        </div>
+        <div class="field-group">
+          <label for="timeInput">Time</label>
+          <input type="time" id="timeInput">
+        </div>
+      </div>
+
+      <p id="formWarning" class="form-warning hidden">Pick a date and time first! 👀</p>
+
+      <button id="confirmBtn" class="seal-btn confirm-btn" type="button">Confirm Date 💌</button>
+
+    </section>
+
+  </main>
+
+  <!-- ============== CONFIRMATION POPUP ============== -->
+  <div id="popupOverlay" class="popup-overlay">
+    <div class="popup-card">
+      <button id="popupClose" class="popup-close" type="button" aria-label="Close">✕</button>
+
+      <div class="popup-image">
+        <!-- HUGE PICTURE PLACEHOLDER: swap this div for your own image/gif, see comment above .popup-image in the CSS -->
+        <div class="popup-emoji-badge">📅</div>
+      </div>
+
+      <p class="popup-caption">It's a date!! 🎉</p>
+      <p class="popup-subcaption">See you on <span id="confirmedDateTime">—</span> 💕</p>
+
+      <button id="popupOkBtn" class="seal-btn" type="button" style="margin-top:18px;">Yay, can't wait!</button>
+    </div>
+  </div>
+
+<script>
+  const openBtn = document.getElementById('openBtn');
+  const intro = document.getElementById('intro');
+  const confessionSection = document.getElementById('confessionSection');
+  const nextPageBtn = document.getElementById('nextPageBtn');
+  const dateSection = document.getElementById('dateSection');
+  const noBtn = document.getElementById('noBtn');
+  const yesBtn = document.getElementById('yesBtn');
+  const giftSection = document.getElementById('giftSection');
+  const flowersBtn = document.getElementById('flowersBtn');
+  const chocolateBtn = document.getElementById('chocolateBtn');
+  const scheduleSection = document.getElementById('scheduleSection');
+  const dateInput = document.getElementById('dateInput');
+  const timeInput = document.getElementById('timeInput');
+  const confirmBtn = document.getElementById('confirmBtn');
+  const formWarning = document.getElementById('formWarning');
+  const popupOverlay = document.getElementById('popupOverlay');
+  const popupClose = document.getElementById('popupClose');
+  const popupOkBtn = document.getElementById('popupOkBtn');
+  const confirmedDateTime = document.getElementById('confirmedDateTime');
+  const changeImage = document.querySelector('.avatar-frame img');
+  // ---------- Reusable page transition: fade one section out, fade the next in ----------
+  function goToPage(hideEl, showEl) {
+    hideEl.classList.remove('visible');
+    setTimeout(() => {
+      hideEl.style.display = 'none';
+      showEl.style.display = 'flex';
+      requestAnimationFrame(() => showEl.classList.add('visible'));
+    }, 380);
+  }
+
+  // ---------- Open the letter ----------
+  openBtn.addEventListener('click', () => {
+    intro.classList.add('fade-out');
+    console.log('clicked');
+    setTimeout(() => {
+      
+      changeImage.src = './images/cat.webp'; // Change the image source to the new image
+      intro.style.display = 'none';
+      confessionSection.style.display = 'flex';
+      
+      // trigger reflow so the transition actually plays
+      requestAnimationFrame(() => confessionSection.classList.add('visible'));
+    }, 380);
+  });
+
+  // ---------- Page 2 -> Page 3: the date question ----------
+  nextPageBtn.addEventListener('click', () => {
+    goToPage(confessionSection, dateSection);
+  });
+
+  // ---------- No button: shrinks + changes text on each click ----------
+  // Edit these messages to whatever feels like "you"
+  const NO_TEXTS = ['No', 'Wait...', 'Really?', 'Are you sure?', 'Pretty please?', 'Last chance!'];
+  const VANISH_AT = NO_TEXTS.length; // clicks needed before it disappears completely
+
+  const isSmallScreen = window.matchMedia('(max-width: 420px)').matches;
+  const YES_MAX_SCALE = isSmallScreen ? 1.7 : 2.4; // cap so it never overruns the layout
+  const YES_STEP = 0.28;
+
+  let noClicks = 0;
+
+  noBtn.addEventListener('click', () => {
+    noClicks++;
+
+    // Yes button grows a little each time, capped at YES_MAX_SCALE
+    const yesScale = Math.min(1 + noClicks * YES_STEP, YES_MAX_SCALE);
+    yesBtn.style.setProperty('--scale', yesScale);
+
+    if (noClicks >= VANISH_AT) {
+      noBtn.classList.add('vanished');
+    } else {
+      const shrink = Math.max(1 - noClicks * 0.16, 0.12);
+      noBtn.style.setProperty('--scale', shrink);
+      noBtn.textContent = NO_TEXTS[noClicks];
+    }
+  });
+
+  // ---------- Page 3 -> Page 4: Yes leads to the gift question ----------
+  yesBtn.addEventListener('click', () => {
+    goToPage(dateSection, giftSection);
+  });
+
+  // ---------- Page 4 -> Page 5: either gift choice moves on ----------
+  // (the choice itself doesn't change what happens next, both get "why not both")
+  flowersBtn.addEventListener('click', () => goToPage(giftSection, scheduleSection));
+  chocolateBtn.addEventListener('click', () => goToPage(giftSection, scheduleSection));
+
+  // ---------- Page 5: date & time picker ----------
+  // Stop people from picking a date in the past
+  dateInput.min = new Date().toISOString().split('T')[0];
+
+  confirmBtn.addEventListener('click', () => {
+    if (!dateInput.value || !timeInput.value) {
+      formWarning.classList.remove('hidden');
+      return;
+    }
+    formWarning.classList.add('hidden');
+
+    const chosen = new Date(dateInput.value + 'T' + timeInput.value);
+    const dateLabel = chosen.toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+    const timeLabel = chosen.toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' });
+
+    confirmedDateTime.textContent = dateLabel + ' at ' + timeLabel;
+    spawnHearts();
+    openPopup();
+  });
+
+  // ---------- Confirmation popup ----------
+  function openPopup() {
+    popupOverlay.style.display = 'flex';
+    requestAnimationFrame(() => popupOverlay.classList.add('visible'));
+  }
+
+  function closePopup() {
+    popupOverlay.classList.remove('visible');
+    setTimeout(() => {
+      popupOverlay.style.display = 'none';
+    }, 300);
+  }
+
+  popupClose.addEventListener('click', closePopup);
+  popupOkBtn.addEventListener('click', closePopup);
+
+  // clicking the dark backdrop (not the card itself) also closes it
+  popupOverlay.addEventListener('click', (e) => {
+    if (e.target === popupOverlay) closePopup();
+  });
+
+  // Escape key closes it too
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && popupOverlay.classList.contains('visible')) closePopup();
+  });
+
+  function spawnHearts() {
+    const emojis = ['💖', '✨', '🎉', '💐'];
+    const count = 18;
+    for (let i = 0; i < count; i++) {
+      const span = document.createElement('span');
+      span.className = 'floating-heart';
+      span.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      span.style.left = Math.random() * 100 + 'vw';
+      span.style.fontSize = (16 + Math.random() * 20) + 'px';
+      span.style.animationDuration = (2.4 + Math.random() * 2) + 's';
+      span.style.animationDelay = (Math.random() * 0.6) + 's';
+      document.body.appendChild(span);
+      setTimeout(() => span.remove(), 5200);
+    }
+  }
+</script>
+
+</body>
+</html>
