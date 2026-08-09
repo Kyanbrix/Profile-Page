@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>When????</title>
+
+    <link rel="stylesheet" href="/imy/mosiac.css"
+</head>
+<body>
+
+    <div id="loading">loading...</div>
+
+    
+    <canvas id="mosaicCanvas"></canvas>
+
+    <div class="floating-player">
+    
+    <div class="player-header">
+      <img src="/imy/panaginip-bg.png" alt="Panaginip Album Cover" class="album-cover">
+      <div class="track-info">
+        <span class="track-title">Panaginip</span>
+        <span class="track-artist">nicole</span>
+      </div>
+    </div>
+
+    <audio id="floating-player-audio" controls>
+      <source src="/imy/Panaginip.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        const canvas = document.getElementById('mosaicCanvas');
+        const ctx = canvas.getContext('2d');
+        const loadingEl = document.getElementById('loading');
+
+        const PHRASE = "I Miss You ";
+        const IMG_SRC = '/imy/us.jpg';
+
+
+        const img = new Image();
+        const offCanvas = document.createElement('canvas');
+        const offCtx = offCanvas.getContext('2d', { willReadFrequently: true });
+        const volume = document.getElementById('floating-player-audio');
+
+        volume.volume = 0.2; // Set volume to 20%
+        let ready = false;
+
+        img.onload = function () {
+            ready = true;
+            loadingEl.style.display = 'none';
+            resizeAndDraw();
+        };
+        img.src = IMG_SRC;
+
+        function resizeAndDraw() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            if (ready) drawMosaic();
+        }
+
+        function drawMosaic() {
+            const w = canvas.width;
+            const h = canvas.height;
+
+            // --- Prepare offscreen canvas with the image drawn using "cover" fit ---
+            offCanvas.width = w;
+            offCanvas.height = h;
+
+            const scale = Math.max(w / img.naturalWidth, h / img.naturalHeight);
+            const scaledW = img.naturalWidth * scale;
+            const scaledH = img.naturalHeight * scale;
+            const offsetX = (w - scaledW) / 2;
+            const offsetY = (h - scaledH) / 2;
+
+            offCtx.fillStyle = '#000';
+            offCtx.fillRect(0, 0, w, h);
+            offCtx.drawImage(img, offsetX, offsetY, scaledW, scaledH);
+
+            const imageData = offCtx.getImageData(0, 0, w, h).data;
+
+            // --- Fill main canvas black ---
+            ctx.fillStyle = '#000';
+            ctx.fillRect(0, 0, w, h);
+
+            // --- Determine grid / font size so detail auto-scales with screen size ---
+            const diagonal = Math.sqrt(w * w + h * h);
+            const fontSize = Math.max(6, Math.min(15, diagonal / 170));
+            const cellW = fontSize * 0.62;
+            const cellH = fontSize * 1.05;
+
+            const cols = Math.ceil(w / cellW);
+            const rows = Math.ceil(h / cellH);
+
+            ctx.font = `bold ${fontSize}px 'Courier New', monospace`;
+            ctx.textBaseline = 'top';
+            ctx.textAlign = 'left';
+
+            let charIndex = 0;
+            const phraseLen = PHRASE.length;
+
+            for (let row = 0; row < rows; row++) {
+            const py = Math.min(h - 1, Math.floor(row * cellH + cellH / 2));
+            for (let col = 0; col < cols; col++) {
+                const px = Math.min(w - 1, Math.floor(col * cellW + cellW / 2));
+                const idx = (py * w + px) * 4;
+
+                const r = imageData[idx];
+                const g = imageData[idx + 1];
+                const b = imageData[idx + 2];
+
+                let luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+                // slight contrast boost so mid-tones (faces) read clearly
+                let alpha = Math.pow(luminance, 0.75);
+                alpha = Math.min(1, alpha * 1.15);
+
+                if (alpha > 0.03) {
+                const ch = PHRASE[charIndex % phraseLen];
+                ctx.fillStyle = `rgba(255,255,255,${alpha.toFixed(3)})`;
+                ctx.fillText(ch, col * cellW, row * cellH);
+                }
+                charIndex++;
+            }
+            }
+        }
+
+        window.addEventListener('resize', resizeAndDraw);
+    </script>
+
+</body>
+</html>
