@@ -11,22 +11,16 @@
 
     <div id="loading">loading...</div>
 
+    <div id="splash-screen">
+        <button id="enter-btn">View Mosaic</button>
+    </div>
+
     
     <canvas id="mosaicCanvas"></canvas>
 
-    <div class="floating-player">
-    
-    <div class="player-header">
-      <img src="/imy/panaginip-bg.png" alt="Panaginip Album Cover" class="album-cover">
-      <div class="track-info">
-        <span class="track-title">Panaginip</span>
-        <span class="track-artist">nicole</span>
-      </div>
-    </div>
 
     <audio id="floating-player-audio" controls>
       <source src="/imy/Panaginip.mp3" type="audio/mpeg">
-      Your browser does not support the audio element.
     </audio>
 
     <script>
@@ -34,7 +28,11 @@
         const ctx = canvas.getContext('2d');
         const loadingEl = document.getElementById('loading');
 
-        const PHRASE = "I Miss You ";
+        const splashScreen = document.getElementById('splash-screen');
+        const enterBtn = document.getElementById('enter-btn');
+        const player = document.getElementById('floating-player');
+
+        const PHRASE = "I Miss You Gina ";
         const IMG_SRC = '/imy/us.jpg';
 
 
@@ -42,6 +40,20 @@
         const offCanvas = document.createElement('canvas');
         const offCtx = offCanvas.getContext('2d', { willReadFrequently: true });
         const volume = document.getElementById('floating-player-audio');
+
+
+        volume.volume = 0.2; // Set volume to 20%
+
+        enterBtn.addEventListener('click', () => {
+            volume.play();
+            splashScreen.style.opacity = '0';
+
+            setTimeout(() => {
+                splashScreen.style.display = 'none';
+                player.style.display = 'block';
+            }, 500); // Wait for the fade-out transition to complete
+        });
+
 
         volume.volume = 0.2; // Set volume to 20%
         let ready = false;
