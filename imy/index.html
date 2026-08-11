@@ -34,11 +34,12 @@
     <canvas id="mosaicCanvas"></canvas>
 
 
-    <audio id="floating-player-audio" controls>
+    <audio id="floating-player-audio" controls loop>
       <source src="/imy/Panaginip.mp3" type="audio/mpeg">
     </audio>
 
     <script>
+        let currentIndex = 0;
         const canvas = document.getElementById('mosaicCanvas');
         const ctx = canvas.getContext('2d');
         const loadingEl = document.getElementById('loading');
@@ -47,10 +48,22 @@
         const enterBtn = document.getElementById('enter-btn');
         const player = document.getElementById('floating-player');
 
-        const PHRASE = "I Miss You Gina ";
+        const PHRASE = "Still You ";
         const IMG_SRC = '/imy/us.jpg';
 
+        const IMAGES = [
+            '/imy/us.jpg',
+            '/imy/us1.jpg',
+            '/imy/us2.jpg',
+            '/imy/us3.jpg',
+            '/imy/us4.jpg',
+            '/imy/us5.jpg',
+            '/imy/us6.jpg',
+            '/imy/you.jpg',
+            '/imy/you1.jpg',
+        ]
 
+    
         const img = new Image();
         const offCanvas = document.createElement('canvas');
         const offCtx = offCanvas.getContext('2d', { willReadFrequently: true });
@@ -76,13 +89,25 @@
         img.onload = function () {
             ready = true;
             loadingEl.style.display = 'none';
+
             resizeAndDraw();
         };
-        img.src = IMG_SRC;
+
+        img.src = IMAGES[currentIndex];
+
+        function changeImage() {
+            img.src = IMAGES[currentIndex];
+
+            currentIndex = (currentIndex + 1) % IMAGES.length;
+
+        }
+
+         setInterval(changeImage, 5000);
 
         function resizeAndDraw() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
+
             if (ready) drawMosaic();
         }
 
