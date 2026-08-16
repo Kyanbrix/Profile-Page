@@ -17,64 +17,6 @@
 
 <link rel="stylesheet" href="/imy/mosiac.css">
 
-<style>
-  html, body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    background: #000;
-    overflow: hidden;
-  }
-  canvas {
-    display: block;
-    background: #000;
-  }
-  #loading {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: #fff;
-    font-family: sans-serif;
-    font-size: 16px;
-    letter-spacing: 2px;
-    opacity: 0.6;
-  }
-  #splash-screen {
-    position: fixed;
-    inset: 0;
-    background: #000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 50;
-    transition: opacity 0.5s ease;
-  }
-  #enter-btn {
-    padding: 14px 28px;
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.25);
-    color: #fff;
-    font-family: 'Courier New', monospace;
-    font-size: 15px;
-    letter-spacing: 1px;
-    border-radius: 10px;
-    cursor: pointer;
-  }
-  #enter-btn:hover {
-    background: rgba(255,255,255,0.16);
-  }
-  #floating-player-audio {
-    position: fixed;
-    left: 50%;
-    bottom: 24px;
-    transform: translateX(-50%);
-    z-index: 20;
-    display: none;
-    width: min(360px, 90vw);
-  }
-</style>
 </head>
 
 <body>
@@ -154,7 +96,7 @@
         drawMosaic();
     }
 
-    setInterval(changeImage, 5000);
+    setInterval(changeImage, 8000);
 
     function drawMosaic() {
         const w = canvas.width;
