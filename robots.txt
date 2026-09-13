@@ -1,0 +1,20 @@
+# Allow all standard search engines and AI crawlers full access
+User-agent: *
+Allow: /
+
+# Explicitly permit major AI crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+# Block administrative or private paths (optional)
+Disallow: /admin/
+Disallow: /private/
+
+# Link to your XML Sitemap
+Sitemap: https://kyanbrix.com/sitemap.xml
