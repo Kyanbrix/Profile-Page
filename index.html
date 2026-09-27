@@ -2,17 +2,17 @@
 <html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Kian</title>
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Official profile and portfolio of Kyanbrix Conag (also known as Kian Conag or Kenken Conag). Explore software background, and contact details.">  
+  <meta name="description" content="Official profile and portfolio of Kyanbrix Conag (also known as Kian Conag or Kenken Conag). Explore software background, and contact details.">
   <meta name="keywords" content="Kyanbrix Conag, Kian Conag, Kenken Conag, Kian, Kyanbrix, Kian Conag Portfolio, Kyanbrix Portfolio, Kian Conag Profile, Kyanbrix Profile, Software Engineer, Full Stack Developer, Accenture Philippines, Cebu City, Discord Bots, Chatbots">
   <meta property="og:title" content="My Profile">
-  <meta property="og:description" content="I'm a LLM Full Stack Development Associate at Accenture Philippines, based in Cebu City. Outside of work, 
-                I spend most of my free time building custom Discord bots, chatbots, and other personal projects just for fun.">
+  <meta property="og:description" content="I'm an LLM Full Stack Development Associate at Accenture Philippines, based in Cebu City. Outside of work, I spend most of my free time building custom Discord bots, chatbots, and other personal projects just for fun.">
   <meta property="og:image" content="https://avatars.githubusercontent.com/u/100282972?v=4">
+  <meta name="theme-color" content="#18171e">
 
-  <<script id="discord:component-embed" type="application/json">
+  <script id="discord:component-embed" type="application/json">
     {
       "component": {
         "type": 17,
@@ -24,8 +24,7 @@
             "components": [
               {
                 "type": 10,
-                "content": "## **[Kian](https://kyanbrix.com)**\nI'm a LLM Full Stack Development Associate at Accenture Philippines, based in Cebu City. Outside of work, 
-                I spend most of my free time building custom Discord bots, chatbots, and other personal projects just for fun.."
+                "content": "## **[Kian](https://kyanbrix.com)**\nI'm an LLM Full Stack Development Associate at Accenture Philippines, based in Cebu City. Outside of work, I spend most of my free time building custom Discord bots, chatbots, and other personal projects just for fun."
               }
             ],
             "accessory": {
@@ -44,37 +43,35 @@
         ]
       }
     }
-    </script>
+  </script>
 
   <link rel="icon" href="https://avatars.githubusercontent.com/u/100282972?v=4" type="image/png">
 
-  <link rel="stylesheet" href="style.css"/>
+  <!-- Apply the saved theme before first paint so there's no flash -->
+  <script>
+    (function () {
+      var theme = 'dark';
+      try { theme = localStorage.getItem('theme') || 'dark'; } catch (e) {}
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
 
   <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
   <script defer src="/<unique-path>/script.js"></script>
-    
 </head>
 <body>
 
-  <div class="card">
+  <div class="page">
 
-    <div class="header">
-      <div class="avatar-wrap">
-        <div class="avatar"> 
-            <img src="https://avatars.githubusercontent.com/u/100282972?v=4" alt="Kyanbrix avatar" />
-        </div>
-      </div>
+    <header class="topbar">
+      <span class="site-mark">kyanbrix.com</span>
 
-      <div class="name-block">
-        <div class="name">Kian</div>
-        <div class="handle" style="margin: 5px 0;">Software Engineer</div>
-      </div>
-
-      <button class="theme-toggle" id="themeBtn" aria-label="Toggle theme">
+      <button class="theme-toggle" id="themeBtn" type="button" aria-label="Toggle theme">
         <!-- Moon icon (shown in dark mode) -->
         <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
@@ -92,262 +89,190 @@
           <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
         </svg>
       </button>
-    </div>
+    </header>
 
-    <div class="divider"></div>
+    <main class="layout">
 
-    <!-- ABOUT -->
-    <div class="about">
-      <div class="section-label">About</div>
-      <p>
-        Hi, I'm Kyanbrix Conag, but you can call me Kian. I'm a LLM Full Stack Development Associate at Accenture Philippines, based in Cebu City. Outside of work, 
-        I spend most of my free time building custom Discord bots, chatbots, and other personal projects just for fun. 
-      </p>
-      
-    </div>
+      <aside class="sidebar">
 
+        <!-- IDENTITY -->
+        <section class="identity">
+          <img class="avatar" src="https://avatars.githubusercontent.com/u/100282972?v=4" alt="Kian's avatar" width="88" height="88" />
+          <h1 class="name">Kian</h1>
+          <p class="role">Software Engineer</p>
 
+          <ul class="meta">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+              Accenture Philippines
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              Cebu City, Philippines
+            </li>
+          </ul>
+        </section>
 
-    <!-- TECH STACK -->
-    <div class="techstack">
-      <div class="section-label">Technologies i use</div>
-      <div class="tech-grid">
+        <!-- CONTACT -->
+        <section class="contact">
+          <h2 class="section-label">Contact</h2>
 
-        <!-- Java -->
-        <span class="tech-badge">
-          <svg preserveAspectRatio="xMidYMid" viewBox="0 0 256 346"><path d="M83 267s-14 8 9 11c27 3 41 2 71-3 0 0 8 5 19 9-67 29-153-2-99-17M74 230s-15 11 8 13c29 3 52 3 92-4 0 0 6 5 15 8-82 24-173 2-115-17" fill="#5382A1"/><path d="M144 166c17 19-4 36-4 36s42-22 22-49c-18-26-32-38 44-82 0 0-119 29-62 95" fill="#E76F00"/><path d="M233 295s10 8-10 15c-39 12-163 15-197 0-12-5 11-13 18-14l12-2c-14-9-89 19-38 28 138 22 251-10 215-27M89 190s-63 15-22 21c17 2 51 2 83-1 26-2 52-7 52-7l-16 9c-64 16-187 8-151-9 30-14 54-13 54-13M202 253c64-33 34-66 13-61l-7 2s2-3 6-5c41-14 73 43-14 66l2-2" fill="#5382A1"/><path d="M162 0s36 36-34 91c-56 45-12 70 0 99-32-30-56-56-40-80 23-35 89-53 74-110" fill="#E76F00"/><path d="M95 345c62 4 158-3 160-32 0 0-4 11-51 20-53 10-119 9-158 2 0 0 8 7 49 10" fill="#5382A1"/></svg>
-          Java (17 & 21)
-        </span>
+          <ul class="link-list">
+            <li class="email-item">
+              <a class="link-row" href="mailto:conagkyanbrix@gmail.com">
+                <svg class="row-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+                <span class="row-label">conagkyanbrix@gmail.com</span>
+              </a>
+              <button class="copy-btn" type="button" data-copy="conagkyanbrix@gmail.com" aria-label="Copy conagkyanbrix@gmail.com">Copy</button>
+            </li>
+            <li class="email-item">
+              <a class="link-row" href="mailto:kyanbrix@yahoo.com">
+                <svg class="row-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+                <span class="row-label">kyanbrix@yahoo.com</span>
+              </a>
+              <button class="copy-btn" type="button" data-copy="kyanbrix@yahoo.com" aria-label="Copy kyanbrix@yahoo.com">Copy</button>
+            </li>
+          </ul>
 
-        <span class="tech-badge">
-          <svg viewBox="0 0 64 64"><path d="M58.2 3.365a29.503 29.503 0 0 1-3.419 6.064A32.094 32.094 0 1 0 9.965 55.372l1.186 1.047a32.08 32.08 0 0 0 52.67-22.253c.875-8.17-1.524-18.51-5.62-30.8zM14.53 55.558a2.744 2.744 0 1 1-.404-3.857 2.744 2.744 0 0 1 .404 3.857zm43.538-9.61c-7.92 10.55-24.83 6.99-35.672 7.502 0 0-1.922.113-3.857.43 0 0 .73-.31 1.663-.663 7.614-2.65 11.213-3.16 15.838-5.54 8.708-4.427 17.322-14.122 19.112-24.2-3.313 9.695-13.373 18.032-22.53 21.418-6.276 2.313-17.614 4.566-17.614 4.566l-.457-.245c-7.714-3.75-7.952-20.457 6.077-25.845 6.143-2.366 12.02-1.067 18.654-2.65 7.084-1.683 15.28-6.99 18.615-13.916 3.73 11.08 8.224 28.422.166 39.15z" fill="#68bd45"/></svg>
-          Spring Boot
-        </span>
-        
-        <!-- Python -->
-        <span class="tech-badge">
-          <svg fill="none" viewBox="16 16 32 32"><path fill="url(#python__a)" d="M31.885 16c-8.124 0-7.617 3.523-7.617 3.523l.01 3.65h7.752v1.095H21.197S16 23.678 16 31.876c0 8.196 4.537 7.906 4.537 7.906h2.708v-3.804s-.146-4.537 4.465-4.537h7.688s4.32.07 4.32-4.175v-7.019S40.374 16 31.885 16zm-4.275 2.454a1.394 1.394 0 1 1 0 2.79 1.393 1.393 0 0 1-1.395-1.395c0-.771.624-1.395 1.395-1.395z"/><path fill="url(#python__b)" d="M32.115 47.833c8.124 0 7.617-3.523 7.617-3.523l-.01-3.65H31.97v-1.095h10.832S48 40.155 48 31.958c0-8.197-4.537-7.906-4.537-7.906h-2.708v3.803s.146 4.537-4.465 4.537h-7.688s-4.32-.07-4.32 4.175v7.019s-.656 4.247 7.833 4.247zm4.275-2.454a1.393 1.393 0 0 1-1.395-1.395 1.394 1.394 0 1 1 1.395 1.395z"/><defs><linearGradient id="python__a" x1="19.075" x2="34.898" y1="18.782" y2="34.658" gradientUnits="userSpaceOnUse"><stop stop-color="#387EB8"/><stop offset="1" stop-color="#366994"/></linearGradient><linearGradient id="python__b" x1="28.809" x2="45.803" y1="28.882" y2="45.163" gradientUnits="userSpaceOnUse"><stop stop-color="#FFE052"/><stop offset="1" stop-color="#FFC331"/></linearGradient></defs></svg>
-          Python
-        </span>
+          <ul class="link-list">
+            <li>
+              <a class="link-row" href="https://github.com/Kyanbrix" target="_blank" rel="noopener">
+                <svg class="row-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.021c0 4.428 2.865 8.185 6.839 9.504.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.031 1.531 1.031.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.026 2.747-1.026.546 1.378.202 2.397.1 2.65.64.7 1.028 1.595 1.028 2.688 0 3.847-2.338 4.695-4.566 4.943.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.203 22 16.447 22 12.021 22 6.484 17.522 2 12 2z"/></svg>
+                <span class="row-label">GitHub</span>
+                <svg class="row-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+              </a>
+            </li>
+            <li>
+              <a class="link-row" href="https://discord.com/users/683613536823279794" target="_blank" rel="noopener">
+                <svg class="row-icon" viewBox="0 0 127.14 96.36" fill="currentColor"><path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,46,96.12,53,91.08,65.69,84.69,65.69Z"/></svg>
+                <span class="row-label">Discord</span>
+                <svg class="row-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+              </a>
+            </li>
+            <li>
+              <a class="link-row" href="https://www.instagram.com/kyanbrix/" target="_blank" rel="noopener">
+                <svg class="row-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+                <span class="row-label">Instagram</span>
+                <svg class="row-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+              </a>
+            </li>
+          </ul>
+        </section>
 
-        <!-- HTML -->
-        <span class="tech-badge">
-          <svg viewBox="0 0 452 520"><path fill="#e34f26" d="M41 460L0 0h451l-41 460-185 52"/><path fill="#ef652a" d="M226 472l149-41 35-394H226"/><path fill="#ecedee" d="M226 208h-75l-5-58h80V94H84l15 171h127zm0 147l-64-17-4-45h-56l7 89 117 32z"/><path fill="#fff" d="M226 265h69l-7 73-62 17v59l115-32 16-174H226zm0-171v56h136l5-56z"/></svg>
-          HTML
-        </span>
+      </aside>
 
-        <!-- CSS -->
-        <span class="tech-badge">
-          <svg viewBox="0 0 512 512"><path fill="#264de4" d="M71.357 460.819 30.272 0h451.456l-41.129 460.746L255.724 512z"/><path fill="#2965f1" d="m405.388 431.408 35.148-393.73H256v435.146z"/><path fill="#ebebeb" d="m124.46 208.59 5.065 56.517H256V208.59zm-5.041-57.875H256V94.197H114.281zM256 355.372l-.248.066-62.944-16.996-4.023-45.076h-56.736l7.919 88.741 115.772 32.14.26-.073z"/><path fill="#fff" d="M255.805 208.59v56.517H325.4l-6.56 73.299-63.035 17.013v58.8l115.864-32.112.85-9.549 13.28-148.792 1.38-15.176 10.203-114.393H255.805v56.518h79.639L330.3 208.59z"/></svg>
-          CSS
-        </span>
+      <div class="main">
 
-        <span class ="tech-badge">
-          <svg viewBox="0 0 1052 1052"><path fill="#f0db4f" d="M0 0h1052v1052H0z"/><path d="M965.9 801.1c-7.7-48-39-88.3-131.7-125.9-32.2-14.8-68.1-25.399-78.8-49.8-3.8-14.2-4.3-22.2-1.9-30.8 6.9-27.9 40.2-36.6 66.6-28.6 17 5.7 33.1 18.801 42.8 39.7 45.4-29.399 45.3-29.2 77-49.399-11.6-18-17.8-26.301-25.4-34-27.3-30.5-64.5-46.2-124-45-10.3 1.3-20.699 2.699-31 4-29.699 7.5-58 23.1-74.6 44-49.8 56.5-35.6 155.399 25 196.1 59.7 44.8 147.4 55 158.6 96.9 10.9 51.3-37.699 67.899-86 62-35.6-7.4-55.399-25.5-76.8-58.4-39.399 22.8-39.399 22.8-79.899 46.1 9.6 21 19.699 30.5 35.8 48.7 76.2 77.3 266.899 73.5 301.1-43.5 1.399-4.001 10.6-30.801 3.199-72.101zm-394-317.6h-98.4c0 85-.399 169.4-.399 254.4 0 54.1 2.8 103.7-6 118.9-14.4 29.899-51.7 26.2-68.7 20.399-17.3-8.5-26.1-20.6-36.3-37.699-2.8-4.9-4.9-8.7-5.601-9-26.699 16.3-53.3 32.699-80 49 13.301 27.3 32.9 51 58 66.399 37.5 22.5 87.9 29.4 140.601 17.3 34.3-10 63.899-30.699 79.399-62.199 22.4-41.3 17.6-91.3 17.4-146.6.5-90.2 0-180.4 0-270.9z" fill="#323330"/></svg>
+        <!-- ABOUT -->
+        <section class="about">
+          <h2 class="section-label">About</h2>
+          <p>
+            Hi, I'm Kyanbrix Conag, but you can call me Kian. I'm an LLM Full Stack Development Associate
+            at <strong>Accenture Philippines</strong>, based in Cebu City.
+          </p>
+          <p>
+            Outside of work, I spend most of my free time building custom Discord bots, chatbots,
+            and other personal projects just for fun.
+          </p>
+        </section>
 
-          JavaScript
+        <!-- TECH STACK -->
+        <section class="techstack">
+          <h2 class="section-label">Technologies I use</h2>
 
-        </span>
-
-        <span class="tech-badge">
-          <svg viewBox="0 0 24 24" fill="#008fe2"><path d="M13.98 11.08h2.12a.19.19 0 0 0 .19-.19V9.01a.19.19 0 0 0-.19-.19h-2.12a.18.18 0 0 0-.18.18v1.9c0 .1.08.18.18.18m-2.95-5.43h2.12a.19.19 0 0 0 .18-.19V3.57a.19.19 0 0 0-.18-.18h-2.12a.18.18 0 0 0-.19.18v1.9c0 .1.09.18.19.18m0 2.71h2.12a.19.19 0 0 0 .18-.18V6.29a.19.19 0 0 0-.18-.18h-2.12a.18.18 0 0 0-.19.18v1.89c0 .1.09.18.19.18m-2.93 0h2.12a.19.19 0 0 0 .18-.18V6.29a.18.18 0 0 0-.18-.18H8.1a.18.18 0 0 0-.18.18v1.89c0 .1.08.18.18.18m-2.96 0h2.11a.19.19 0 0 0 .19-.18V6.29a.18.18 0 0 0-.19-.18H5.14a.19.19 0 0 0-.19.18v1.89c0 .1.08.18.19.18m5.89 2.72h2.12a.19.19 0 0 0 .18-.19V9.01a.19.19 0 0 0-.18-.19h-2.12a.18.18 0 0 0-.19.18v1.9c0 .1.09.18.19.18m-2.93 0h2.12a.18.18 0 0 0 .18-.19V9.01a.18.18 0 0 0-.18-.19H8.1a.18.18 0 0 0-.18.18v1.9c0 .1.08.18.18.18m-2.96 0h2.11a.18.18 0 0 0 .19-.19V9.01a.18.18 0 0 0-.18-.19H5.14a.19.19 0 0 0-.19.19v1.88c0 .1.08.19.19.19m-2.92 0h2.12a.18.18 0 0 0 .18-.19V9.01a.18.18 0 0 0-.18-.19H2.22a.18.18 0 0 0-.19.18v1.9c0 .1.08.18.19.18m21.54-1.19c-.06-.05-.67-.51-1.95-.51-.34 0-.68.03-1.01.09a3.77 3.77 0 0 0-1.72-2.57l-.34-.2-.23.33a4.6 4.6 0 0 0-.6 1.43c-.24.97-.1 1.88.4 2.66a4.7 4.7 0 0 1-1.75.42H.76a.75.75 0 0 0-.76.75 11.38 11.38 0 0 0 .7 4.06 6.03 6.03 0 0 0 2.4 3.12c1.18.73 3.1 1.14 5.28 1.14.98 0 1.96-.08 2.93-.26a12.25 12.25 0 0 0 3.82-1.4 10.5 10.5 0 0 0 2.61-2.13c1.25-1.42 2-3 2.55-4.4h.23c1.37 0 2.21-.55 2.68-1 .3-.3.55-.66.7-1.06l.1-.28Z"/></svg>
-          Docker
-        </span>
-
-        <span class="tech-badge">
-          <svg preserveAspectRatio="xMidYMid" viewBox="0 0 256 256"><path d="M251.17 116.6 139.4 4.82a16.49 16.49 0 0 0-23.31 0l-23.21 23.2 29.44 29.45a19.57 19.57 0 0 1 24.8 24.96l28.37 28.38a19.61 19.61 0 1 1-11.75 11.06L137.28 95.4v69.64a19.62 19.62 0 1 1-16.13-.57V94.2a19.61 19.61 0 0 1-10.65-25.73L81.46 39.44 4.83 116.08a16.49 16.49 0 0 0 0 23.32L116.6 251.17a16.49 16.49 0 0 0 23.32 0l111.25-111.25a16.5 16.5 0 0 0 0-23.33" fill="#DE4C36"/></svg>
-          Git
-        </span>
-
-        <span class="tech-badge">
-          <svg xml:space="preserve" viewBox="0 0 432.071 445.383"><g style="fill-rule:nonzero;clip-rule:nonzero;fill:none;stroke:#fff;stroke-width:12.4651;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4"><path d="M323.205 324.227c2.833-23.601 1.984-27.062 19.563-23.239l4.463.392c13.517.615 31.199-2.174 41.587-7 22.362-10.376 35.622-27.7 13.572-23.148-50.297 10.376-53.755-6.655-53.755-6.655 53.111-78.803 75.313-178.836 56.149-203.322-52.27-66.789-142.748-35.206-144.262-34.386l-.482.089c-9.938-2.062-21.06-3.294-33.554-3.496-22.761-.374-40.032 5.967-53.133 15.904 0 0-161.408-66.498-153.899 83.628 1.597 31.936 45.777 241.655 98.47 178.31 19.259-23.163 37.871-42.748 37.871-42.748 9.242 6.14 20.307 9.272 31.912 8.147l.897-.765c-.281 2.876-.157 5.689.359 9.019-13.572 15.167-9.584 17.83-36.723 23.416-27.457 5.659-11.326 15.734-.797 18.367 12.768 3.193 42.305 7.716 62.268-20.224l-.795 3.188c5.325 4.26 4.965 30.619 5.72 49.452.756 18.834 2.017 36.409 5.856 46.771 3.839 10.36 8.369 37.05 44.036 29.406 29.809-6.388 52.6-15.582 54.677-101.107" style="fill:#000;stroke:#000;stroke-width:37.3953;stroke-linecap:butt;stroke-linejoin:miter"/><path d="M402.395 271.23c-50.302 10.376-53.76-6.655-53.76-6.655 53.111-78.808 75.313-178.843 56.153-203.326-52.27-66.785-142.752-35.2-144.262-34.38l-.486.087c-9.938-2.063-21.06-3.292-33.56-3.496-22.761-.373-40.026 5.967-53.127 15.902 0 0-161.411-66.495-153.904 83.63 1.597 31.938 45.776 241.657 98.471 178.312 19.26-23.163 37.869-42.748 37.869-42.748 9.243 6.14 20.308 9.272 31.908 8.147l.901-.765c-.28 2.876-.152 5.689.361 9.019-13.575 15.167-9.586 17.83-36.723 23.416-27.459 5.659-11.328 15.734-.796 18.367 12.768 3.193 42.307 7.716 62.266-20.224l-.796 3.188c5.319 4.26 9.054 27.711 8.428 48.969-.626 21.259-1.044 35.854 3.147 47.254 4.191 11.4 8.368 37.05 44.042 29.406 29.809-6.388 45.256-22.942 47.405-50.555 1.525-19.631 4.976-16.729 5.194-34.28l2.768-8.309c3.192-26.611.507-35.196 18.872-31.203l4.463.392c13.517.615 31.208-2.174 41.591-7 22.358-10.376 35.618-27.7 13.573-23.148z" style="fill:#336791;stroke:none" stroke="none"/><path d="M215.866 286.484c-1.385 49.516.348 99.377 5.193 111.495 4.848 12.118 15.223 35.688 50.9 28.045 29.806-6.39 40.651-18.756 45.357-46.051 3.466-20.082 10.148-75.854 11.005-87.281M173.104 38.256S11.583-27.76 19.092 122.365c1.597 31.938 45.779 241.664 98.473 178.316 19.256-23.166 36.671-41.335 36.671-41.335M260.349 26.207c-5.591 1.753 89.848-34.889 144.087 34.417 19.159 24.484-3.043 124.519-56.153 203.329"/><path d="M348.282 263.953s3.461 17.036 53.764 6.653c22.04-4.552 8.776 12.774-13.577 23.155-18.345 8.514-59.474 10.696-60.146-1.069-1.729-30.355 21.647-21.133 19.96-28.739-1.525-6.85-11.979-13.573-18.894-30.338-6.037-14.633-82.796-126.849 21.287-110.183 3.813-.789-27.146-99.002-124.553-100.599-97.385-1.597-94.19 119.762-94.19 119.762" style="stroke-linejoin:bevel"/><path d="M188.604 274.334c-13.577 15.166-9.584 17.829-36.723 23.417-27.459 5.66-11.326 15.733-.797 18.365 12.768 3.195 42.307 7.718 62.266-20.229 6.078-8.509-.036-22.086-8.385-25.547-4.034-1.671-9.428-3.765-16.361 3.994z"/><path d="M187.715 274.069c-1.368-8.917 2.93-19.528 7.536-31.942 6.922-18.626 22.893-37.255 10.117-96.339-9.523-44.029-73.396-9.163-73.436-3.193-.039 5.968 2.889 30.26-1.067 58.548-5.162 36.913 23.488 68.132 56.479 64.938"/><path d="M172.517 141.7c-.288 2.039 3.733 7.48 8.976 8.207 5.234.73 9.714-3.522 9.998-5.559.284-2.039-3.732-4.285-8.977-5.015-5.237-.731-9.719.333-9.996 2.367z" style="fill:#fff;stroke-width:4.155;stroke-linecap:butt;stroke-linejoin:miter"/><path d="M331.941 137.543c.284 2.039-3.732 7.48-8.976 8.207-5.238.73-9.718-3.522-10.005-5.559-.277-2.039 3.74-4.285 8.979-5.015 5.239-.73 9.718.333 10.002 2.368z" style="fill:#fff;stroke-width:2.0775;stroke-linecap:butt;stroke-linejoin:miter"/><path d="M350.676 123.432c.863 15.994-3.445 26.888-3.988 43.914-.804 24.748 11.799 53.074-7.191 81.435"/></g></svg>
-          PostgreSQL
-        </span>
-
-        <span class="tech-badge">
-          <svg preserveAspectRatio="xMidYMid" viewBox="0 0 512 228"><defs><linearGradient x1="57.7%" y1="2%" x2="57.7%" y2="94.4%" id="sqlite__a"><stop stop-color="#97D9F6" offset="0%"/><stop stop-color="#0F80CC" offset="92%"/><stop stop-color="#0F80CC" offset="100%"/></linearGradient></defs><path d="M194.5 112c-6.8 0-12.3 2-16.6 6.1-4.3 4-6.4 9.3-6.4 15.8a23.3 23.3 0 0 0 6.5 17c2.2 2.4 6.6 5.6 13.2 9.7 8 5 13.4 9 16 12 2.5 3.2 3.7 6.4 3.7 9.9 0 4.5-1.5 8.2-4.6 11a18 18 0 0 1-12.4 4 20.1 20.1 0 0 1-20.3-20.8h-2.5v22.9h2.5c.8-2.2 1.8-3.3 3.2-3.3.7 0 2.3.4 4.7 1.3 6 2.1 10.9 3.2 14.7 3.2a23 23 0 0 0 17-7 23.2 23.2 0 0 0 2.4-30.8c-3-4-9-8.6-18-14a59.5 59.5 0 0 1-15-11.3c-2.3-3-3.5-6.1-3.5-9.7 0-3.8 1.5-7 4.2-9.2 2.8-2.3 6.5-3.5 11-3.5 5.2 0 9.5 1.5 12.9 4.6 3.3 3 5.3 7.4 5.9 12.8h2.5V113h-2.3a6 6 0 0 1-.8 2c-.3.3-.7.4-1.4.4a17 17 0 0 1-4.3-1 38.6 38.6 0 0 0-12.3-2.3Zm82.4 0a44.6 44.6 0 0 0-39 22.2 43.5 43.5 0 0 0 4.5 50.2c7 8.2 15.3 13.3 25 15.3 2.1 1.1 5.3 4.1 9.4 9 4.7 5.3 8.6 9.3 11.9 11.6A35.6 35.6 0 0 0 311 227c5.3 0 10-.9 14-2.7l-.9-2.3a20.1 20.1 0 0 1-18.7-2.3c-3.6-2.5-8.3-7.1-13.8-14a47.6 47.6 0 0 0-5.4-6.1c10.6-2 19.3-7.2 26-15.4a42.8 42.8 0 0 0 10.2-28 42 42 0 0 0-13.2-31.4 44.8 44.8 0 0 0-32.4-12.9Zm51.4 0 .1 2.7c5.5 0 8.6 1.7 9.3 5 .3 1.1.4 3.3.4 6.4v59.6c0 4.5-.7 7.3-2 8.6-1.1 1.2-3.2 2-6.2 2.3l-.1 2.6h55.1l1.4-13.5h-2.5c-.7 3.7-2.3 6.3-5 7.8a30.5 30.5 0 0 1-14 2.3h-5.2c-6 0-9.5-2.2-10.5-6.6-.2-.9-.2-1.8-.2-2.8l.2-60.3c0-4.4.5-7.4 1.7-8.9 1.2-1.4 3.3-2.3 6.4-2.5l-.2-2.7h-28.7Zm-50.6 3.3a28 28 0 0 1 23 11.2 48 48 0 0 1 8.8 30.5c0 12.3-3 22.1-8.9 29.5a29 29 0 0 1-23.7 11c-9.5 0-17.2-3.8-23-11.4a47.1 47.1 0 0 1-8.9-29.6c0-12.5 3-22.5 9-30 5.9-7.5 13.8-11.2 23.7-11.2Zm126.9 12.8c-1.3 0-2.4.5-3.1 1.4-.8 1-1 2-.8 3.4a6 6 0 0 0 2.2 3.4c1.1 1 2.4 1.4 3.7 1.4 1.3 0 2.3-.5 3-1.4.7-1 1-2.1.7-3.4-.3-1.4-1-2.5-2-3.4a5.6 5.6 0 0 0-3.7-1.4Zm36.4 9.2c-2.3 8.8-7.3 13.5-14.9 14.3l.1 2.5h8.9l-.2 29.8c0 5.1.2 8.5.5 10.2 1 4.2 3.6 6.3 8.1 6.3 6.6 0 13.4-4 20.6-12l-2.2-1.8c-5.2 5.2-9.7 7.8-13.7 7.8-2.5 0-4-1.4-4.6-4.2l-.2-2.4v-33.7h13.7l-.2-4h-13.4v-12.8H441Zm52.4 11.2c-7.6 0-13.7 3.7-18.5 11a31.3 31.3 0 0 0-4.4 24.4 21 21 0 0 0 6.7 12.2 19 19 0 0 0 12.7 4.3c4.7 0 11.4-1.2 14.1-3.7 2.8-2.4 5.4-6.3 7.8-11.7l-2-2a20.6 20.6 0 0 1-17.1 10.5c-8 0-12.8-4.3-14.6-13l-.5-3.5a46 46 0 0 0 21.4-8c4.8-3.8 9.6-7.9 8.7-12.1a9.9 9.9 0 0 0-3.9-6c-2-1.6-7.4-2.4-10.4-2.4Zm-83 .3-16.3 3.8v2.9l5.7-.7c2.7 0 4.3 1.2 4.8 3.7.2.8.3 2 .4 3.4l-.2 26.8c0 3.7-.5 5.8-1.3 6.5-.8.6-3 1-6.6 1v2.5h25.9v-2.5c-3.7 0-6-.3-7-.9-1-.5-1.8-1.5-2.1-3-.2-1.2-.3-3.1-.4-5.7l.1-37.8h-3Zm78.9 5c1.6 0 3 .6 4.6 1.8a7 7 0 0 1 2.8 4c1.4 7-4.9 12-19 14.7a25 25 0 0 1 2.7-14.1c2.3-4.3 5.3-6.4 8.9-6.4Z" fill="#003B57"/><path d="M157.9 10H17C7.7 10 0 17.7 0 27v155.2c0 9.4 7.7 17.2 17.1 17.2h92.7c-1-46.2 14.7-135.7 48-189.5Z" fill="#0F80CC"/><path d="M152.8 15H17C10.5 15 5 20.4 5 27V171c30.7-11.8 76.8-22 108.7-21.5a989.7 989.7 0 0 1 39-134.5Z" fill="url(#sqlite__a)"/><path d="M190.7 4.9c-9.6-8.6-21.3-5.2-32.8 5a81.4 81.4 0 0 0-5.1 5c-19.7 21-38 59.7-43.7 89.2a81.5 81.5 0 0 1 5.8 17.7l.8 3.5-.9-2.8a173.8 173.8 0 0 0-.8-2 172 172 0 0 0-6.4-12.1l-3.5 11c4.5 8.2 7.3 22.4 7.3 22.4l-1.4-4.1c-1-2.9-6-11.7-7.2-13.7-2 7.5-2.8 12.6-2.1 13.8 1.4 2.4 2.7 6.5 4 11a257.6 257.6 0 0 1 4.6 25c-.3 8.6-.1 17.6.5 25.7a91 91 0 0 0 4.7 24.8l1.5-.8a111 111 0 0 1-3.9-37c.9-22.5 6-49.5 15.6-77.7 16-42.5 38.4-76.6 58.8-93-18.6 17-43.8 71.4-51.4 91.6a365.7 365.7 0 0 0-18 64c6.2-19 26.4-27.2 26.4-27.2s9.8-12.2 21.4-29.6a210 210 0 0 0-22.1 6l-7.1 3s18.1-11 33.7-16C191 73.8 214.2 25.9 190.7 4.9" fill="#003B57"/></svg>
-          SQLite
-        </span>
-
-        <span class="tech-badge">
-          <svg preserveAspectRatio="xMidYMid" viewBox="0 0 256 252"><path fill="#FFF" d="M236 194c-14 0-25 1-34 5-3 1-7 1-7 4l3 6c2 3 5 8 9 11l11 8 21 10 11 9 6 4-3-6-5-5c-5-7-11-13-18-18-6-3-18-9-20-15h-1l12-3 18-3 8-2v-2l-9-10c-8-8-18-15-28-22l-18-8c-2-1-6-2-7-4l-7-13-15-30-8-20c-18-30-38-48-68-65-6-4-14-5-22-7l-13-1-8-6C34 5 8-9 1 9c-5 11 7 22 11 28l9 13 3 9c3 8 5 17 9 24l6 10c2 2 4 3 5 6-3 4-3 9-4 13-7 20-4 44 5 59 2 4 9 14 18 10 8-3 6-13 8-22l1-4 8 14c5 9 14 18 22 24 4 3 8 8 13 10l-4-4-9-10c-8-10-14-21-20-32l-7-17-3-6c-3 4-7 7-9 12-3 7-3 17-4 26h-1c-6-1-8-7-10-12-5-12-6-32-1-46 1-4 6-15 4-19-1-3-4-5-6-7l-7-12-10-30-9-13c-3-5-7-8-10-14-1-2-2-5 0-7l2-2c2-2 9 0 11 1 6 3 12 5 17 9l8 6h4c6 1 12 0 17 2 9 3 18 7 25 12 23 14 42 35 54 59 3 4 3 8 5 12l12 26c4 8 7 16 12 23 3 4 14 6 18 8l12 4 18 12c2 2 11 7 12 10Z"/><path fill="#FFF" d="m58 43-7 1 6 7 4 9v-1c3-1 4-4 4-8l-2-4-5-4Z"/></svg>
-          MySQL
-        </span>
-
-        <span class="tech-badge">
-          <svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="#f47421"/><circle cx="50" cy="50" r="21.8" fill="none" stroke="#fff" stroke-width="8.6"/><g id="ubuntu__a"><circle cx="19.4" cy="50" r="8.4" fill="#f47421"/><path stroke="#f47421" stroke-width="3.2" d="M67 50h10"/><circle cx="19.4" cy="50" r="6" fill="#fff"/></g><use xlink:href="#ubuntu__a" transform="rotate(120 50 50)"/><use xlink:href="#ubuntu__a" transform="rotate(240 50 50)"/></svg>
-          Ubuntu
-        </span>
-
-        <span class="tech-badge">
-          <svg preserveAspectRatio="xMidYMid" viewBox="0 0 256 256"><defs><linearGradient x1="37%" y1="51%" x2="178.1%" y2="41.9%" id="intellijidea__a"><stop stop-color="#FC801D" offset="9%"/><stop stop-color="#B07F61" offset="23%"/><stop stop-color="#577DB3" offset="41%"/><stop stop-color="#1E7CE6" offset="53%"/><stop stop-color="#087CFA" offset="59%"/></linearGradient><linearGradient x1="73.6%" y1="114.8%" x2="35.6%" y2="1.1%" id="intellijidea__b"><stop stop-color="#FE2857" offset="0%"/><stop stop-color="#CB3979" offset="8%"/><stop stop-color="#9E4997" offset="16%"/><stop stop-color="#7557B2" offset="25%"/><stop stop-color="#5362C8" offset="34%"/><stop stop-color="#386CDA" offset="44%"/><stop stop-color="#2373E8" offset="54%"/><stop stop-color="#1478F2" offset="66%"/><stop stop-color="#0B7BF8" offset="79%"/><stop stop-color="#087CFA" offset="100%"/></linearGradient><linearGradient x1="28.6%" y1="23.6%" x2="81.8%" y2="129.8%" id="intellijidea__c"><stop stop-color="#FE2857" offset="0%"/><stop stop-color="#FE295F" offset="8%"/><stop stop-color="#FF2D76" offset="21%"/><stop stop-color="#FF318C" offset="30%"/><stop stop-color="#EA3896" offset="38%"/><stop stop-color="#B248AE" offset="55%"/><stop stop-color="#5A63D6" offset="79%"/><stop stop-color="#087CFA" offset="100%"/></linearGradient></defs><path fill="url(#intellijidea__a)" d="M40.5 180.6 2.9 150.8l22.1-41 33.3 11.1z"/><path fill="#087CFA" d="m256 68.2-4.6 148.3-98.6 39.5-53.7-34.7z"/><path fill="url(#intellijidea__b)" d="m256 68.2-48.8 47.6L144.5 39l31-34.8z"/><path fill="url(#intellijidea__c)" d="m99.1 221.3-78.5 28.4 16.5-57.5 21.2-71.3L0 101.4 37.1 0l83.8 9.9 86.3 105.9z"/><path d="M49.1 48h160v160h-160z"/><path d="M69 177.8h60v10H69v-10ZM99 79V68H69.2v11h8.4v37.7h-8.4v11H99v-11h-8.3V79H99Zm28.5 49.4.2.1c-4.1.2-8.1-.8-11.8-2.6a27 27 0 0 1-7.7-6.3l8.2-9.2c1.5 1.7 3.2 3.1 5.2 4.3 1.7 1.1 3.7 1.7 5.7 1.6 2.2.2 4.3-.7 5.8-2.3a11 11 0 0 0 2.2-7.5V68h13.3v39a27 27 0 0 1-1.5 9.4c-1.7 5-5.7 9-10.8 10.6-2.8 1-5.8 1.5-8.8 1.4Z" fill="#FFF"/></svg>
-          IntelliJ IDEA
-        </span>
-
-        <span class = "tech-badge">
-
-<svg viewBox="0 0 105 105"><linearGradient id="pycharm__a" x1="38.78" x2="95.91" y1="41.59" y2="41.59" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#21d789"/><stop offset="1" stop-color="#07c3f2"/></linearGradient><linearGradient id="pycharm__b" x1="-29.18" x2="88.46" y1="85.52" y2="-1.32" gradientUnits="userSpaceOnUse"><stop offset=".01" stop-color="#fcf84a"/><stop offset=".11" stop-color="#a7eb62"/><stop offset=".21" stop-color="#5fe077"/><stop offset=".27" stop-color="#32da84"/><stop offset=".31" stop-color="#21d789"/><stop offset=".58" stop-color="#21d789"/><stop offset=".6" stop-color="#21d789"/><stop offset=".69" stop-color="#20d68c"/><stop offset=".76" stop-color="#1ed497"/><stop offset=".83" stop-color="#19d1a9"/><stop offset=".9" stop-color="#13ccc2"/><stop offset=".97" stop-color="#0bc6e1"/><stop offset="1" stop-color="#07c3f2"/></linearGradient><linearGradient id="pycharm__c" x1="17.3" x2="36.92" y1="110.99" y2="49.42" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#21d789"/><stop offset=".16" stop-color="#24d888"/><stop offset=".3" stop-color="#2fd985"/><stop offset=".43" stop-color="#41dc80"/><stop offset=".55" stop-color="#5ae079"/><stop offset=".67" stop-color="#7ae46f"/><stop offset=".79" stop-color="#a1ea64"/><stop offset=".9" stop-color="#cff157"/><stop offset="1" stop-color="#fcf84a"/></linearGradient><linearGradient id="pycharm__d" x1="43.28" x2="85.97" y1="57.46" y2=".06" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#21d789"/><stop offset=".09" stop-color="#23d986"/><stop offset=".17" stop-color="#2ade7b"/><stop offset=".25" stop-color="#36e669"/><stop offset=".27" stop-color="#3bea62"/><stop offset=".35" stop-color="#47eb61"/><stop offset=".49" stop-color="#67ed5d"/><stop offset=".69" stop-color="#9af156"/><stop offset=".92" stop-color="#e0f64d"/><stop offset="1" stop-color="#fcf84a"/></linearGradient><linearGradient id="pycharm__e" x1="108.58" x2="22.55" y1="64.77" y2="63.97" gradientUnits="userSpaceOnUse"><stop offset=".39" stop-color="#fcf84a"/><stop offset=".46" stop-color="#ecf74c"/><stop offset=".61" stop-color="#c1f451"/><stop offset=".82" stop-color="#7eef5a"/><stop offset="1" stop-color="#3bea62"/></linearGradient><path fill="url(#pycharm__a)" d="m71.81 19.65 28.05 23.33-10.1 20.55-16.91-4.69H58.22z"/><path fill="url(#pycharm__b)" d="m43.55 34.8-5.43 28.73-.52 9.76-13.69 5.93L4.5 81.31l5.89-62.07L45.56 4.5l21.67 14.21z"/><path fill="url(#pycharm__c)" d="m43.55 34.8 2.64 55.36-8.77 10.34L4.5 81.31l27.03-40.28z"/><path fill="url(#pycharm__d)" d="M79.77 30.76H46.51L75.9 4.5z"/><path fill="url(#pycharm__e)" d="m100.5 90.38-29.28 9.94-38.99-10.98L43.55 34.8l4.52-4.04 23.74-2.23-2.15 23.84 18.88-7.32z"/><path d="M22.5 22.5h60v60h-60z"/><path fill="#fff" d="M29.98 71.16h22.5v3.75h-22.5zM30 30h9.2c5.36 0 8.61 3.18 8.61 7.77v.06c0 5.2-4.05 7.9-9.09 7.9H35v6.74h-5zm8.86 11.33c2.47 0 3.92-1.47 3.92-3.4v-.06c0-2.22-1.54-3.41-4-3.41H35v6.87zm11.63-.02v-.06A11.41 11.41 0 0 1 62.2 29.63a11.59 11.59 0 0 1 8.86 3.46l-3.14 3.63a8.33 8.33 0 0 0-5.75-2.54c-3.79 0-6.52 3.15-6.52 7v.07c0 3.85 2.67 7.06 6.52 7.06 2.57 0 4.14-1 5.91-2.63l3.14 3.17a11.46 11.46 0 0 1-9.21 4 11.35 11.35 0 0 1-11.52-11.54"/></svg>
-          PyCharm
-        </span>
-
-        <span class="tech-badge">
-          <svg fill="currentColor" viewBox="0 0 1102 278">
-            <path fill="currentColor" d="M82.323 28.644C71.537 15.847 62.249 2.85 60.35.15c-.2-.2-.5-.2-.7 0-1.897 2.7-11.185 15.697-21.971 28.494C-54.902 146.721 52.26 226.406 52.26 226.406l.9.6C53.958 239.303 55.955 257 55.955 257h7.99s1.998-17.597 2.797-29.994l.899-.7c.1.1 107.263-79.585 14.68-197.662ZM59.95 224.706s-4.793-4.099-6.092-6.199v-.199l5.793-128.575c0-.4.6-.4.6 0l5.792 128.575v.199c-1.299 2.1-6.093 6.199-6.093 6.199ZM260.501 197.588 215.845 89.299l-.1-.299h-34.744v7.279h5.607c1.702 0 3.304.698 4.506 1.895 1.201 1.196 1.802 2.792 1.802 4.487l-1.001 108.986c0 3.39-2.803 6.182-6.208 6.282l-5.707.1v7.179h33.843v-7.179l-3.505-.1c-3.404-.1-6.208-2.892-6.208-6.282V108.943l48.662 116.265c.7 1.695 2.302 2.792 4.105 2.792 1.802 0 3.404-1.097 4.105-2.792l47.56-113.673.701 100.112c0 3.49-2.804 6.282-6.308 6.382h-3.605v7.179H339v-7.179h-5.407c-3.404 0-6.208-2.892-6.308-6.282l-.3-108.987c0-3.49 2.803-6.282 6.208-6.381l5.807-.1V89h-33.843l-44.656 108.588ZM571.869 216.136c-1.105-1.096-1.707-2.59-1.707-4.382v-53.385c0-10.159-3.011-18.127-9.035-23.804-5.922-5.677-14.154-8.565-24.393-8.565-14.356 0-25.699 5.777-33.63 17.131-.1.199-.401.299-.702.299-.302 0-.502-.2-.502-.498l-3.715-14.243h-6.224L476 137.753v4.979h4.116c1.907 0 3.513.498 4.618 1.494 1.104.996 1.706 2.49 1.706 4.582v62.846c0 1.793-.602 3.287-1.706 4.382-1.105 1.096-2.61 1.693-4.417 1.693h-4.016V225h36.741v-7.271h-4.015c-1.807 0-3.313-.597-4.417-1.693-1.104-1.095-1.707-2.589-1.707-4.382v-41.632c0-5.279 1.205-10.557 3.414-15.736 2.308-5.08 5.721-9.362 10.239-12.649 4.517-3.287 9.938-4.88 16.162-4.88 7.027 0 12.348 2.191 15.66 6.573 3.313 4.382 5.02 10.059 5.02 16.832v51.392c0 1.793-.603 3.287-1.707 4.383-1.104 1.095-2.61 1.693-4.417 1.693h-4.015v7.27H580v-7.27h-4.015c-1.506.199-2.912-.399-4.116-1.494ZM907.546 97.212C897.39 91.804 886.039 89 873.792 89H826v7.31h4.68c1.792 0 3.385.702 4.978 2.304 1.494 1.502 2.29 3.205 2.29 5.007v107.758c0 1.802-.796 3.505-2.29 5.007-1.493 1.502-3.186 2.303-4.978 2.303H826V226h47.792c12.247 0 23.598-2.804 33.754-8.212 10.155-5.408 18.42-13.42 24.394-23.634 5.974-10.215 9.06-22.533 9.06-36.554 0-14.02-3.086-26.238-9.06-36.553-6.074-10.415-14.239-18.427-24.394-23.835Zm14.238 60.188c0 12.819-2.29 23.634-6.771 32.347-4.48 8.713-10.455 15.222-17.823 19.428-7.367 4.207-15.532 6.31-24.294 6.31h-9.658c-1.792 0-3.385-.701-4.978-2.304-1.494-1.502-2.29-3.204-2.29-5.007V106.526c0-1.803.697-3.405 2.29-5.008 1.493-1.502 3.186-2.303 4.978-2.303h9.658c8.762 0 16.927 2.103 24.294 6.309 7.368 4.206 13.343 10.716 17.823 19.429 4.481 8.712 6.771 19.628 6.771 32.447ZM1053.97 164.711c-4.42-5.108-12.95-9.414-22.98-11.718 13.85-6.91 20.97-16.624 20.97-29.142 0-6.81-1.8-12.919-5.42-18.127-3.61-5.207-8.73-9.413-15.25-12.318-6.53-2.904-14.16-4.406-22.79-4.406h-54.098v7.31h4.316c1.806 0 3.412.702 5.018 2.304 1.506 1.502 2.309 3.205 2.309 5.007v107.758c0 1.802-.803 3.505-2.309 5.007-1.505 1.502-3.212 2.303-5.018 2.303H954V226h58.72c8.93 0 17.26-1.502 24.79-4.507 7.53-3.004 13.55-7.41 17.87-13.219 4.41-5.808 6.62-12.919 6.62-21.131-.1-8.813-2.71-16.324-8.03-22.432Zm-67.349 48.57c-1.506-1.502-2.309-3.204-2.309-5.007v-48.37h27.908c9.83 0 17.36 2.503 22.58 7.51 5.22 5.008 7.83 11.517 7.83 19.529 0 4.807-1.21 9.514-3.41 13.82-2.31 4.407-5.73 7.912-10.34 10.616-4.52 2.704-10.14 4.106-16.66 4.106h-20.581c-1.806.1-3.412-.701-5.018-2.204Zm-2.208-63.693v-42.962c0-1.803.702-3.405 2.308-5.008 1.506-1.502 3.212-2.303 5.019-2.303h13.25c9.53 0 16.56 2.404 20.98 7.01 4.41 4.707 6.62 10.716 6.62 18.127 0 7.611-2.11 13.72-6.22 18.327-4.12 4.506-10.34 6.809-18.57 6.809h-23.387ZM431.999 132.387c-7.67-4.191-16.236-6.387-25.499-6.387-9.263 0-17.929 2.096-25.499 6.387-7.67 4.192-13.746 10.28-18.228 17.965C358.291 158.037 356 167.02 356 177s2.291 18.963 6.773 26.648c4.482 7.685 10.558 13.773 18.228 17.965 7.67 4.191 16.236 6.387 25.499 6.387 9.263 0 17.929-2.096 25.499-6.387 7.67-4.192 13.746-10.28 18.228-17.965C454.709 195.963 457 186.98 457 177s-2.291-18.963-6.773-26.648c-4.482-7.685-10.558-13.673-18.228-17.965ZM439.37 177c0 12.276-2.988 22.256-8.965 29.442-5.876 7.186-13.944 10.879-23.905 10.879-9.96 0-18.029-3.693-23.905-10.879-5.977-7.186-8.965-17.166-8.965-29.442s2.988-22.256 8.965-29.442c5.876-7.186 13.945-10.879 23.905-10.879 9.961 0 18.029 3.693 23.905 10.879 5.977 7.285 8.965 17.166 8.965 29.442ZM784.999 132.387c-7.67-4.191-16.236-6.387-25.499-6.387-9.263 0-17.929 2.096-25.499 6.387-7.67 4.192-13.746 10.28-18.228 17.965C711.291 158.037 709 167.02 709 177s2.291 18.963 6.773 26.648c4.482 7.685 10.558 13.773 18.228 17.965 7.67 4.191 16.236 6.387 25.499 6.387 9.263 0 17.929-2.096 25.499-6.387 7.67-4.192 13.746-10.28 18.228-17.965C807.709 195.963 810 186.98 810 177s-2.291-18.963-6.773-26.648c-4.482-7.685-10.658-13.673-18.228-17.965ZM792.37 177c0 12.276-2.989 22.256-8.965 29.442-5.877 7.186-13.945 10.879-23.905 10.879-9.961 0-18.029-3.693-23.905-10.879-5.977-7.186-8.965-17.166-8.965-29.442 0-12.376 2.988-22.256 8.965-29.442 5.876-7.186 13.944-10.879 23.905-10.879 9.96 0 18.028 3.693 23.905 10.879 5.877 7.285 8.965 17.166 8.965 29.442ZM642.64 126c-8.026 0-15.348 1.704-21.969 5.113-6.621 3.409-11.837 8.022-15.549 13.937-3.711 5.815-5.617 12.333-5.617 19.251 0 6.216 1.404 11.931 4.313 17.045 2.809 4.913 6.621 9.023 11.436 12.432l-14.345 19.452c-1.806 2.406-2.006 5.614-.702 8.221 1.404 2.707 4.012 4.312 7.022 4.312h4.113c-4.013 2.707-7.223 5.915-9.43 9.725-2.608 4.312-3.912 8.823-3.912 13.435 0 8.623 3.812 15.742 11.335 21.056 7.424 5.314 17.856 8.021 30.997 8.021 9.129 0 17.856-1.504 25.781-4.412 8.025-2.907 14.545-7.219 19.36-12.833 4.916-5.615 7.424-12.433 7.424-20.254 0-8.221-3.01-14.037-10.032-19.651-6.018-4.713-15.448-7.219-27.185-7.219h-40.125c-.1 0-.201-.101-.201-.101s-.1-.2 0-.3l10.433-14.037a36.898 36.898 0 0 0 7.724 2.606c2.407.502 5.116.702 8.125.702 8.427 0 16.051-1.704 22.671-5.113 6.621-3.409 11.938-8.021 15.75-13.937 3.811-5.815 5.717-12.332 5.717-19.25 0-7.42-3.611-20.956-13.442-27.874 0-.1.101-.1.101-.1L694 138.633v-9.926h-34.508c-5.417-1.805-11.034-2.707-16.852-2.707Zm12.037 62.665c-3.812 2.005-7.925 3.108-12.037 3.108-6.721 0-12.64-2.406-17.656-7.119-5.015-4.712-7.523-11.63-7.523-20.453 0-8.824 2.508-15.742 7.523-20.454 5.016-4.713 10.935-7.119 17.656-7.119 4.213 0 8.225 1.003 12.037 3.108 3.812 2.005 6.922 5.114 9.43 9.224 2.407 4.111 3.711 9.225 3.711 15.241 0 6.116-1.204 11.229-3.711 15.24-2.408 4.11-5.618 7.219-9.43 9.224Zm-27.185 36.997h27.185c7.524 0 12.339 1.504 15.549 4.713 3.21 3.208 4.815 7.519 4.815 12.533 0 7.319-2.909 13.335-8.727 17.847-5.819 4.512-13.643 6.818-23.273 6.818-8.427 0-15.449-1.905-20.565-5.515-5.116-3.609-7.724-9.124-7.724-16.142 0-4.412 1.204-8.523 3.612-12.132 2.407-3.61 5.316-6.217 9.128-8.122ZM1082.35 224.327c-1.98-1.083-3.47-2.658-4.66-4.528-1.09-1.968-1.69-4.035-1.69-6.299 0-2.264.6-4.429 1.69-6.299 1.09-1.969 2.68-3.445 4.66-4.528 1.99-1.082 4.17-1.673 6.65-1.673 2.48 0 4.66.591 6.65 1.673 1.98 1.083 3.47 2.658 4.66 4.528 1.09 1.968 1.69 4.035 1.69 6.299 0 2.264-.6 4.429-1.69 6.299-1.09 1.969-2.68 3.445-4.66 4.528-1.99 1.082-4.17 1.673-6.65 1.673-2.38 0-4.66-.591-6.65-1.673Zm12.21-1.477c1.68-.885 2.88-2.263 3.87-3.838a11.792 11.792 0 0 0 1.39-5.61c0-2.067-.5-3.937-1.39-5.611a9.145 9.145 0 0 0-3.87-3.838c-1.69-.886-3.48-1.378-5.56-1.378-2.08 0-3.87.492-5.56 1.378-1.68.886-2.88 2.264-3.87 3.838a11.796 11.796 0 0 0-1.39 5.611c0 2.066.5 3.937 1.39 5.61a9.139 9.139 0 0 0 3.87 3.838c1.69.886 3.48 1.378 5.56 1.378 2.08 0 3.97-.492 5.56-1.378Zm-10.92-3.444v-.886l.2-.099h.6c.19 0 .39-.098.49-.197.2-.196.2-.295.2-.492v-9.153c0-.197-.1-.394-.2-.492-.2-.197-.3-.197-.49-.197h-.6l-.2-.099v-.885l.2-.099h5.16c1.49 0 2.58.295 3.47.984.9.689 1.29 1.575 1.29 2.756 0 .886-.29 1.772-.99 2.362-.69.689-1.49 1.083-2.48 1.182l1.19.393 2.28 3.642c.2.295.4.394.7.394h.59l.1.098v.886l-.1.098h-3.07l-.2-.098-3.18-5.315h-.79v3.543c0 .197.1.394.2.492.2.197.3.197.49.197h.6l.2.099v.886l-.2.098h-5.26l-.2-.098Zm5.06-6.398c.8 0 1.49-.197 1.89-.689.39-.394.69-1.083.69-1.87 0-.788-.2-1.378-.59-1.87-.4-.492-1-.689-1.69-.689h-.4a.74.74 0 0 0-.49.197c-.2.196-.2.295-.2.492v4.429h.79Z"/>
-          </svg>
-          MongoDB
-        </span>
-
-        <span class="tech-badge">
-          Tavily
-        </span>
-
-        <span class="tech-badge">
-          <svg fill="none" viewBox="0 0 50 72">
-            <path fill="#fff" d="M41.715 23.193c-2.762.82-4.844 2.675-6.37 4.69-.327.432-1.01.107-.88-.423 2.92-12.007-.937-21.986-12.961-26.898a.803.803 0 0 0-1.085.937c5.47 21.961-17.537 20.109-14.63 45.005.05.427-.43.72-.78.47-1.09-.782-2.307-2.415-3.142-3.562a.502.502 0 0 0-.887.16c-.665 2.404-.98 4.67-.98 6.92 0 8.749 4.497 16.45 11.304 20.915.39.255.89-.11.758-.557a13.5 13.5 0 0 1-.563-3.697c0-.788.05-1.593.173-2.343.285-1.885.94-3.68 2.04-5.314 3.772-5.663 11.334-11.132 10.127-18.56-.078-.47.477-.78.827-.457 5.328 4.868 6.383 11.415 5.508 17.287-.075.51.564.782.887.382a11.6 11.6 0 0 1 2.892-2.587c.27-.168.63-.04.733.26.602 1.752 1.497 3.397 2.342 5.042a13.46 13.46 0 0 1 .905 9.982.502.502 0 0 0 .755.57C45.5 66.95 50 59.248 50 50.494c0-3.043-.532-6.025-1.54-8.82-2.112-5.862-7.472-10.264-6.117-17.904.065-.365-.273-.682-.628-.577"/>
-          </svg>
-          Firecrawl
-        </span>
-
-        <span class="tech-badge">
-          <svg viewBox="0 0 256 222" preserveAspectRatio="xMidYMid"><path fill="#fff" d="m128 0 128 221.705H0z"/></svg>
-          Vercel
-        </span>
-
-        <span class="tech-badge">
-          <svg fill="none" viewBox="0 0 1024 1024"><path d="M4.8 438.2A520.7 520.7 0 000 489.7h777.8c-2.7-5.3-6.4-10-10-14.7-133-171.8-204.5-157-306.9-161.3-34-1.4-57.2-2-193-2-72.7 0-151.7.2-228.6.4A621 621 0 0015 386.3h398.6v51.9H4.8zm779.1 103.5H.4c.8 13.8 2.1 27.5 4 41h723.4c32.2 0 50.3-18.3 56.1-41zM45 724.3s120 294.5 466.5 299.7c207 0 385-123 465.9-299.7H45z" fill="#fff"/><path d="M511.5 0A512.2 512.2 0 0065.3 260.6l202.7-.2c158.4 0 164.2.6 195.2 2l19.1.6c66.7 2.3 148.7 9.4 213.2 58.2 35 26.5 85.6 85 115.7 126.5 27.9 38.5 35.9 82.8 17 125.2-17.5 39-55 62.2-100.4 62.2H16.7s4.2 18 10.6 37.8h970.6a510.4 510.4 0 0026.1-160.7A512.4 512.4 0 00511.5 0z" fill="#fff"/></svg>
-          Railway
-        </span>
-
-    
-
-
-
-      </div>
-    </div>
-
-    <!-- EMAIL -->
-    <div class="email-row">
-      <div class="section-label">Emails</div>
-      <a class="email-link" href="mailto:conagkyanbrix@gmail.com">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="2" y="4" width="20" height="16" rx="2"/>
-          <polyline points="2,4 12,13 22,4"/>
-        </svg>
-        conagkyanbrix@gmail.com
-      </a>
-      <a class="email-link" href="mailto:kyanbrix@yahoo.com">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="2" y="4" width="20" height="16" rx="2"/>
-          <polyline points="2,4 12,13 22,4"/>
-        </svg>
-        kyanbrix@yahoo.com
-      </a>
-    </div>
-
-    <!-- SOCIALS -->
-    <div class="socials">
-      <div class="section-label">Socials</div>
-      <div class="social-list">
-
-        <!-- GitHub -->
-        <a class="social-link" href="https://github.com/Kyanbrix" target="_blank" rel="noopener">
-          <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 2C6.477 2 2 6.484 2 12.021c0 4.428 2.865 8.185 6.839 9.504.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.031 1.531 1.031.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.026 2.747-1.026.546 1.378.202 2.397.1 2.65.64.7 1.028 1.595 1.028 2.688 0 3.847-2.338 4.695-4.566 4.943.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.203 22 16.447 22 12.021 22 6.484 17.522 2 12 2z"/>
-          </svg>
-          GitHub
-          <svg class="social-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
-          </svg>
-        </a>
-
-        <!-- Discord Profile -->
-        <a class="social-link" href="https://discord.com/users/683613536823279794" target="_blank" rel="noopener">
-          <svg class="social-icon" viewBox="0 0 127.14 96.36" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,46,96.12,53,91.08,65.69,84.69,65.69Z"/>
-          </svg>
-          Discord
-          <svg class="social-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
-          </svg>
-        </a>
-
-        <!-- Instagram -->
-        <a class="social-link" href="https://www.instagram.com/kyanbrix/" target="_blank" rel="noopener">
-          <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-            <circle cx="12" cy="12" r="4.5"/>
-            <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
-          </svg>
-          Instagram
-          <svg class="social-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
-          </svg>
-        </a>
+          <div class="stack-groups">
+            <div class="stack-group">
+              <h3>Languages</h3>
+              <ul class="tech-grid">
+                <li class="tech-badge"><svg aria-hidden="true" preserveAspectRatio="xMidYMid" viewBox="0 0 256 346"><path d="M83 267s-14 8 9 11c27 3 41 2 71-3 0 0 8 5 19 9-67 29-153-2-99-17M74 230s-15 11 8 13c29 3 52 3 92-4 0 0 6 5 15 8-82 24-173 2-115-17" fill="#5382A1"/><path d="M144 166c17 19-4 36-4 36s42-22 22-49c-18-26-32-38 44-82 0 0-119 29-62 95" fill="#E76F00"/><path d="M233 295s10 8-10 15c-39 12-163 15-197 0-12-5 11-13 18-14l12-2c-14-9-89 19-38 28 138 22 251-10 215-27M89 190s-63 15-22 21c17 2 51 2 83-1 26-2 52-7 52-7l-16 9c-64 16-187 8-151-9 30-14 54-13 54-13M202 253c64-33 34-66 13-61l-7 2s2-3 6-5c41-14 73 43-14 66l2-2" fill="#5382A1"/><path d="M162 0s36 36-34 91c-56 45-12 70 0 99-32-30-56-56-40-80 23-35 89-53 74-110" fill="#E76F00"/><path d="M95 345c62 4 158-3 160-32 0 0-4 11-51 20-53 10-119 9-158 2 0 0 8 7 49 10" fill="#5382A1"/></svg>Java (17 &amp; 21)</li>
+                <li class="tech-badge"><svg aria-hidden="true" fill="none" viewBox="16 16 32 32"><path fill="url(#python__a)" d="M31.885 16c-8.124 0-7.617 3.523-7.617 3.523l.01 3.65h7.752v1.095H21.197S16 23.678 16 31.876c0 8.196 4.537 7.906 4.537 7.906h2.708v-3.804s-.146-4.537 4.465-4.537h7.688s4.32.07 4.32-4.175v-7.019S40.374 16 31.885 16zm-4.275 2.454a1.394 1.394 0 1 1 0 2.79 1.393 1.393 0 0 1-1.395-1.395c0-.771.624-1.395 1.395-1.395z"/><path fill="url(#python__b)" d="M32.115 47.833c8.124 0 7.617-3.523 7.617-3.523l-.01-3.65H31.97v-1.095h10.832S48 40.155 48 31.958c0-8.197-4.537-7.906-4.537-7.906h-2.708v3.803s.146 4.537-4.465 4.537h-7.688s-4.32-.07-4.32 4.175v7.019s-.656 4.247 7.833 4.247zm4.275-2.454a1.393 1.393 0 0 1-1.395-1.395 1.394 1.394 0 1 1 1.395 1.395z"/><defs><linearGradient id="python__a" x1="19.075" x2="34.898" y1="18.782" y2="34.658" gradientUnits="userSpaceOnUse"><stop stop-color="#387EB8"/><stop offset="1" stop-color="#366994"/></linearGradient><linearGradient id="python__b" x1="28.809" x2="45.803" y1="28.882" y2="45.163" gradientUnits="userSpaceOnUse"><stop stop-color="#FFE052"/><stop offset="1" stop-color="#FFC331"/></linearGradient></defs></svg>Python</li>
+                <li class="tech-badge"><svg aria-hidden="true" viewBox="0 0 1052 1052"><path fill="#f0db4f" d="M0 0h1052v1052H0z"/><path d="M965.9 801.1c-7.7-48-39-88.3-131.7-125.9-32.2-14.8-68.1-25.399-78.8-49.8-3.8-14.2-4.3-22.2-1.9-30.8 6.9-27.9 40.2-36.6 66.6-28.6 17 5.7 33.1 18.801 42.8 39.7 45.4-29.399 45.3-29.2 77-49.399-11.6-18-17.8-26.301-25.4-34-27.3-30.5-64.5-46.2-124-45-10.3 1.3-20.699 2.699-31 4-29.699 7.5-58 23.1-74.6 44-49.8 56.5-35.6 155.399 25 196.1 59.7 44.8 147.4 55 158.6 96.9 10.9 51.3-37.699 67.899-86 62-35.6-7.4-55.399-25.5-76.8-58.4-39.399 22.8-39.399 22.8-79.899 46.1 9.6 21 19.699 30.5 35.8 48.7 76.2 77.3 266.899 73.5 301.1-43.5 1.399-4.001 10.6-30.801 3.199-72.101zm-394-317.6h-98.4c0 85-.399 169.4-.399 254.4 0 54.1 2.8 103.7-6 118.9-14.4 29.899-51.7 26.2-68.7 20.399-17.3-8.5-26.1-20.6-36.3-37.699-2.8-4.9-4.9-8.7-5.601-9-26.699 16.3-53.3 32.699-80 49 13.301 27.3 32.9 51 58 66.399 37.5 22.5 87.9 29.4 140.601 17.3 34.3-10 63.899-30.699 79.399-62.199 22.4-41.3 17.6-91.3 17.4-146.6.5-90.2 0-180.4 0-270.9z" fill="#323330"/></svg>JavaScript</li>
+                <li class="tech-badge"><svg aria-hidden="true" viewBox="0 0 452 520"><path fill="#e34f26" d="M41 460L0 0h451l-41 460-185 52"/><path fill="#ef652a" d="M226 472l149-41 35-394H226"/><path fill="#ecedee" d="M226 208h-75l-5-58h80V94H84l15 171h127zm0 147l-64-17-4-45h-56l7 89 117 32z"/><path fill="#fff" d="M226 265h69l-7 73-62 17v59l115-32 16-174H226zm0-171v56h136l5-56z"/></svg>HTML</li>
+                <li class="tech-badge"><svg aria-hidden="true" viewBox="0 0 512 512"><path fill="#264de4" d="M71.357 460.819 30.272 0h451.456l-41.129 460.746L255.724 512z"/><path fill="#2965f1" d="m405.388 431.408 35.148-393.73H256v435.146z"/><path fill="#ebebeb" d="m124.46 208.59 5.065 56.517H256V208.59zm-5.041-57.875H256V94.197H114.281zM256 355.372l-.248.066-62.944-16.996-4.023-45.076h-56.736l7.919 88.741 115.772 32.14.26-.073z"/><path fill="#fff" d="M255.805 208.59v56.517H325.4l-6.56 73.299-63.035 17.013v58.8l115.864-32.112.85-9.549 13.28-148.792 1.38-15.176 10.203-114.393H255.805v56.518h79.639L330.3 208.59z"/></svg>CSS</li>
+              </ul>
+            </div>
+            <div class="stack-group">
+              <h3>Frameworks &amp; tools</h3>
+              <ul class="tech-grid">
+                <li class="tech-badge"><svg aria-hidden="true" viewBox="0 0 64 64"><path d="M58.2 3.365a29.503 29.503 0 0 1-3.419 6.064A32.094 32.094 0 1 0 9.965 55.372l1.186 1.047a32.08 32.08 0 0 0 52.67-22.253c.875-8.17-1.524-18.51-5.62-30.8zM14.53 55.558a2.744 2.744 0 1 1-.404-3.857 2.744 2.744 0 0 1 .404 3.857zm43.538-9.61c-7.92 10.55-24.83 6.99-35.672 7.502 0 0-1.922.113-3.857.43 0 0 .73-.31 1.663-.663 7.614-2.65 11.213-3.16 15.838-5.54 8.708-4.427 17.322-14.122 19.112-24.2-3.313 9.695-13.373 18.032-22.53 21.418-6.276 2.313-17.614 4.566-17.614 4.566l-.457-.245c-7.714-3.75-7.952-20.457 6.077-25.845 6.143-2.366 12.02-1.067 18.654-2.65 7.084-1.683 15.28-6.99 18.615-13.916 3.73 11.08 8.224 28.422.166 39.15z" fill="#68bd45"/></svg>Spring Boot</li>
+                <li class="tech-badge"><svg aria-hidden="true" preserveAspectRatio="xMidYMid" viewBox="0 0 256 256"><path d="M251.17 116.6 139.4 4.82a16.49 16.49 0 0 0-23.31 0l-23.21 23.2 29.44 29.45a19.57 19.57 0 0 1 24.8 24.96l28.37 28.38a19.61 19.61 0 1 1-11.75 11.06L137.28 95.4v69.64a19.62 19.62 0 1 1-16.13-.57V94.2a19.61 19.61 0 0 1-10.65-25.73L81.46 39.44 4.83 116.08a16.49 16.49 0 0 0 0 23.32L116.6 251.17a16.49 16.49 0 0 0 23.32 0l111.25-111.25a16.5 16.5 0 0 0 0-23.33" fill="#DE4C36"/></svg>Git</li>
+                <li class="tech-badge"><svg aria-hidden="true" viewBox="0 0 24 24" fill="#008fe2"><path d="M13.98 11.08h2.12a.19.19 0 0 0 .19-.19V9.01a.19.19 0 0 0-.19-.19h-2.12a.18.18 0 0 0-.18.18v1.9c0 .1.08.18.18.18m-2.95-5.43h2.12a.19.19 0 0 0 .18-.19V3.57a.19.19 0 0 0-.18-.18h-2.12a.18.18 0 0 0-.19.18v1.9c0 .1.09.18.19.18m0 2.71h2.12a.19.19 0 0 0 .18-.18V6.29a.19.19 0 0 0-.18-.18h-2.12a.18.18 0 0 0-.19.18v1.89c0 .1.09.18.19.18m-2.93 0h2.12a.19.19 0 0 0 .18-.18V6.29a.18.18 0 0 0-.18-.18H8.1a.18.18 0 0 0-.18.18v1.89c0 .1.08.18.18.18m-2.96 0h2.11a.19.19 0 0 0 .19-.18V6.29a.18.18 0 0 0-.19-.18H5.14a.19.19 0 0 0-.19.18v1.89c0 .1.08.18.19.18m5.89 2.72h2.12a.19.19 0 0 0 .18-.19V9.01a.19.19 0 0 0-.18-.19h-2.12a.18.18 0 0 0-.19.18v1.9c0 .1.09.18.19.18m-2.93 0h2.12a.18.18 0 0 0 .18-.19V9.01a.18.18 0 0 0-.18-.19H8.1a.18.18 0 0 0-.18.18v1.9c0 .1.08.18.18.18m-2.96 0h2.11a.18.18 0 0 0 .19-.19V9.01a.18.18 0 0 0-.18-.19H5.14a.19.19 0 0 0-.19.19v1.88c0 .1.08.19.19.19m-2.92 0h2.12a.18.18 0 0 0 .18-.19V9.01a.18.18 0 0 0-.18-.19H2.22a.18.18 0 0 0-.19.18v1.9c0 .1.08.18.19.18m21.54-1.19c-.06-.05-.67-.51-1.95-.51-.34 0-.68.03-1.01.09a3.77 3.77 0 0 0-1.72-2.57l-.34-.2-.23.33a4.6 4.6 0 0 0-.6 1.43c-.24.97-.1 1.88.4 2.66a4.7 4.7 0 0 1-1.75.42H.76a.75.75 0 0 0-.76.75 11.38 11.38 0 0 0 .7 4.06 6.03 6.03 0 0 0 2.4 3.12c1.18.73 3.1 1.14 5.28 1.14.98 0 1.96-.08 2.93-.26a12.25 12.25 0 0 0 3.82-1.4 10.5 10.5 0 0 0 2.61-2.13c1.25-1.42 2-3 2.55-4.4h.23c1.37 0 2.21-.55 2.68-1 .3-.3.55-.66.7-1.06l.1-.28Z"/></svg>Docker</li>
+                <li class="tech-badge"><svg aria-hidden="true" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="#f47421"/><circle cx="50" cy="50" r="21.8" fill="none" stroke="#fff" stroke-width="8.6"/><g id="ubuntu__a"><circle cx="19.4" cy="50" r="8.4" fill="#f47421"/><path stroke="#f47421" stroke-width="3.2" d="M67 50h10"/><circle cx="19.4" cy="50" r="6" fill="#fff"/></g><use xlink:href="#ubuntu__a" transform="rotate(120 50 50)"/><use xlink:href="#ubuntu__a" transform="rotate(240 50 50)"/></svg>Ubuntu</li>
+                <li class="tech-badge"><svg aria-hidden="true" preserveAspectRatio="xMidYMid" viewBox="0 0 256 256"><defs><linearGradient x1="37%" y1="51%" x2="178.1%" y2="41.9%" id="intellijidea__a"><stop stop-color="#FC801D" offset="9%"/><stop stop-color="#B07F61" offset="23%"/><stop stop-color="#577DB3" offset="41%"/><stop stop-color="#1E7CE6" offset="53%"/><stop stop-color="#087CFA" offset="59%"/></linearGradient><linearGradient x1="73.6%" y1="114.8%" x2="35.6%" y2="1.1%" id="intellijidea__b"><stop stop-color="#FE2857" offset="0%"/><stop stop-color="#CB3979" offset="8%"/><stop stop-color="#9E4997" offset="16%"/><stop stop-color="#7557B2" offset="25%"/><stop stop-color="#5362C8" offset="34%"/><stop stop-color="#386CDA" offset="44%"/><stop stop-color="#2373E8" offset="54%"/><stop stop-color="#1478F2" offset="66%"/><stop stop-color="#0B7BF8" offset="79%"/><stop stop-color="#087CFA" offset="100%"/></linearGradient><linearGradient x1="28.6%" y1="23.6%" x2="81.8%" y2="129.8%" id="intellijidea__c"><stop stop-color="#FE2857" offset="0%"/><stop stop-color="#FE295F" offset="8%"/><stop stop-color="#FF2D76" offset="21%"/><stop stop-color="#FF318C" offset="30%"/><stop stop-color="#EA3896" offset="38%"/><stop stop-color="#B248AE" offset="55%"/><stop stop-color="#5A63D6" offset="79%"/><stop stop-color="#087CFA" offset="100%"/></linearGradient></defs><path fill="url(#intellijidea__a)" d="M40.5 180.6 2.9 150.8l22.1-41 33.3 11.1z"/><path fill="#087CFA" d="m256 68.2-4.6 148.3-98.6 39.5-53.7-34.7z"/><path fill="url(#intellijidea__b)" d="m256 68.2-48.8 47.6L144.5 39l31-34.8z"/><path fill="url(#intellijidea__c)" d="m99.1 221.3-78.5 28.4 16.5-57.5 21.2-71.3L0 101.4 37.1 0l83.8 9.9 86.3 105.9z"/><path d="M49.1 48h160v160h-160z"/><path d="M69 177.8h60v10H69v-10ZM99 79V68H69.2v11h8.4v37.7h-8.4v11H99v-11h-8.3V79H99Zm28.5 49.4.2.1c-4.1.2-8.1-.8-11.8-2.6a27 27 0 0 1-7.7-6.3l8.2-9.2c1.5 1.7 3.2 3.1 5.2 4.3 1.7 1.1 3.7 1.7 5.7 1.6 2.2.2 4.3-.7 5.8-2.3a11 11 0 0 0 2.2-7.5V68h13.3v39a27 27 0 0 1-1.5 9.4c-1.7 5-5.7 9-10.8 10.6-2.8 1-5.8 1.5-8.8 1.4Z" fill="#FFF"/></svg>IntelliJ IDEA</li>
+                <li class="tech-badge"><svg aria-hidden="true" viewBox="0 0 105 105"><linearGradient id="pycharm__a" x1="38.78" x2="95.91" y1="41.59" y2="41.59" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#21d789"/><stop offset="1" stop-color="#07c3f2"/></linearGradient><linearGradient id="pycharm__b" x1="-29.18" x2="88.46" y1="85.52" y2="-1.32" gradientUnits="userSpaceOnUse"><stop offset=".01" stop-color="#fcf84a"/><stop offset=".11" stop-color="#a7eb62"/><stop offset=".21" stop-color="#5fe077"/><stop offset=".27" stop-color="#32da84"/><stop offset=".31" stop-color="#21d789"/><stop offset=".58" stop-color="#21d789"/><stop offset=".6" stop-color="#21d789"/><stop offset=".69" stop-color="#20d68c"/><stop offset=".76" stop-color="#1ed497"/><stop offset=".83" stop-color="#19d1a9"/><stop offset=".9" stop-color="#13ccc2"/><stop offset=".97" stop-color="#0bc6e1"/><stop offset="1" stop-color="#07c3f2"/></linearGradient><linearGradient id="pycharm__c" x1="17.3" x2="36.92" y1="110.99" y2="49.42" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#21d789"/><stop offset=".16" stop-color="#24d888"/><stop offset=".3" stop-color="#2fd985"/><stop offset=".43" stop-color="#41dc80"/><stop offset=".55" stop-color="#5ae079"/><stop offset=".67" stop-color="#7ae46f"/><stop offset=".79" stop-color="#a1ea64"/><stop offset=".9" stop-color="#cff157"/><stop offset="1" stop-color="#fcf84a"/></linearGradient><linearGradient id="pycharm__d" x1="43.28" x2="85.97" y1="57.46" y2=".06" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#21d789"/><stop offset=".09" stop-color="#23d986"/><stop offset=".17" stop-color="#2ade7b"/><stop offset=".25" stop-color="#36e669"/><stop offset=".27" stop-color="#3bea62"/><stop offset=".35" stop-color="#47eb61"/><stop offset=".49" stop-color="#67ed5d"/><stop offset=".69" stop-color="#9af156"/><stop offset=".92" stop-color="#e0f64d"/><stop offset="1" stop-color="#fcf84a"/></linearGradient><linearGradient id="pycharm__e" x1="108.58" x2="22.55" y1="64.77" y2="63.97" gradientUnits="userSpaceOnUse"><stop offset=".39" stop-color="#fcf84a"/><stop offset=".46" stop-color="#ecf74c"/><stop offset=".61" stop-color="#c1f451"/><stop offset=".82" stop-color="#7eef5a"/><stop offset="1" stop-color="#3bea62"/></linearGradient><path fill="url(#pycharm__a)" d="m71.81 19.65 28.05 23.33-10.1 20.55-16.91-4.69H58.22z"/><path fill="url(#pycharm__b)" d="m43.55 34.8-5.43 28.73-.52 9.76-13.69 5.93L4.5 81.31l5.89-62.07L45.56 4.5l21.67 14.21z"/><path fill="url(#pycharm__c)" d="m43.55 34.8 2.64 55.36-8.77 10.34L4.5 81.31l27.03-40.28z"/><path fill="url(#pycharm__d)" d="M79.77 30.76H46.51L75.9 4.5z"/><path fill="url(#pycharm__e)" d="m100.5 90.38-29.28 9.94-38.99-10.98L43.55 34.8l4.52-4.04 23.74-2.23-2.15 23.84 18.88-7.32z"/><path d="M22.5 22.5h60v60h-60z"/><path fill="#fff" d="M29.98 71.16h22.5v3.75h-22.5zM30 30h9.2c5.36 0 8.61 3.18 8.61 7.77v.06c0 5.2-4.05 7.9-9.09 7.9H35v6.74h-5zm8.86 11.33c2.47 0 3.92-1.47 3.92-3.4v-.06c0-2.22-1.54-3.41-4-3.41H35v6.87zm11.63-.02v-.06A11.41 11.41 0 0 1 62.2 29.63a11.59 11.59 0 0 1 8.86 3.46l-3.14 3.63a8.33 8.33 0 0 0-5.75-2.54c-3.79 0-6.52 3.15-6.52 7v.07c0 3.85 2.67 7.06 6.52 7.06 2.57 0 4.14-1 5.91-2.63l3.14 3.17a11.46 11.46 0 0 1-9.21 4 11.35 11.35 0 0 1-11.52-11.54"/></svg>PyCharm</li>
+              </ul>
+            </div>
+            <div class="stack-group">
+              <h3>Databases</h3>
+              <ul class="tech-grid">
+                <li class="tech-badge"><svg aria-hidden="true" xml:space="preserve" viewBox="0 0 432.071 445.383"><g style="fill-rule:nonzero;clip-rule:nonzero;fill:none;stroke:#fff;stroke-width:12.4651;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4"><path d="M323.205 324.227c2.833-23.601 1.984-27.062 19.563-23.239l4.463.392c13.517.615 31.199-2.174 41.587-7 22.362-10.376 35.622-27.7 13.572-23.148-50.297 10.376-53.755-6.655-53.755-6.655 53.111-78.803 75.313-178.836 56.149-203.322-52.27-66.789-142.748-35.206-144.262-34.386l-.482.089c-9.938-2.062-21.06-3.294-33.554-3.496-22.761-.374-40.032 5.967-53.133 15.904 0 0-161.408-66.498-153.899 83.628 1.597 31.936 45.777 241.655 98.47 178.31 19.259-23.163 37.871-42.748 37.871-42.748 9.242 6.14 20.307 9.272 31.912 8.147l.897-.765c-.281 2.876-.157 5.689.359 9.019-13.572 15.167-9.584 17.83-36.723 23.416-27.457 5.659-11.326 15.734-.797 18.367 12.768 3.193 42.305 7.716 62.268-20.224l-.795 3.188c5.325 4.26 4.965 30.619 5.72 49.452.756 18.834 2.017 36.409 5.856 46.771 3.839 10.36 8.369 37.05 44.036 29.406 29.809-6.388 52.6-15.582 54.677-101.107" style="fill:#000;stroke:#000;stroke-width:37.3953;stroke-linecap:butt;stroke-linejoin:miter"/><path d="M402.395 271.23c-50.302 10.376-53.76-6.655-53.76-6.655 53.111-78.808 75.313-178.843 56.153-203.326-52.27-66.785-142.752-35.2-144.262-34.38l-.486.087c-9.938-2.063-21.06-3.292-33.56-3.496-22.761-.373-40.026 5.967-53.127 15.902 0 0-161.411-66.495-153.904 83.63 1.597 31.938 45.776 241.657 98.471 178.312 19.26-23.163 37.869-42.748 37.869-42.748 9.243 6.14 20.308 9.272 31.908 8.147l.901-.765c-.28 2.876-.152 5.689.361 9.019-13.575 15.167-9.586 17.83-36.723 23.416-27.459 5.659-11.328 15.734-.796 18.367 12.768 3.193 42.307 7.716 62.266-20.224l-.796 3.188c5.319 4.26 9.054 27.711 8.428 48.969-.626 21.259-1.044 35.854 3.147 47.254 4.191 11.4 8.368 37.05 44.042 29.406 29.809-6.388 45.256-22.942 47.405-50.555 1.525-19.631 4.976-16.729 5.194-34.28l2.768-8.309c3.192-26.611.507-35.196 18.872-31.203l4.463.392c13.517.615 31.208-2.174 41.591-7 22.358-10.376 35.618-27.7 13.573-23.148z" style="fill:#336791;stroke:none" stroke="none"/><path d="M215.866 286.484c-1.385 49.516.348 99.377 5.193 111.495 4.848 12.118 15.223 35.688 50.9 28.045 29.806-6.39 40.651-18.756 45.357-46.051 3.466-20.082 10.148-75.854 11.005-87.281M173.104 38.256S11.583-27.76 19.092 122.365c1.597 31.938 45.779 241.664 98.473 178.316 19.256-23.166 36.671-41.335 36.671-41.335M260.349 26.207c-5.591 1.753 89.848-34.889 144.087 34.417 19.159 24.484-3.043 124.519-56.153 203.329"/><path d="M348.282 263.953s3.461 17.036 53.764 6.653c22.04-4.552 8.776 12.774-13.577 23.155-18.345 8.514-59.474 10.696-60.146-1.069-1.729-30.355 21.647-21.133 19.96-28.739-1.525-6.85-11.979-13.573-18.894-30.338-6.037-14.633-82.796-126.849 21.287-110.183 3.813-.789-27.146-99.002-124.553-100.599-97.385-1.597-94.19 119.762-94.19 119.762" style="stroke-linejoin:bevel"/><path d="M188.604 274.334c-13.577 15.166-9.584 17.829-36.723 23.417-27.459 5.66-11.326 15.733-.797 18.365 12.768 3.195 42.307 7.718 62.266-20.229 6.078-8.509-.036-22.086-8.385-25.547-4.034-1.671-9.428-3.765-16.361 3.994z"/><path d="M187.715 274.069c-1.368-8.917 2.93-19.528 7.536-31.942 6.922-18.626 22.893-37.255 10.117-96.339-9.523-44.029-73.396-9.163-73.436-3.193-.039 5.968 2.889 30.26-1.067 58.548-5.162 36.913 23.488 68.132 56.479 64.938"/><path d="M172.517 141.7c-.288 2.039 3.733 7.48 8.976 8.207 5.234.73 9.714-3.522 9.998-5.559.284-2.039-3.732-4.285-8.977-5.015-5.237-.731-9.719.333-9.996 2.367z" style="fill:#fff;stroke-width:4.155;stroke-linecap:butt;stroke-linejoin:miter"/><path d="M331.941 137.543c.284 2.039-3.732 7.48-8.976 8.207-5.238.73-9.718-3.522-10.005-5.559-.277-2.039 3.74-4.285 8.979-5.015 5.239-.73 9.718.333 10.002 2.368z" style="fill:#fff;stroke-width:2.0775;stroke-linecap:butt;stroke-linejoin:miter"/><path d="M350.676 123.432c.863 15.994-3.445 26.888-3.988 43.914-.804 24.748 11.799 53.074-7.191 81.435"/></g></svg>PostgreSQL</li>
+                <li class="tech-badge"><svg aria-hidden="true" preserveAspectRatio="xMidYMid" viewBox="0 0 256 252"><path fill="currentColor" d="M236 194c-14 0-25 1-34 5-3 1-7 1-7 4l3 6c2 3 5 8 9 11l11 8 21 10 11 9 6 4-3-6-5-5c-5-7-11-13-18-18-6-3-18-9-20-15h-1l12-3 18-3 8-2v-2l-9-10c-8-8-18-15-28-22l-18-8c-2-1-6-2-7-4l-7-13-15-30-8-20c-18-30-38-48-68-65-6-4-14-5-22-7l-13-1-8-6C34 5 8-9 1 9c-5 11 7 22 11 28l9 13 3 9c3 8 5 17 9 24l6 10c2 2 4 3 5 6-3 4-3 9-4 13-7 20-4 44 5 59 2 4 9 14 18 10 8-3 6-13 8-22l1-4 8 14c5 9 14 18 22 24 4 3 8 8 13 10l-4-4-9-10c-8-10-14-21-20-32l-7-17-3-6c-3 4-7 7-9 12-3 7-3 17-4 26h-1c-6-1-8-7-10-12-5-12-6-32-1-46 1-4 6-15 4-19-1-3-4-5-6-7l-7-12-10-30-9-13c-3-5-7-8-10-14-1-2-2-5 0-7l2-2c2-2 9 0 11 1 6 3 12 5 17 9l8 6h4c6 1 12 0 17 2 9 3 18 7 25 12 23 14 42 35 54 59 3 4 3 8 5 12l12 26c4 8 7 16 12 23 3 4 14 6 18 8l12 4 18 12c2 2 11 7 12 10Z"/><path fill="currentColor" d="m58 43-7 1 6 7 4 9v-1c3-1 4-4 4-8l-2-4-5-4Z"/></svg>MySQL</li>
+                <li class="tech-badge"><svg aria-hidden="true" preserveAspectRatio="xMidYMid" viewBox="0 0 200 228"><defs><linearGradient x1="57.7%" y1="2%" x2="57.7%" y2="94.4%" id="sqlite__a"><stop stop-color="#97D9F6" offset="0%"/><stop stop-color="#0F80CC" offset="92%"/><stop stop-color="#0F80CC" offset="100%"/></linearGradient></defs><path d="M194.5 112c-6.8 0-12.3 2-16.6 6.1-4.3 4-6.4 9.3-6.4 15.8a23.3 23.3 0 0 0 6.5 17c2.2 2.4 6.6 5.6 13.2 9.7 8 5 13.4 9 16 12 2.5 3.2 3.7 6.4 3.7 9.9 0 4.5-1.5 8.2-4.6 11a18 18 0 0 1-12.4 4 20.1 20.1 0 0 1-20.3-20.8h-2.5v22.9h2.5c.8-2.2 1.8-3.3 3.2-3.3.7 0 2.3.4 4.7 1.3 6 2.1 10.9 3.2 14.7 3.2a23 23 0 0 0 17-7 23.2 23.2 0 0 0 2.4-30.8c-3-4-9-8.6-18-14a59.5 59.5 0 0 1-15-11.3c-2.3-3-3.5-6.1-3.5-9.7 0-3.8 1.5-7 4.2-9.2 2.8-2.3 6.5-3.5 11-3.5 5.2 0 9.5 1.5 12.9 4.6 3.3 3 5.3 7.4 5.9 12.8h2.5V113h-2.3a6 6 0 0 1-.8 2c-.3.3-.7.4-1.4.4a17 17 0 0 1-4.3-1 38.6 38.6 0 0 0-12.3-2.3Zm82.4 0a44.6 44.6 0 0 0-39 22.2 43.5 43.5 0 0 0 4.5 50.2c7 8.2 15.3 13.3 25 15.3 2.1 1.1 5.3 4.1 9.4 9 4.7 5.3 8.6 9.3 11.9 11.6A35.6 35.6 0 0 0 311 227c5.3 0 10-.9 14-2.7l-.9-2.3a20.1 20.1 0 0 1-18.7-2.3c-3.6-2.5-8.3-7.1-13.8-14a47.6 47.6 0 0 0-5.4-6.1c10.6-2 19.3-7.2 26-15.4a42.8 42.8 0 0 0 10.2-28 42 42 0 0 0-13.2-31.4 44.8 44.8 0 0 0-32.4-12.9Zm51.4 0 .1 2.7c5.5 0 8.6 1.7 9.3 5 .3 1.1.4 3.3.4 6.4v59.6c0 4.5-.7 7.3-2 8.6-1.1 1.2-3.2 2-6.2 2.3l-.1 2.6h55.1l1.4-13.5h-2.5c-.7 3.7-2.3 6.3-5 7.8a30.5 30.5 0 0 1-14 2.3h-5.2c-6 0-9.5-2.2-10.5-6.6-.2-.9-.2-1.8-.2-2.8l.2-60.3c0-4.4.5-7.4 1.7-8.9 1.2-1.4 3.3-2.3 6.4-2.5l-.2-2.7h-28.7Zm-50.6 3.3a28 28 0 0 1 23 11.2 48 48 0 0 1 8.8 30.5c0 12.3-3 22.1-8.9 29.5a29 29 0 0 1-23.7 11c-9.5 0-17.2-3.8-23-11.4a47.1 47.1 0 0 1-8.9-29.6c0-12.5 3-22.5 9-30 5.9-7.5 13.8-11.2 23.7-11.2Zm126.9 12.8c-1.3 0-2.4.5-3.1 1.4-.8 1-1 2-.8 3.4a6 6 0 0 0 2.2 3.4c1.1 1 2.4 1.4 3.7 1.4 1.3 0 2.3-.5 3-1.4.7-1 1-2.1.7-3.4-.3-1.4-1-2.5-2-3.4a5.6 5.6 0 0 0-3.7-1.4Zm36.4 9.2c-2.3 8.8-7.3 13.5-14.9 14.3l.1 2.5h8.9l-.2 29.8c0 5.1.2 8.5.5 10.2 1 4.2 3.6 6.3 8.1 6.3 6.6 0 13.4-4 20.6-12l-2.2-1.8c-5.2 5.2-9.7 7.8-13.7 7.8-2.5 0-4-1.4-4.6-4.2l-.2-2.4v-33.7h13.7l-.2-4h-13.4v-12.8H441Zm52.4 11.2c-7.6 0-13.7 3.7-18.5 11a31.3 31.3 0 0 0-4.4 24.4 21 21 0 0 0 6.7 12.2 19 19 0 0 0 12.7 4.3c4.7 0 11.4-1.2 14.1-3.7 2.8-2.4 5.4-6.3 7.8-11.7l-2-2a20.6 20.6 0 0 1-17.1 10.5c-8 0-12.8-4.3-14.6-13l-.5-3.5a46 46 0 0 0 21.4-8c4.8-3.8 9.6-7.9 8.7-12.1a9.9 9.9 0 0 0-3.9-6c-2-1.6-7.4-2.4-10.4-2.4Zm-83 .3-16.3 3.8v2.9l5.7-.7c2.7 0 4.3 1.2 4.8 3.7.2.8.3 2 .4 3.4l-.2 26.8c0 3.7-.5 5.8-1.3 6.5-.8.6-3 1-6.6 1v2.5h25.9v-2.5c-3.7 0-6-.3-7-.9-1-.5-1.8-1.5-2.1-3-.2-1.2-.3-3.1-.4-5.7l.1-37.8h-3Zm78.9 5c1.6 0 3 .6 4.6 1.8a7 7 0 0 1 2.8 4c1.4 7-4.9 12-19 14.7a25 25 0 0 1 2.7-14.1c2.3-4.3 5.3-6.4 8.9-6.4Z" fill="#003B57"/><path d="M157.9 10H17C7.7 10 0 17.7 0 27v155.2c0 9.4 7.7 17.2 17.1 17.2h92.7c-1-46.2 14.7-135.7 48-189.5Z" fill="#0F80CC"/><path d="M152.8 15H17C10.5 15 5 20.4 5 27V171c30.7-11.8 76.8-22 108.7-21.5a989.7 989.7 0 0 1 39-134.5Z" fill="url(#sqlite__a)"/><path d="M190.7 4.9c-9.6-8.6-21.3-5.2-32.8 5a81.4 81.4 0 0 0-5.1 5c-19.7 21-38 59.7-43.7 89.2a81.5 81.5 0 0 1 5.8 17.7l.8 3.5-.9-2.8a173.8 173.8 0 0 0-.8-2 172 172 0 0 0-6.4-12.1l-3.5 11c4.5 8.2 7.3 22.4 7.3 22.4l-1.4-4.1c-1-2.9-6-11.7-7.2-13.7-2 7.5-2.8 12.6-2.1 13.8 1.4 2.4 2.7 6.5 4 11a257.6 257.6 0 0 1 4.6 25c-.3 8.6-.1 17.6.5 25.7a91 91 0 0 0 4.7 24.8l1.5-.8a111 111 0 0 1-3.9-37c.9-22.5 6-49.5 15.6-77.7 16-42.5 38.4-76.6 58.8-93-18.6 17-43.8 71.4-51.4 91.6a365.7 365.7 0 0 0-18 64c6.2-19 26.4-27.2 26.4-27.2s9.8-12.2 21.4-29.6a210 210 0 0 0-22.1 6l-7.1 3s18.1-11 33.7-16C191 73.8 214.2 25.9 190.7 4.9" fill="#003B57"/></svg>SQLite</li>
+                <li class="tech-badge"><svg aria-hidden="true" viewBox="0 0 125 257"><path fill="#13AA52" d="M82.323 28.644C71.537 15.847 62.249 2.85 60.35.15c-.2-.2-.5-.2-.7 0-1.897 2.7-11.185 15.697-21.971 28.494C-54.902 146.721 52.26 226.406 52.26 226.406l.9.6C53.958 239.303 55.955 257 55.955 257h7.99s1.998-17.597 2.797-29.994l.899-.7c.1.1 107.263-79.585 14.68-197.662ZM59.95 224.706s-4.793-4.099-6.092-6.199v-.199l5.793-128.575c0-.4.6-.4.6 0l5.792 128.575v.199c-1.299 2.1-6.093 6.199-6.093 6.199Z"/></svg>MongoDB</li>
+              </ul>
+            </div>
+            <div class="stack-group">
+              <h3>AI &amp; scraping</h3>
+              <ul class="tech-grid">
+                <li class="tech-badge">Tavily</li>
+                <li class="tech-badge"><svg aria-hidden="true" fill="none" viewBox="0 0 50 72"> <path fill="currentColor" d="M41.715 23.193c-2.762.82-4.844 2.675-6.37 4.69-.327.432-1.01.107-.88-.423 2.92-12.007-.937-21.986-12.961-26.898a.803.803 0 0 0-1.085.937c5.47 21.961-17.537 20.109-14.63 45.005.05.427-.43.72-.78.47-1.09-.782-2.307-2.415-3.142-3.562a.502.502 0 0 0-.887.16c-.665 2.404-.98 4.67-.98 6.92 0 8.749 4.497 16.45 11.304 20.915.39.255.89-.11.758-.557a13.5 13.5 0 0 1-.563-3.697c0-.788.05-1.593.173-2.343.285-1.885.94-3.68 2.04-5.314 3.772-5.663 11.334-11.132 10.127-18.56-.078-.47.477-.78.827-.457 5.328 4.868 6.383 11.415 5.508 17.287-.075.51.564.782.887.382a11.6 11.6 0 0 1 2.892-2.587c.27-.168.63-.04.733.26.602 1.752 1.497 3.397 2.342 5.042a13.46 13.46 0 0 1 .905 9.982.502.502 0 0 0 .755.57C45.5 66.95 50 59.248 50 50.494c0-3.043-.532-6.025-1.54-8.82-2.112-5.862-7.472-10.264-6.117-17.904.065-.365-.273-.682-.628-.577"/> </svg>Firecrawl</li>
+              </ul>
+            </div>
+            <div class="stack-group">
+              <h3>Hosting</h3>
+              <ul class="tech-grid">
+                <li class="tech-badge"><svg aria-hidden="true" viewBox="0 0 256 222" preserveAspectRatio="xMidYMid"><path fill="currentColor" d="m128 0 128 221.705H0z"/></svg>Vercel</li>
+                <li class="tech-badge"><svg aria-hidden="true" fill="none" viewBox="0 0 1024 1024"><path d="M4.8 438.2A520.7 520.7 0 000 489.7h777.8c-2.7-5.3-6.4-10-10-14.7-133-171.8-204.5-157-306.9-161.3-34-1.4-57.2-2-193-2-72.7 0-151.7.2-228.6.4A621 621 0 0015 386.3h398.6v51.9H4.8zm779.1 103.5H.4c.8 13.8 2.1 27.5 4 41h723.4c32.2 0 50.3-18.3 56.1-41zM45 724.3s120 294.5 466.5 299.7c207 0 385-123 465.9-299.7H45z" fill="currentColor"/><path d="M511.5 0A512.2 512.2 0 0065.3 260.6l202.7-.2c158.4 0 164.2.6 195.2 2l19.1.6c66.7 2.3 148.7 9.4 213.2 58.2 35 26.5 85.6 85 115.7 126.5 27.9 38.5 35.9 82.8 17 125.2-17.5 39-55 62.2-100.4 62.2H16.7s4.2 18 10.6 37.8h970.6a510.4 510.4 0 0026.1-160.7A512.4 512.4 0 00511.5 0z" fill="currentColor"/></svg>Railway</li>
+              </ul>
+            </div>
+          </div>
+        </section>
 
       </div>
-    </div>
-  
+
+    </main>
+
+    <footer class="footer">
+      <span>&copy; <span id="year">2026</span> Kyanbrix Conag</span>
+      <a href="https://github.com/Kyanbrix" target="_blank" rel="noopener">@kyanbrix</a>
+    </footer>
+
   </div>
 
   <script>
-
-    function handleViewportScaling() {
-      const viewportMeta = document.querySelector('meta[name="viewport"]');
-      if (!viewportMeta) return;
-
-      const hasTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
-      
-      const isMobileUA = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-      
-      const isMobileScreen = Math.min(window.screen.width, window.screen.height) < 1024;
-
-
-      if (hasTouch && !isMobileUA && isMobileScreen) {
-        viewportMeta.setAttribute('content', 'width=1200, initial-scale=0.1, shrink-to-fit=no');
-      } else {
-        viewportMeta.setAttribute('content', 'width=device-width, initial-scale=1.0, shrink-to-fit=no');
-      }
-    }
-
-    handleViewportScaling();
-
-    window.addEventListener('resize', handleViewportScaling);
-    window.addEventListener('orientationchange', handleViewportScaling);
-
-
-    const btn = document.getElementById('themeBtn');
     const html = document.documentElement;
+    const themeMeta = document.querySelector('meta[name="theme-color"]');
 
-    const saved = localStorage.getItem('theme') || 'dark';
-    html.setAttribute('data-theme', saved);
-
-    btn.addEventListener('click', () => {
-      const current = html.getAttribute('data-theme');
-      const next = current === 'dark' ? 'light' : 'dark';
-      html.setAttribute('data-theme', next);
-      localStorage.setItem('theme', next);
-    });
-
-
-    const tipBtn     = document.getElementById('tipBtn');
-    const tipModal   = document.getElementById('tipModal');
-    const modalClose = document.getElementById('modalClose');
-
-    tipBtn.addEventListener('click', () => tipModal.classList.add('open'));
-    modalClose.addEventListener('click', () => tipModal.classList.remove('open'));
-    tipModal.addEventListener('click', (e) => {
-      if (e.target === tipModal) tipModal.classList.remove('open');
-    });
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') tipModal.classList.remove('open');
-    });
-
-    function switchTab(btn, id) {
-      document.querySelectorAll('.pay-tab').forEach(t => t.classList.remove('active'));
-      document.querySelectorAll('.qr-panel').forEach(p => p.classList.remove('active'));
-      btn.classList.add('active');
-      document.getElementById('panel-' + id).classList.add('active');
+    function applyTheme(theme) {
+      html.setAttribute('data-theme', theme);
+      themeMeta.setAttribute('content', theme === 'dark' ? '#18171e' : '#f3f1f8');
     }
+
+    applyTheme(html.getAttribute('data-theme'));
+
+    document.getElementById('themeBtn').addEventListener('click', () => {
+      const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      applyTheme(next);
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    });
+
+    document.querySelectorAll('.copy-btn').forEach((btn) => {
+      btn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(btn.dataset.copy);
+          btn.textContent = 'Copied';
+          btn.classList.add('copied');
+        } catch (e) {
+          btn.textContent = 'Failed';
+        }
+        setTimeout(() => {
+          btn.textContent = 'Copy';
+          btn.classList.remove('copied');
+        }, 1600);
+      });
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 
 </body>
