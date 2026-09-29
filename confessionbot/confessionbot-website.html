@@ -1,0 +1,576 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ConfessionBot</title>
+<meta name="description" content="ConfessionBot lets Discord members post anonymous confessions and talk about them in anonymous reply threads, with approval, logs and moderation tools for staff.">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#15121B">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1024 1024'%3E%3Crect width='1024' height='1024' rx='224' fill='%2315121B'/%3E%3Cpath d='M730 335A260 260 0 1 0 730 655' fill='none' stroke='%23FFCC4D' stroke-width='98' stroke-linecap='round'/%3E%3Cpath d='M263 652L192 806Q181 838 212 826L362 758Z' fill='%23FFCC4D'/%3E%3Ccircle cx='478' cy='495' r='46.5' fill='%23FFCC4D'/%3E%3Ccircle cx='635' cy='495' r='46.5' fill='%23FFCC4D'/%3E%3Ccircle cx='791.5' cy='495' r='46.5' fill='%23F4A574'/%3E%3C/svg%3E">
+<style>
+  /* Colours taken from the bot's avatar. */
+  :root {
+    --bg: #15121B;
+    --bg-alt: #1A1621;
+    --surface: #211C29;
+    --surface-2: #2A2433;
+    --border: #342D3F;
+    --text: #F6F2EA;
+    --muted: #ABA3B6;
+    --yellow: #FFCC4D;
+    --yellow-hover: #FFD76E;
+    --peach: #F4A574;
+    --on-yellow: #15121B;
+    --yellow-soft: rgba(255, 204, 77, .12);
+    --peach-soft: rgba(244, 165, 116, .14);
+    --shadow: 0 1px 2px rgba(0, 0, 0, .35), 0 10px 30px rgba(0, 0, 0, .28);
+    --radius: 14px;
+    --max: 1120px;
+    --gutter: 16px;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  a { color: var(--yellow); }
+  strong { color: var(--text); }
+  code, .cmd {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: .88em;
+  }
+  code {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: .08em .4em;
+    white-space: nowrap;
+  }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+  @media (min-width: 720px) { :root { --gutter: 28px; } }
+
+  /* ---------- logo ---------- */
+  .logo { width: 34px; height: 34px; flex: none; }
+
+  /* ---------- buttons ---------- */
+  .btn {
+    display: inline-flex; align-items: center; gap: .5em;
+    padding: .8em 1.3em;
+    border-radius: 999px;
+    font-weight: 700; font-size: 1rem; line-height: 1;
+    text-decoration: none;
+    border: 1px solid transparent;
+    transition: transform .15s ease, box-shadow .15s ease, background-color .15s ease, border-color .15s ease;
+    white-space: nowrap;
+  }
+  .btn svg { width: 1.1em; height: 1.1em; flex: none; }
+  .btn-primary { background: var(--yellow); color: var(--on-yellow); box-shadow: 0 6px 22px rgba(255, 204, 77, .22); }
+  .btn-primary:hover { background: var(--yellow-hover); transform: translateY(-1px); box-shadow: 0 10px 28px rgba(255, 204, 77, .3); }
+  .btn-ghost { color: var(--text); border-color: var(--border); background: var(--surface); }
+  .btn-ghost:hover { border-color: var(--muted); }
+  .btn-sm { padding: .6em 1em; font-size: .9rem; }
+  .btn:focus-visible, .nav a:focus-visible, .brand:focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; }
+
+  /* ---------- top bar ---------- */
+  header.top {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(21, 18, 27, .85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+  .top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 64px; }
+  .brand { display: flex; align-items: center; gap: .55em; font-weight: 800; font-size: 1.1rem; color: var(--text); text-decoration: none; }
+  .nav { display: none; gap: 26px; }
+  .nav a { color: var(--muted); text-decoration: none; font-weight: 550; font-size: .95rem; }
+  .nav a:hover { color: var(--yellow); }
+  @media (min-width: 860px) { .nav { display: flex; } }
+
+  /* ---------- hero ---------- */
+  .hero {
+    padding: 56px 0 44px;
+    background:
+      radial-gradient(560px 380px at 88% 12%, rgba(255, 204, 77, .12), transparent 70%),
+      radial-gradient(520px 360px at 4% 92%, rgba(244, 165, 116, .09), transparent 70%);
+  }
+  .hero .wrap { display: grid; gap: 44px; align-items: center; }
+  @media (min-width: 960px) { .hero .wrap { grid-template-columns: 1.05fr 1fr; } .hero { padding: 88px 0 72px; } }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: .6em;
+    font-size: .85rem; font-weight: 650; color: var(--yellow);
+    background: var(--yellow-soft); padding: .4em .9em; border-radius: 999px;
+  }
+  /* The avatar's three dots, as a "someone is typing" indicator. */
+  .dots { display: inline-flex; gap: 4px; }
+  .dots i { width: 7px; height: 7px; border-radius: 50%; background: var(--yellow); animation: typing 1.4s infinite ease-in-out; }
+  .dots i:nth-child(2) { animation-delay: .18s; }
+  .dots i:nth-child(3) { background: var(--peach); animation-delay: .36s; }
+  @keyframes typing { 0%, 60%, 100% { transform: translateY(0); opacity: .55; } 30% { transform: translateY(-3px); opacity: 1; } }
+  h1 {
+    font-size: clamp(2.1rem, 5.4vw, 3.5rem); line-height: 1.08; letter-spacing: -.025em;
+    margin: .5em 0 .45em; font-weight: 800;
+  }
+  h1 em { font-style: normal; color: var(--yellow); }
+  h1 .peach { color: var(--peach); }
+  .lede { font-size: 1.13rem; color: var(--muted); max-width: 34em; margin: 0 0 1.8em; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+  .hero-note { margin-top: 1.2em; font-size: .88rem; color: var(--muted); }
+
+  /* ---------- Discord mock ---------- */
+  .discord {
+    --d-bg: #313338; --d-box: #2b2d31; --d-text: #dbdee1; --d-muted: #949ba4; --d-head: #f2f3f5;
+    background: var(--d-bg); color: var(--d-text);
+    border: 1px solid rgba(255, 255, 255, .06);
+    border-radius: 16px; padding: 18px 18px 20px;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, .45), 0 0 0 6px rgba(255, 204, 77, .05);
+    font-size: .94rem; line-height: 1.45;
+    max-width: 560px; width: 100%; justify-self: center;
+  }
+  .d-msg { display: grid; grid-template-columns: 40px 1fr; gap: 12px; }
+  .d-avatar { width: 40px; height: 40px; border-radius: 50%; overflow: hidden; display: block; }
+  .d-head { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; margin-bottom: 4px; }
+  .d-name { color: var(--d-head); font-weight: 600; }
+  .d-app { background: #5865f2; color: #fff; font-size: .62rem; font-weight: 700; padding: 1px 5px; border-radius: 4px; letter-spacing: .02em; }
+  .d-time { color: var(--d-muted); font-size: .75rem; }
+  .d-box {
+    background: var(--d-box); border-radius: 8px; border-left: 4px solid var(--bar, var(--peach));
+    padding: 12px 14px; margin: 2px 0 8px;
+  }
+  .d-box h4 { margin: 0 0 8px; color: var(--d-head); font-size: 1.12rem; }
+  .d-box hr { border: 0; border-top: 1px solid #3f4147; margin: 0 0 8px; }
+  .d-box p { margin: 0; }
+  .d-sub { color: var(--d-muted); font-size: .78rem; margin-bottom: 4px; }
+  .d-btns { display: flex; flex-wrap: wrap; gap: 8px; }
+  .d-btn { font-size: .85rem; font-weight: 550; padding: 6px 12px; border-radius: 8px; color: #fff; }
+  .d-btn.primary { background: #5865f2; }
+  .d-btn.secondary { background: #4e5058; }
+  .d-thread {
+    margin: 16px 0 10px 52px; padding-top: 12px; border-top: 1px solid #3f4147;
+    color: var(--d-muted); font-size: .8rem; font-weight: 600;
+  }
+  .d-reply { margin-left: 52px; }
+  .d-reply + .d-reply { margin-top: 6px; }
+  .d-reply .d-box { margin-bottom: 6px; }
+  .d-reply strong { color: var(--d-head); }
+  @media (max-width: 480px) {
+    .discord { padding: 14px 12px 16px; font-size: .9rem; }
+    .d-msg { grid-template-columns: 34px 1fr; gap: 10px; }
+    .d-avatar { width: 34px; height: 34px; }
+    .d-thread, .d-reply { margin-left: 0; }
+  }
+
+  /* ---------- sections ---------- */
+  section { padding: 64px 0; }
+  .section-head { max-width: 44em; margin-bottom: 34px; }
+  .kicker { font-size: .8rem; font-weight: 750; letter-spacing: .09em; text-transform: uppercase; color: var(--peach); }
+  h2 { font-size: clamp(1.6rem, 3.6vw, 2.3rem); line-height: 1.15; letter-spacing: -.02em; margin: .3em 0 .4em; }
+  .section-head p { color: var(--muted); margin: 0; font-size: 1.05rem; }
+  .alt { background: var(--bg-alt); border-block: 1px solid var(--border); }
+
+  /* how it works / setup steps */
+  .steps { display: grid; gap: 16px; counter-reset: step; padding: 0; margin: 0; list-style: none; }
+  @media (min-width: 760px) { .steps { grid-template-columns: repeat(3, 1fr); gap: 20px; } }
+  .steps li {
+    counter-increment: step;
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 22px 22px 20px; box-shadow: var(--shadow);
+  }
+  .steps li::before {
+    content: counter(step);
+    display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%;
+    background: var(--yellow); color: var(--on-yellow); font-weight: 800; margin-bottom: 12px;
+  }
+  .steps li:last-child::before { background: var(--peach); }
+  .steps h3 { margin: 0 0 .3em; font-size: 1.08rem; }
+  .steps p { margin: 0; color: var(--muted); font-size: .96rem; }
+
+  /* feature cards */
+  .grid { display: grid; gap: 16px; }
+  @media (min-width: 640px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 980px) { .grid { grid-template-columns: repeat(3, 1fr); gap: 20px; } }
+  .card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 22px; box-shadow: var(--shadow);
+    transition: border-color .15s ease;
+  }
+  .card:hover { border-color: rgba(255, 204, 77, .35); }
+  .card .icon {
+    display: grid; place-items: center; width: 42px; height: 42px; border-radius: 12px;
+    background: var(--yellow-soft); font-size: 1.25rem; margin-bottom: 14px;
+  }
+  .card h3 { margin: 0 0 .35em; font-size: 1.06rem; }
+  .card p { margin: 0; color: var(--muted); font-size: .95rem; }
+
+  /* command tables */
+  .commands { margin-top: 40px; }
+  .commands h3 { font-size: 1.2rem; margin: 0 0 14px; display: flex; align-items: center; gap: .5em; }
+  .table {
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+    box-shadow: var(--shadow); overflow: hidden;
+  }
+  .row { display: grid; gap: 4px 20px; padding: 14px 20px; border-top: 1px solid var(--border); }
+  .row:first-child { border-top: 0; }
+  .row .cmd { color: var(--yellow); font-weight: 650; overflow-wrap: anywhere; }
+  .row .cmd .opt { color: var(--muted); font-weight: 450; }
+  .row .desc { color: var(--text); font-size: .95rem; }
+  .row .perm { font-size: .82rem; color: var(--muted); }
+  .row .perm span {
+    display: inline-block; background: var(--peach-soft); color: var(--peach);
+    border-radius: 12px; padding: .15em .7em;
+  }
+  .row.head {
+    display: none; background: var(--surface-2); padding-block: 10px;
+    font-size: .76rem; font-weight: 750; letter-spacing: .07em; text-transform: uppercase; color: var(--muted);
+  }
+  @media (min-width: 760px) {
+    .row { grid-template-columns: minmax(230px, 1fr) 2fr; align-items: baseline; }
+    .with-perm .row { grid-template-columns: minmax(250px, 1.1fr) 2fr minmax(150px, .7fr); }
+    .row.head { display: grid; }
+  }
+  .table-note { color: var(--muted); font-size: .88rem; margin: 12px 4px 0; }
+  .how { font-size: .82rem; color: var(--muted); font-weight: 500; }
+
+  /* closing band */
+  .band {
+    background: linear-gradient(120deg, var(--yellow), var(--peach));
+    color: var(--on-yellow); border-radius: 22px; padding: 44px 28px; text-align: center;
+  }
+  .band h2 { color: var(--on-yellow); margin-top: 0; }
+  .band p { margin: 0 auto 1.6em; max-width: 32em; color: #3a2f22; }
+  .band .btn-primary { background: var(--bg); color: var(--yellow); box-shadow: 0 8px 24px rgba(21, 18, 27, .3); }
+  .band .btn-primary:hover { background: #221C2B; }
+  .band .btn:focus-visible { outline-color: var(--bg); }
+
+  footer { padding: 36px 0 48px; color: var(--muted); font-size: .88rem; }
+  footer .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 24px; }
+  footer p { margin: 0; display: flex; align-items: center; gap: .6em; }
+  footer .logo { width: 22px; height: 22px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .btn, .card { transition: none; }
+    .dots i { animation: none; opacity: 1; }
+  }
+</style>
+</head>
+<body>
+
+<!-- The bot's avatar, redrawn as SVG: #mark is the logo alone, #avatar adds its dark background. -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="mark" viewBox="170 170 684 684">
+    <path d="M730 335A260 260 0 1 0 730 655" fill="none" stroke="#FFCC4D" stroke-width="98" stroke-linecap="round"/>
+    <path d="M263 652L192 806Q181 838 212 826L362 758Z" fill="#FFCC4D"/>
+    <circle cx="478" cy="495" r="46.5" fill="#FFCC4D"/>
+    <circle cx="635" cy="495" r="46.5" fill="#FFCC4D"/>
+    <circle cx="791.5" cy="495" r="46.5" fill="#F4A574"/>
+  </symbol>
+  <symbol id="avatar" viewBox="0 0 1024 1024">
+    <rect width="1024" height="1024" fill="#15121B"/>
+    <path d="M730 335A260 260 0 1 0 730 655" fill="none" stroke="#FFCC4D" stroke-width="98" stroke-linecap="round"/>
+    <path d="M263 652L192 806Q181 838 212 826L362 758Z" fill="#FFCC4D"/>
+    <circle cx="478" cy="495" r="46.5" fill="#FFCC4D"/>
+    <circle cx="635" cy="495" r="46.5" fill="#FFCC4D"/>
+    <circle cx="791.5" cy="495" r="46.5" fill="#F4A574"/>
+  </symbol>
+</svg>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top"><svg class="logo" aria-hidden="true"><use href="#mark"/></svg>ConfessionBot</a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#members">For members</a>
+      <a href="#staff">For admins &amp; mods</a>
+      <a href="#setup">Setup</a>
+    </nav>
+    <a class="btn btn-primary btn-sm" href="https://discord.com/oauth2/authorize?client_id=1554114917487870012&amp;permissions=326686329856&amp;integration_type=0&amp;scope=bot" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+      Add to Discord
+    </a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="wrap">
+      <div>
+        <span class="eyebrow"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>Anonymous confessions for Discord</span>
+        <h1>Say it <em>anonymously.</em><br>Talk about it <span class="peach">together.</span></h1>
+        <p class="lede">
+          ConfessionBot gives your members a place to share what's on their mind without their name on it,
+          and anonymous reply threads to talk about it. Staff keep full control with optional approval,
+          a staff log and moderation tools. Setup is one guided command.
+        </p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="https://discord.com/oauth2/authorize?client_id=1554114917487870012&amp;permissions=326686329856&amp;integration_type=0&amp;scope=bot" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+            Add to Discord
+          </a>
+          <a class="btn btn-ghost" href="#members">See features &amp; commands</a>
+        </div>
+        <p class="hero-note">Set up with <code>/setup</code> in about a minute</p>
+      </div>
+
+      <div class="discord" role="img" aria-label="Example: ConfessionBot posts Confession #42 with Create and Reply buttons, and two anonymous replies appear in its thread, one from Anon #A3F and one from the author.">
+        <div class="d-msg" aria-hidden="true">
+          <svg class="d-avatar"><use href="#avatar"/></svg>
+          <div>
+            <div class="d-head"><span class="d-name">ConfessionBot</span><span class="d-app">APP</span><span class="d-time">Today at 9:41 PM</span></div>
+            <div class="d-box" style="--bar:#F4A574">
+              <h4>💌 Confession #42</h4>
+              <hr>
+              <p>I've been practising guitar every night for a year and I'm finally playing at the open mic this Friday. Nobody here knows I play.</p>
+            </div>
+            <div class="d-btns">
+              <span class="d-btn primary">✍️ Create Confession</span>
+              <span class="d-btn secondary">💬 Reply Confession</span>
+            </div>
+          </div>
+        </div>
+        <div class="d-thread" aria-hidden="true">🧵 Confession #42 · 2 replies</div>
+        <div class="d-reply" aria-hidden="true">
+          <div class="d-box" style="--bar:#7DD3FC">
+            <div><strong>🎭 Anon #A3F</strong></div>
+            <div class="d-sub">↪ replying to Confession #42</div>
+            <p>Wait, which open mic? I want to come 👀</p>
+          </div>
+          <div class="d-btns"><span class="d-btn secondary">💬 Reply</span></div>
+        </div>
+        <div class="d-reply" aria-hidden="true">
+          <div class="d-box" style="--bar:#FFCC4D">
+            <div><strong>✍️ Author</strong></div>
+            <div class="d-sub">↪ replying to Anon #A3F</div>
+            <p>The café downtown, 8 PM. Please don't make it weird 😅</p>
+          </div>
+          <div class="d-btns"><span class="d-btn secondary">💬 Reply</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Members -->
+  <section id="members" class="alt">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">For members</span>
+        <h2>Everything you need to confess and reply</h2>
+        <p>Nothing to set up. Use the buttons under the latest confession, or right-click (long-press on mobile) any confession or reply.</p>
+      </div>
+
+      <div class="grid">
+        <article class="card">
+          <div class="icon" aria-hidden="true">🔒</div>
+          <h3>Anonymous, or with your name</h3>
+          <p>Pick on the form. Anonymous confessions never show your name; choose “Show my name” if you want the credit.</p>
+        </article>
+        <article class="card">
+          <div class="icon" aria-hidden="true">🖼️</div>
+          <h3>Pictures and videos</h3>
+          <p>Attach one image or video (JPG, PNG, GIF, WebP, MP4, MOV or WebM, within your server's upload limit and 25 MB at most). Location, camera and capture details are removed before it's posted.</p>
+        </article>
+        <article class="card">
+          <div class="icon" aria-hidden="true">🎭</div>
+          <h3>Anonymous reply threads</h3>
+          <p>Every replier gets a stable alias per thread, so conversations are easy to follow without revealing anyone. Reply to a confession or to another reply.</p>
+        </article>
+        <article class="card">
+          <div class="icon" aria-hidden="true">🔔</div>
+          <h3>Reply notifications</h3>
+          <p>Get a DM when someone replies to your confession. Tap 🔔 after replying to also hear when someone answers you. Mute either from the DM.</p>
+        </article>
+        <article class="card">
+          <div class="icon" aria-hidden="true">📋</div>
+          <h3>Your confessions, privately</h3>
+          <p>See your posts, reply counts and approval status in one private list. Delete a confession, or withdraw one that's still waiting for review.</p>
+        </article>
+        <article class="card">
+          <div class="icon" aria-hidden="true">🚩</div>
+          <h3>Report in two clicks</h3>
+          <p>See something that crosses a line? Report it with a reason and the server's staff are notified right away.</p>
+        </article>
+      </div>
+
+      <div class="commands">
+        <h3>🧑 Member commands</h3>
+        <div class="table" role="table" aria-label="Member commands">
+          <div class="row head" role="row"><span role="columnheader">Command</span><span role="columnheader">What it does</span></div>
+          <div class="row" role="row">
+            <div class="cmd" role="cell">✍️ Create Confession <span class="how">button</span></div>
+            <div class="desc" role="cell">Opens the confession form: up to 1,500 characters, anonymous or named, with an optional picture or video.</div>
+          </div>
+          <div class="row" role="row">
+            <div class="cmd" role="cell">💬 Reply Confession <span class="how">button</span></div>
+            <div class="desc" role="cell">Reply to any confession by typing its number. Inside a thread, the 💬 <strong>Reply</strong> button answers a specific reply.</div>
+          </div>
+          <div class="row" role="row">
+            <div class="cmd" role="cell">/my-confessions</div>
+            <div class="desc" role="cell">Your confessions, their replies and approval status. Only you can see it. Delete or withdraw from here.</div>
+          </div>
+          <div class="row" role="row">
+            <div class="cmd" role="cell">/report <span class="opt">id reason</span></div>
+            <div class="desc" role="cell">Report a confession to the staff by its number, with a reason.</div>
+          </div>
+          <div class="row" role="row">
+            <div class="cmd" role="cell">/help</div>
+            <div class="desc" role="cell">A quick guide to how everything works.</div>
+          </div>
+          <div class="row" role="row">
+            <div class="cmd" role="cell">Apps → Reply Anonymously <span class="how">right-click</span></div>
+            <div class="desc" role="cell">Reply to the confession or reply you right-clicked.</div>
+          </div>
+          <div class="row" role="row">
+            <div class="cmd" role="cell">Apps → Report Confession <span class="how">right-click</span></div>
+            <div class="desc" role="cell">Report the confession you right-clicked, with a reason.</div>
+          </div>
+          <div class="row" role="row">
+            <div class="cmd" role="cell">Apps → Delete My Post <span class="how">right-click</span></div>
+            <div class="desc" role="cell">Delete your own confession (with its thread) or your own reply.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Staff -->
+  <section id="staff">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">For admins &amp; moderators</span>
+        <h2>Anonymous for members, in control for staff</h2>
+        <p>Decide how confessions flow in your server and step in when something goes wrong.</p>
+      </div>
+
+      <div class="grid">
+        <article class="card">
+          <div class="icon" aria-hidden="true">🧭</div>
+          <h3>Guided setup</h3>
+          <p><code>/setup</code> walks you through the confession channel, staff log, optional approval and locking the channel so members can only post through the bot. Then it posts the buttons.</p>
+        </article>
+        <article class="card">
+          <div class="icon" aria-hidden="true">✅</div>
+          <h3>Optional approval queue</h3>
+          <p>Confessions wait in a private channel for an approver role or anyone with Manage Server. Disapprove with a reason; the author gets a DM either way. Numbers are only given on approval, so there are no gaps.</p>
+        </article>
+        <article class="card">
+          <div class="icon" aria-hidden="true">📝</div>
+          <h3>Staff log</h3>
+          <p>Every confession, reply, deletion and report lands in your log channel, with who posted it, so you can act on abuse.</p>
+        </article>
+        <article class="card">
+          <div class="icon" aria-hidden="true">🔨</div>
+          <h3>Moderation tools</h3>
+          <p>Block a member from confessing and replying, either directly or by a confession's number. Delete any confession along with its reply thread.</p>
+        </article>
+        <article class="card">
+          <div class="icon" aria-hidden="true">⏸️</div>
+          <h3>Pause and pace</h3>
+          <p>Pause confessions and replies at any time; the buttons show “Paused by staff”. Set a per-member cooldown from 0 to 3600 seconds (replies are capped at 15 s).</p>
+        </article>
+        <article class="card">
+          <div class="icon" aria-hidden="true">🛡️</div>
+          <h3>Safe by default</h3>
+          <p>@everyone, role and user mentions in confessions never ping. Reports are rate-limited so the log can't be flooded. If the buttons' message is deleted, they're posted again automatically.</p>
+        </article>
+      </div>
+
+      <div class="commands">
+        <h3>🛡️ Staff commands</h3>
+        <div class="table with-perm" role="table" aria-label="Staff commands">
+          <div class="row head" role="row"><span role="columnheader">Command</span><span role="columnheader">What it does</span><span role="columnheader">Default permission</span></div>
+          <div class="row" role="row">
+            <div class="cmd" role="cell">/setup</div>
+            <div class="desc" role="cell">Step-by-step setup: channels, optional approval, channel lock and the buttons. Run it again to change anything.</div>
+            <div class="perm" role="cell"><span>Manage Server</span></div>
+          </div>
+          <div class="row" role="row">
+            <div class="cmd" role="cell">/settings <span class="opt">[cooldown]</span></div>
+            <div class="desc" role="cell">View the current setup, or set the cooldown between confessions (0–3600 s).</div>
+            <div class="perm" role="cell"><span>Manage Server</span></div>
+          </div>
+          <div class="row" role="row">
+            <div class="cmd" role="cell">/confessions <span class="opt">state: On | Off</span></div>
+            <div class="desc" role="cell">Pause or resume confessions and replies. Queued confessions stay in the queue while paused.</div>
+            <div class="perm" role="cell"><span>Manage Server</span></div>
+          </div>
+          <div class="row" role="row">
+            <div class="cmd" role="cell">/confession-ban <span class="opt">[user] [confession] [reason]</span></div>
+            <div class="desc" role="cell">Block a member from confessing and replying, by user or by a confession number.</div>
+            <div class="perm" role="cell"><span>Timeout Members</span></div>
+          </div>
+          <div class="row" role="row">
+            <div class="cmd" role="cell">/confession-unban <span class="opt">user</span></div>
+            <div class="desc" role="cell">Let a blocked member confess and reply again.</div>
+            <div class="perm" role="cell"><span>Timeout Members</span></div>
+          </div>
+          <div class="row" role="row">
+            <div class="cmd" role="cell">/delete-confession <span class="opt">id</span></div>
+            <div class="desc" role="cell">Delete a confession and its reply thread.</div>
+            <div class="perm" role="cell"><span>Manage Messages</span></div>
+          </div>
+          <div class="row" role="row">
+            <div class="cmd" role="cell">Approve / Disapprove <span class="how">buttons</span></div>
+            <div class="desc" role="cell">Review queued confessions in the approval channel. Disapproving asks for a reason that's sent to the author.</div>
+            <div class="perm" role="cell"><span>Approver role or Manage Server</span></div>
+          </div>
+        </div>
+        <p class="table-note">You can change who may use each command in <strong>Server Settings → Integrations → ConfessionBot</strong>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Setup -->
+  <section id="setup" class="alt">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">Get started</span>
+        <h2>Set up in about a minute</h2>
+        <p>You'll need <strong>Manage Server</strong> in the server you're adding it to.</p>
+      </div>
+      <ol class="steps">
+        <li>
+          <h3>Add ConfessionBot</h3>
+          <p>Use the <strong>Add to Discord</strong> button, pick your server and approve the permissions.</p>
+        </li>
+        <li>
+          <h3>Run <code>/setup</code></h3>
+          <p>Choose the confession channel and staff log, and turn on approval if you want it. You review everything before it's saved.</p>
+        </li>
+        <li>
+          <h3>Members press the buttons</h3>
+          <p>ConfessionBot posts <strong>Create Confession</strong> and <strong>Reply Confession</strong> in your channel. That's it.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="band">
+        <h2>Give your server a place to say it</h2>
+        <p>Anonymous confessions, anonymous replies and the tools to keep it friendly.</p>
+        <a class="btn btn-primary" href="https://discord.com/oauth2/authorize?client_id=1554114917487870012&amp;permissions=326686329856&amp;integration_type=0&amp;scope=bot" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          Add ConfessionBot to Discord
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><svg class="logo" aria-hidden="true"><use href="#mark"/></svg>ConfessionBot · If you remove the bot, your server's data is deleted after 30 days.</p>
+    <p>Not affiliated with Discord Inc.</p>
+  </div>
+</footer>
+
+</body>
+</html>
