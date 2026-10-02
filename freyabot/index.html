@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MobileLegendsStats – Legal</title>
+  <meta name="description" content="Terms of Service and Privacy Policy for the MobileLegendsStats Discord bot.">
+  <style>
+    :root {
+      --bg: #f6f7fb;
+      --surface: #ffffff;
+      --text: #1d2130;
+      --muted: #5d6478;
+      --border: #e2e5ee;
+      --accent: #5865f2;
+      --accent-text: #ffffff;
+      --code-bg: #eef0f7;
+      --radius: 12px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #14161d;
+        --surface: #1c1f29;
+        --text: #e8eaf2;
+        --muted: #9aa1b5;
+        --border: #2b3040;
+        --accent: #7983f5;
+        --accent-text: #0f1118;
+        --code-bg: #262b3a;
+      }
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 16px/1.65 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    }
+
+    /* Header */
+    header {
+      position: sticky; top: 0; z-index: 10;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+    .bar {
+      max-width: 860px; margin: 0 auto; padding: 12px 16px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 12px; flex-wrap: wrap;
+    }
+    .brand { font-weight: 700; letter-spacing: .2px; }
+    .brand span { color: var(--accent); }
+    nav {
+      display: inline-flex; padding: 4px; gap: 4px;
+      background: var(--bg); border: 1px solid var(--border); border-radius: 999px;
+    }
+    nav button {
+      appearance: none; border: 0; cursor: pointer;
+      padding: 8px 16px; border-radius: 999px;
+      background: transparent; color: var(--muted);
+      font: inherit; font-size: 14px; font-weight: 600;
+      transition: background .15s, color .15s;
+    }
+    nav button:hover { color: var(--text); }
+    nav button[aria-pressed="true"] { background: var(--accent); color: var(--accent-text); }
+    nav button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+    /* Content */
+    main { max-width: 860px; margin: 0 auto; padding: 24px 16px 64px; }
+    article {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 28px clamp(18px, 4vw, 44px);
+    }
+    article[hidden] { display: none; }
+    article h1 { font-size: 2rem; line-height: 1.2; margin: 0 0 .6em; }
+    article h2 { font-size: 1.35rem; margin: 2em 0 .5em; padding-top: .8em; border-top: 1px solid var(--border); }
+    article h3 { font-size: 1.08rem; margin: 1.5em 0 .4em; }
+    article p, article ul, article ol, article table { margin: .8em 0; }
+    article ul, article ol { padding-left: 1.4em; }
+    article li { margin: .3em 0; }
+    article a { color: var(--accent); text-underline-offset: 2px; }
+    article hr { border: 0; border-top: 1px solid var(--border); margin: 2em 0; }
+    article code {
+      background: var(--code-bg); padding: .12em .4em; border-radius: 6px;
+      font: .88em ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+    .table-wrap { overflow-x: auto; }
+    article table { border-collapse: collapse; width: 100%; font-size: .95rem; }
+    article th, article td { border: 1px solid var(--border); padding: 8px 12px; text-align: left; vertical-align: top; }
+    article th { background: var(--code-bg); }
+    .note { color: var(--muted); font-size: .92rem; }
+
+    footer { text-align: center; color: var(--muted); font-size: 13px; padding: 0 16px 32px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="bar">
+      <div class="brand">Freya Bot</div>
+      <nav aria-label="Legal documents">
+        <button type="button" data-doc="terms">Terms of Service</button>
+        <button type="button" data-doc="privacy">Privacy Policy</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===================== TERMS OF SERVICE ===================== -->
+    <article id="terms">
+      <h1>Terms of Service</h1>
+      <p><strong>Effective date:</strong> October 2, 2026</p>
+      <p>
+        These Terms of Service ("Terms") apply to your use of the <strong>MobileLegendsStats</strong> Discord bot (the
+        "Bot"). By adding the Bot to a server or using any of its commands, you agree to these Terms and to
+        the <a href="#privacy">Privacy Policy</a>. If you do not agree, do not use the Bot.
+      </p>
+
+      <h2>1. What the Bot is</h2>
+      <p>The Bot shows Mobile Legends: Bang Bang information in Discord:</p>
+      <ul>
+        <li>hero details, skills, builds and combos;</li>
+        <li>win, pick and ban rates, counters, synergy and trends;</li>
+        <li>hero comparisons, a draft helper and a win-rate calculator;</li>
+        <li>optionally, your own player profile after you log in.</li>
+      </ul>
+      <p>
+        The Bot is a free, <strong>unofficial fan project</strong>. It is not affiliated with, endorsed by or sponsored
+        by Moonton, Mobile Legends: Bang Bang or Discord.
+      </p>
+
+      <h2>2. Who can use it</h2>
+      <p>You must:</p>
+      <ul>
+        <li>
+          follow <a href="https://discord.com/terms" target="_blank" rel="noopener noreferrer">Discord's Terms of Service</a> and
+          <a href="https://discord.com/guidelines" target="_blank" rel="noopener noreferrer">Community Guidelines</a>; and
+        </li>
+        <li>meet Discord's minimum age requirement.</li>
+      </ul>
+
+      <h2>3. Acceptable use</h2>
+      <p>You agree <strong>not</strong> to:</p>
+      <ul>
+        <li>request verification codes for a Mobile Legends account that is not yours, or try to access anyone else's account;</li>
+        <li>spam commands, buttons or login requests, or try to get around the Bot's rate limits;</li>
+        <li>try to break, overload, reverse-engineer or exploit the Bot or the services it uses;</li>
+        <li>use the Bot for anything illegal, harmful or against the game's terms.</li>
+      </ul>
+      <p>The developer may limit or block access for anyone who breaks these rules.</p>
+
+      <h2>4. Logging in</h2>
+      <ul>
+        <li>
+          Logging in with <code>/login</code> is optional. It works through an <strong>unofficial third-party service</strong>
+          (Rone Arena API), not an official Moonton login.
+        </li>
+        <li>
+          Only enter the verification code in the Bot's private pop-up form. Never post it in chat, and
+          never share it with anyone.
+        </li>
+        <li>
+          You are responsible for logging in only to your own account. You can log out at any time with
+          <code>/logout</code>.
+        </li>
+        <li>What is stored, and for how long, is explained in the <a href="#privacy">Privacy Policy</a>.</li>
+      </ul>
+
+      <h2>5. Data accuracy and availability</h2>
+      <ul>
+        <li>
+          Game statistics come from a free community API and from the game itself. They may be delayed,
+          incomplete or inaccurate. Use them for fun and general guidance only.
+        </li>
+        <li>
+          Features depend on services the developer does not control. They may stop working without notice
+          if those services change or go offline. For example, match history is currently unavailable
+          because the game switched that service off.
+        </li>
+        <li>The Bot may be changed, paused or discontinued at any time.</li>
+      </ul>
+
+      <h2>6. Content and intellectual property</h2>
+      <ul>
+        <li>Mobile Legends: Bang Bang, its heroes, images and game data are the property of <strong>Moonton</strong>.</li>
+        <li>
+          Hero data is provided by the
+          <a href="https://arena.rone.dev/api/docs" target="_blank" rel="noopener noreferrer">Rone Arena API</a> (BSD-3-Clause).
+        </li>
+        <li>The Bot's own code and generated images are provided as-is for personal, non-commercial use in Discord.</li>
+      </ul>
+
+      <h2>7. Disclaimer</h2>
+      <p>
+        The Bot is provided <strong>"as is" and "as available"</strong>, without warranties of any kind. This includes
+        any warranty that it will be accurate, uninterrupted or error-free. Use it at your own risk.
+      </p>
+
+      <h2>8. Limitation of liability</h2>
+      <p>
+        To the fullest extent permitted by law, the developer is not liable for any damages or losses
+        arising from your use of, or inability to use, the Bot. This includes any loss related to your game
+        account, game decisions or data provided by third-party services.
+      </p>
+
+      <h2>9. Ending use</h2>
+      <ul>
+        <li>You can stop using the Bot at any time: run <code>/logout</code> and remove it from your server.</li>
+        <li>The developer may suspend or end access for anyone, at any time, especially for breaking these Terms.</li>
+      </ul>
+
+      <h2>10. Changes to these Terms</h2>
+      <p>
+        These Terms may be updated from time to time. The latest version, with its effective date, is
+        always available in the Bot's repository. Continuing to use the Bot after a change means you accept
+        the updated Terms.
+      </p>
+
+    </article>
+
+    <!-- ===================== PRIVACY POLICY ===================== -->
+    <article id="privacy" hidden>
+      <h1>Privacy Policy</h1>
+      <p><strong>Effective date:</strong> October 2, 2026</p>
+      <p>
+        This Privacy Policy explains what information the <strong>MobileLegendsStats</strong> Discord bot (the "Bot")
+        collects, how it is used, and how you can have it deleted. The Bot is an unofficial fan project. It
+        is not affiliated with or endorsed by Moonton or Discord.
+      </p>
+
+      <h2>Summary</h2>
+      <ul>
+        <li>Hero stats commands (such as <code>/hero</code>, <code>/top</code>, <code>/counters</code>) <strong>store nothing about you</strong>.</li>
+        <li>
+          If you use <code>/login</code>, the Bot stores your <strong>Discord user ID</strong>, your <strong>Mobile Legends ID (ML ID)</strong>,
+          your <strong>server (zone) ID</strong> and an <strong>encrypted login token</strong> from the game.
+        </li>
+        <li>Your <strong>verification code is never stored</strong>.</li>
+        <li>Run <code>/logout</code> at any time to delete your stored login immediately.</li>
+        <li>The Bot does not read your messages, does not sell data, and does not use data for ads.</li>
+      </ul>
+
+      <h2>1. Information the Bot collects</h2>
+
+      <h3>1.1 When you use any command</h3>
+      <p>
+        To answer a command, Discord sends the Bot your Discord user ID, the server and channel where you
+        used it, and the options you chose (for example a hero name). The Bot uses this only to reply.
+      </p>
+      <ul>
+        <li>
+          <strong>Temporary limits:</strong> your Discord user ID is held in memory for a few minutes to stop command
+          spam. It is never written to disk and is cleared on restart.
+        </li>
+        <li>
+          <strong>Hero statistics:</strong> game data such as win rates and hero details is cached to reduce load on the
+          data source. This cache contains public game data only, nothing about you.
+        </li>
+      </ul>
+
+      <h3>1.2 When you log in with <code>/login</code> (optional)</h3>
+      <p>Logging in is optional and only needed for account features such as <code>/profile</code>.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Data</th><th>Why</th><th>How long it is kept</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Discord user ID</td>
+              <td>To link the login to you</td>
+              <td>Until your login ends (see below)</td>
+            </tr>
+            <tr>
+              <td>ML ID and server ID</td>
+              <td>To request the verification code and confirm it is your account</td>
+              <td>Until your login ends</td>
+            </tr>
+            <tr>
+              <td>A random login reference and timestamps</td>
+              <td>To make each "Enter code" button single-use, to expire it after 10 minutes, and to limit how many codes can be requested</td>
+              <td>Deleted automatically about 25 hours after the code was requested</td>
+            </tr>
+            <tr>
+              <td>Login token from the game</td>
+              <td>To fetch your profile when you ask for it</td>
+              <td>Stored <strong>encrypted</strong> (AES-256-GCM) until your login ends</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Your login ends, and your stored login is deleted, when:</p>
+      <ul>
+        <li>you run <code>/logout</code>;</li>
+        <li>the game's login token expires; or</li>
+        <li>the game rejects the token.</li>
+      </ul>
+      <p><strong>Not stored:</strong></p>
+      <ul>
+        <li>
+          <strong>Verification code:</strong> you type it into a private Discord pop-up. It is used once to log in and
+          is never stored, logged or shown in chat.
+        </li>
+        <li>
+          <strong>Profile details</strong> (in-game name, level, rank, region, avatar): these are fetched from the game
+          each time you use <code>/profile</code>. They are not saved.
+        </li>
+        <li>
+          <strong>Other account fields:</strong> the game's login response may include extra fields, such as an email
+          address or phone number. The Bot ignores them and never stores or logs them.
+        </li>
+      </ul>
+
+      <h3>1.3 Logs</h3>
+      <p>
+        The server keeps technical logs to fix errors and spot abuse. Logs may contain your Discord user ID
+        together with events such as "logged in", "logged out" or "verification code sent". Logs never
+        contain verification codes, login tokens or message content. They are rotated automatically and
+        limited to a small fixed size, so older entries are deleted after a short time.
+      </p>
+
+      <h2>2. How information is used</h2>
+      <p>Your information is used only to run the Bot's features:</p>
+      <ul>
+        <li>to answer your commands;</li>
+        <li>to log you in and show your profile;</li>
+        <li>to prevent abuse, such as code spam to someone else's in-game mail.</li>
+      </ul>
+      <p>The Bot does <strong>not</strong>:</p>
+      <ul>
+        <li>sell or rent your information;</li>
+        <li>use it for advertising or profiling;</li>
+        <li>share it except as described in section 3.</li>
+      </ul>
+
+      <h2>3. Third parties</h2>
+      <p>The Bot relies on these services. Each has its own privacy policy.</p>
+      <ul>
+        <li><strong>Discord:</strong> delivers commands and replies.</li>
+        <li>
+          <strong>Rone Arena API</strong> (<code>arena.rone.dev</code>): an unofficial community service that provides the game data.
+          <ul>
+            <li>When you log in, your ML ID, server ID and verification code are sent to it to complete the login.</li>
+            <li>When you use account features, your encrypted-at-rest login token is decrypted and sent to it to fetch your profile.</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Moonton / Mobile Legends: Bang Bang:</strong> the game sends the verification code to your in-game
+          mail and provides the account data.
+        </li>
+        <li><strong>Hosting provider:</strong> the Bot runs on a rented server (VPS), where the database and logs are stored.</li>
+      </ul>
+      <p>Images such as hero portraits are downloaded from the game's image servers. No information about you is included in those requests.</p>
+
+      <h2>4. Public replies</h2>
+      <p>
+        Most account replies are <strong>private</strong> (only you can see them). The exception is <code>/profile</code> and the
+        <strong>Post my profile</strong> button: they post your in-game name, ML ID, server, level, rank and avatar
+        <strong>publicly in the channel</strong>, because you chose to share them. Hero statistics replies are also public.
+      </p>
+
+      <h2>5. Security</h2>
+      <ul>
+        <li>Login tokens are encrypted at rest.</li>
+        <li>Secrets such as the encryption key are kept out of the code.</li>
+        <li>Account replies are private.</li>
+        <li>Each login button works only once, only for you, and only for 10 minutes.</li>
+      </ul>
+      <p>No system is perfectly secure, but the Bot is designed to keep as little data as possible.</p>
+
+      <h2>6. Your choices and rights</h2>
+      <ul>
+        <li><strong>Delete your login:</strong> run <code>/logout</code>. Your stored login is deleted at once.</li>
+        <li><strong>Don't log in:</strong> all hero statistics commands work without logging in.</li>
+        <li>
+          <strong>Other requests:</strong> to ask what data is held about you, or to have any remaining data (such as
+          log entries) deleted, contact the developer (section 9).
+        </li>
+      </ul>
+
+      <h2>7. Children</h2>
+      <p>
+        The Bot is meant for users who meet Discord's minimum age requirement (at least 13, or older where
+        local law requires it). It does not knowingly collect information from anyone younger.
+      </p>
+
+      <h2>8. Changes to this policy</h2>
+      <p>
+        This policy may be updated when the Bot changes. The latest version is always available in the
+        Bot's repository, with the effective date at the top. Continuing to use the Bot after a change
+        means you accept the updated policy.
+      </p>
+
+      
+    </article>
+  </main>
+
+  <footer>
+    Mobile Legends: Bang Bang and its game data are &copy; Moonton. This is an unofficial project, not
+    affiliated with or endorsed by Moonton or Discord.
+  </footer>
+
+  <script>
+    const DEFAULT_DOC = "terms";
+    const docs = document.querySelectorAll("main article");
+    const buttons = document.querySelectorAll("nav button");
+
+    function show() {
+      const key = location.hash.replace("#", "").toLowerCase();
+      const active = document.getElementById(key) && key !== "" ? key : DEFAULT_DOC;
+      docs.forEach(d => { d.hidden = d.id !== active; });
+      buttons.forEach(b => b.setAttribute("aria-pressed", String(b.dataset.doc === active)));
+      document.title = (active === "privacy" ? "Privacy Policy" : "Terms of Service") + " – MobileLegendsStats";
+      window.scrollTo({ top: 0 });
+    }
+
+    buttons.forEach(b => b.addEventListener("click", () => { location.hash = b.dataset.doc; }));
+    window.addEventListener("hashchange", show);
+    show();
+  </script>
+</body>
+</html>
