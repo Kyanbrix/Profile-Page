@@ -1,0 +1,23 @@
+# Kyanbrix Conag (Kian)
+
+> Personal profile of Kyanbrix Conag, also known as Kian Conag or Kenken Conag. He is an LLM Full Stack Development Associate at Accenture Philippines, based in Cebu City, Philippines. Outside of work he builds custom Discord bots, chatbots and other personal projects.
+
+## Technologies
+
+- Languages: Java (17 and 21), Python, JavaScript, HTML, CSS
+- Frameworks and tools: Spring Boot, Git, Docker, Ubuntu, IntelliJ IDEA, PyCharm
+- Databases: PostgreSQL, MySQL, SQLite, MongoDB
+- AI and scraping: Tavily, Firecrawl
+- Hosting: Vercel, Railway
+
+## Links
+
+- [Profile](https://kyanbrix.com/): the full profile page
+- [GitHub](https://github.com/Kyanbrix): code and projects
+- [Instagram](https://www.instagram.com/kyanbrix/)
+- [Discord](https://discord.com/users/683613536823279794)
+
+## Contact
+
+- conagkyanbrix@gmail.com
+- kyanbrix@yahoo.com
