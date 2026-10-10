@@ -3,119 +3,300 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>MobileLegendsStats – Legal</title>
-  <meta name="description" content="Terms of Service and Privacy Policy for the MobileLegendsStats Discord bot.">
+  <title>Freya – Legal</title>
+  <meta name="description" content="Terms of Service and Privacy Policy for the Freya Discord bot.">
+  <meta name="theme-color" content="#10243a">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Marcellus&display=swap" rel="stylesheet">
+  <script>document.documentElement.classList.add("js");</script>
   <style>
     :root {
-      --bg: #f6f7fb;
-      --surface: #ffffff;
-      --text: #1d2130;
-      --muted: #5d6478;
-      --border: #e2e5ee;
-      --accent: #5865f2;
-      --accent-text: #ffffff;
-      --code-bg: #eef0f7;
-      --radius: 12px;
+      --bg: #e9f0f5;
+      --surface: #f7fafc;
+      --text: #10243a;
+      --muted: #4e6377;
+      --border: #cbd8e2;
+      --link: #1f6a9e;
+      --ice: #3e8fc4;
+      --gold: #c59a3c;
+      --band: #10243a;
+      --band-text: #e9f0f5;
+      --band-muted: #a9bdcd;
+      --code-bg: #dbe6ee;
+
+      --display: "Marcellus", "Palatino Linotype", Palatino, Georgia, serif;
+      --body: "Figtree", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+      /* Wing cut along the bottom of the header band */
+      --feather: clamp(64px, 13vw, 150px);
+      --step: calc(var(--feather) * 0.24);
+      --notch: calc(var(--feather) * 0.07);
     }
     @media (prefers-color-scheme: dark) {
       :root {
-        --bg: #14161d;
-        --surface: #1c1f29;
-        --text: #e8eaf2;
-        --muted: #9aa1b5;
-        --border: #2b3040;
-        --accent: #7983f5;
-        --accent-text: #0f1118;
-        --code-bg: #262b3a;
+        --bg: #0b1622;
+        --surface: #12202f;
+        --text: #e3ecf3;
+        --muted: #93a7b8;
+        --border: #23384b;
+        --link: #7cc0ec;
+        --ice: #5aa9dc;
+        --gold: #d9b45c;
+        --band: #16314d;
+        --code-bg: #1b2d40;
       }
     }
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    html { -webkit-text-size-adjust: 100%; }
+    @media (prefers-reduced-motion: no-preference) {
+      html { scroll-behavior: smooth; }
+    }
     body {
       margin: 0;
       background: var(--bg);
       color: var(--text);
-      font: 16px/1.65 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      font: 1.0625rem/1.65 var(--body);
     }
+    ::selection { background: var(--ice); color: #fff; }
+    :focus-visible { outline: 2px solid var(--ice); outline-offset: 3px; border-radius: 2px; }
 
-    /* Header */
-    header {
+    .wrap { max-width: 62.5rem; margin: 0 auto; padding: 0 1.25rem; }
+
+    /* Header band */
+    .band {
+      position: relative;
+      isolation: isolate;
+      background: var(--gold);
+      color: var(--band-text);
+      padding: clamp(2rem, 6vw, 3.5rem) 0 calc(var(--step) * 3 + clamp(1.75rem, 5vw, 3rem));
+    }
+    .band, .band::before {
+      clip-path: polygon(
+        0 0, 100% 0,
+        100% calc(100% - var(--step) * 3),
+        calc(100% - var(--feather)) calc(100% - var(--step) * 2 + var(--notch)),
+        calc(100% - var(--feather) - var(--notch)) calc(100% - var(--step) * 2),
+        calc(100% - var(--feather) * 2) calc(100% - var(--step) + var(--notch)),
+        calc(100% - var(--feather) * 2 - var(--notch)) calc(100% - var(--step)),
+        calc(100% - var(--feather) * 3) 100%,
+        0 100%
+      );
+    }
+    /* Navy layer sits 3px short of the gold one, leaving a gold edge on the cut */
+    .band::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 3px;
+      z-index: -1;
+      background: var(--band);
+    }
+    .brand {
+      margin: 0;
+      font-family: var(--display);
+      font-size: clamp(3rem, 11vw, 5.5rem);
+      line-height: 1;
+      letter-spacing: 0.01em;
+    }
+    .tagline { margin: 0.6rem 0 0; color: var(--band-muted); font-size: 1.05rem; }
+
+    /* Toolbar: document switch, plus the section menu on small screens */
+    .toolbar {
       position: sticky; top: 0; z-index: 10;
-      background: var(--surface);
+      background: var(--bg);
       border-bottom: 1px solid var(--border);
     }
-    .bar {
-      max-width: 860px; margin: 0 auto; padding: 12px 16px;
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 12px; flex-wrap: wrap;
+    .toolbar-inner {
+      position: relative;
+      display: flex; align-items: stretch; justify-content: space-between;
+      gap: 0.5rem 1.5rem;
     }
-    .brand { font-weight: 700; letter-spacing: .2px; }
-    .brand span { color: var(--accent); }
-    nav {
-      display: inline-flex; padding: 4px; gap: 4px;
-      background: var(--bg); border: 1px solid var(--border); border-radius: 999px;
+    .tabs { display: flex; gap: 1.5rem; }
+    .tabs a {
+      display: flex; align-items: center;
+      min-height: 3.25rem;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -1px;
+      color: var(--muted);
+      font-weight: 600; font-size: 0.98rem;
+      text-decoration: none;
+      white-space: nowrap;
     }
-    nav button {
-      appearance: none; border: 0; cursor: pointer;
-      padding: 8px 16px; border-radius: 999px;
-      background: transparent; color: var(--muted);
-      font: inherit; font-size: 14px; font-weight: 600;
-      transition: background .15s, color .15s;
+    .tabs a:hover { color: var(--text); }
+    .tabs a[aria-current="true"] { color: var(--text); border-bottom-color: var(--gold); }
+
+    /* Page layout */
+    .layout {
+      display: grid;
+      grid-template-columns: 14rem minmax(0, 42rem);
+      gap: 4rem;
+      align-items: start;
+      padding-top: 3rem;
+      padding-bottom: 4rem;
     }
-    nav button:hover { color: var(--text); }
-    nav button[aria-pressed="true"] { background: var(--accent); color: var(--accent-text); }
-    nav button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+    /* Table of contents */
+    .toc { display: none; }
+    .js .toc {
+      display: block;
+      position: sticky; top: 5rem;
+      max-height: calc(100vh - 6.5rem);
+      overflow-y: auto;
+      font-size: 0.93rem; line-height: 1.35;
+    }
+    .toc-toggle { display: none; }
+    .toc-list { list-style: none; margin: 0; padding: 0; border-left: 1px solid var(--border); }
+    .toc-list a {
+      display: block;
+      margin-left: -1px;
+      padding: 0.4rem 0 0.4rem 1rem;
+      border-left: 2px solid transparent;
+      color: var(--muted);
+      text-decoration: none;
+    }
+    .toc-list a:hover { color: var(--text); }
+    .toc-list a[aria-current="true"] { color: var(--text); font-weight: 600; border-left-color: var(--gold); }
 
     /* Content */
-    main { max-width: 860px; margin: 0 auto; padding: 24px 16px 64px; }
-    article {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 28px clamp(18px, 4vw, 44px);
-    }
     article[hidden] { display: none; }
-    article h1 { font-size: 2rem; line-height: 1.2; margin: 0 0 .6em; }
-    article h2 { font-size: 1.35rem; margin: 2em 0 .5em; padding-top: .8em; border-top: 1px solid var(--border); }
-    article h3 { font-size: 1.08rem; margin: 1.5em 0 .4em; }
-    article p, article ul, article ol, article table { margin: .8em 0; }
-    article ul, article ol { padding-left: 1.4em; }
-    article li { margin: .3em 0; }
-    article a { color: var(--accent); text-underline-offset: 2px; }
-    article hr { border: 0; border-top: 1px solid var(--border); margin: 2em 0; }
-    article code {
-      background: var(--code-bg); padding: .12em .4em; border-radius: 6px;
-      font: .88em ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    article { scroll-margin-top: 4.5rem; }
+    article + article { margin-top: 5rem; }
+    article h1 {
+      font-family: var(--display); font-weight: 400;
+      font-size: clamp(2.1rem, 7vw, 3.25rem); line-height: 1.1;
+      margin: 0 0 0.4em;
     }
-    .table-wrap { overflow-x: auto; }
-    article table { border-collapse: collapse; width: 100%; font-size: .95rem; }
-    article th, article td { border: 1px solid var(--border); padding: 8px 12px; text-align: left; vertical-align: top; }
-    article th { background: var(--code-bg); }
-    .note { color: var(--muted); font-size: .92rem; }
+    article h2 {
+      font-family: var(--display); font-weight: 400;
+      font-size: 1.6rem; line-height: 1.2;
+      margin: 2.6rem 0 0.7rem; padding-top: 1.6rem;
+      border-top: 1px solid var(--border);
+      scroll-margin-top: 4.5rem;
+    }
+    article h3 { font-size: 1.08rem; font-weight: 700; margin: 1.8em 0 0.4em; }
+    article p, article ul, article ol, article table { margin: 0.8em 0; }
+    article ul, article ol { padding-left: 1.3em; }
+    article li { margin: 0.4em 0; padding-left: 0.15em; }
+    article li::marker { color: var(--ice); }
+    article a { color: var(--link); text-underline-offset: 0.18em; text-decoration-thickness: 1px; }
+    article a:hover { text-decoration-thickness: 2px; }
+    article code {
+      background: var(--code-bg); padding: 0.12em 0.4em; border-radius: 4px;
+      font: 0.88em ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      white-space: nowrap;
+    }
+    .effective { color: var(--muted); }
+    .effective strong { font-weight: 600; }
 
-    footer { text-align: center; color: var(--muted); font-size: 13px; padding: 0 16px 32px; }
+    /* Privacy summary */
+    .glance {
+      margin: 2rem 0 0;
+      padding: 1.4rem clamp(1.1rem, 4vw, 1.75rem) 0.9rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--gold);
+    }
+    .glance h2 { margin-top: 0; padding-top: 0; border-top: 0; }
+
+    .table-wrap {
+      overflow-x: auto;
+      margin: 1.2em 0;
+      border: 1px solid var(--border);
+      background: var(--surface);
+    }
+    article table { border-collapse: collapse; width: 100%; min-width: 34rem; margin: 0; font-size: 0.95rem; line-height: 1.5; }
+    article th, article td { padding: 0.7rem 0.9rem; text-align: left; vertical-align: top; }
+    article th { font-weight: 700; border-bottom: 2px solid var(--gold); white-space: nowrap; }
+    article tbody tr + tr td { border-top: 1px solid var(--border); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      color: var(--muted); font-size: 0.88rem;
+    }
+    footer p { margin: 0; padding: 1.25rem 0 2.5rem; max-width: 42rem; }
+
+    /* Tablet and phone: sections collapse into a menu in the toolbar */
+    @media (max-width: 56rem) {
+      .layout { display: block; padding-top: 2rem; padding-bottom: 3rem; }
+      .toolbar-inner { position: static; }
+      .js .toc {
+        position: static;
+        max-height: none;
+        overflow: visible;
+        display: flex;
+      }
+      .toc-toggle {
+        display: flex; align-items: center; gap: 0.6rem;
+        min-height: 3.25rem; padding: 0;
+        border: 0; background: none; color: var(--text);
+        font: 600 0.98rem/1.3 var(--body);
+        cursor: pointer;
+      }
+      .toc-toggle::after {
+        content: "";
+        width: 0.5rem; height: 0.5rem;
+        border-right: 2px solid var(--gold); border-bottom: 2px solid var(--gold);
+        transform: translateY(-25%) rotate(45deg);
+      }
+      .toc-toggle[aria-expanded="true"]::after { transform: translateY(25%) rotate(225deg); }
+      .toc-list {
+        display: none;
+        position: absolute; left: 0; right: 0; top: 100%;
+        max-height: min(70vh, 28rem);
+        overflow-y: auto; overscroll-behavior: contain;
+        padding: 0.5rem 1.25rem 0.75rem;
+        background: var(--surface);
+        border: 0;
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+        box-shadow: 0 1.5rem 2rem -1rem rgba(16, 36, 58, 0.4);
+      }
+      .toc.open .toc-list { display: block; }
+      .toc-list a { margin: 0; padding: 0.6rem 0 0.6rem 0.9rem; }
+    }
+
+    @media (max-width: 30rem) {
+      body { font-size: 1rem; }
+      .tabs { gap: 1.1rem; }
+      .tabs .more { display: none; }
+      article h2 { font-size: 1.4rem; }
+    }
   </style>
 </head>
 <body>
-  <header>
-    <div class="bar">
-      <div class="brand">Freya Bot</div>
-      <nav aria-label="Legal documents">
-        <button type="button" data-doc="terms">Terms of Service</button>
-        <button type="button" data-doc="privacy">Privacy Policy</button>
-      </nav>
+  <header class="band">
+    <div class="wrap">
+      <p class="brand">Freya</p>
+      <p class="tagline">Terms and privacy for the Freya Discord bot</p>
     </div>
   </header>
+
+  <div class="toolbar">
+    <div class="wrap toolbar-inner">
+      <nav class="tabs" aria-label="Legal documents">
+        <a href="#terms" data-doc="terms">Terms<span class="more">&nbsp;of Service</span></a>
+        <a href="#privacy" data-doc="privacy">Privacy<span class="more">&nbsp;Policy</span></a>
+      </nav>
+    </div>
+  </div>
+
+  <div class="layout wrap">
+    <nav class="toc" aria-label="Sections">
+      <button type="button" class="toc-toggle" aria-expanded="false" aria-controls="toc-list">Sections</button>
+      <ol class="toc-list" id="toc-list"></ol>
+    </nav>
 
   <main>
     <!-- ===================== TERMS OF SERVICE ===================== -->
     <article id="terms">
       <h1>Terms of Service</h1>
-      <p><strong>Effective date:</strong> October 2, 2026</p>
+      <p class="effective"><strong>Effective date:</strong> October 2, 2026</p>
       <p>
         These Terms of Service ("Terms") apply to your use of the <strong>Freya</strong> Discord bot. By adding the Bot to a server or using any of its commands, you agree to these Terms and to
         the <a href="#privacy">Privacy Policy</a>. If you do not agree, do not use the Bot.
       </p>
 
-      <h2>1. What the Bot is</h2>
+      <h2 id="terms-what">1. What the Bot is</h2>
       <p>The Bot shows Mobile Legends: Bang Bang information in Discord:</p>
       <ul>
         <li>hero details, skills, builds and combos;</li>
@@ -128,7 +309,7 @@
         by Moonton, Mobile Legends: Bang Bang or Discord.
       </p>
 
-      <h2>2. Who can use it</h2>
+      <h2 id="terms-who">2. Who can use it</h2>
       <p>You must:</p>
       <ul>
         <li>
@@ -138,7 +319,7 @@
         <li>meet Discord's minimum age requirement.</li>
       </ul>
 
-      <h2>3. Acceptable use</h2>
+      <h2 id="terms-use">3. Acceptable use</h2>
       <p>You agree <strong>not</strong> to:</p>
       <ul>
         <li>request verification codes for a Mobile Legends account that is not yours, or try to access anyone else's account;</li>
@@ -148,7 +329,7 @@
       </ul>
       <p>The developer may limit or block access for anyone who breaks these rules.</p>
 
-      <h2>4. Logging in</h2>
+      <h2 id="terms-login">4. Logging in</h2>
       <ul>
         <li>
           Logging in with <code>/login</code> is optional. It works through an <strong>unofficial third-party service</strong>
@@ -165,7 +346,7 @@
         <li>What is stored, and for how long, is explained in the <a href="#privacy">Privacy Policy</a>.</li>
       </ul>
 
-      <h2>5. Data accuracy and availability</h2>
+      <h2 id="terms-data">5. Data accuracy and availability</h2>
       <ul>
         <li>
           Game statistics come from a free community API and from the game itself. They may be delayed,
@@ -179,7 +360,7 @@
         <li>The Bot may be changed, paused or discontinued at any time.</li>
       </ul>
 
-      <h2>6. Content and intellectual property</h2>
+      <h2 id="terms-ip">6. Content and intellectual property</h2>
       <ul>
         <li>Mobile Legends: Bang Bang, its heroes, images and game data are the property of <strong>Moonton</strong>.</li>
         <li>
@@ -189,26 +370,26 @@
         <li>The Bot's own code and generated images are provided as-is for personal, non-commercial use in Discord.</li>
       </ul>
 
-      <h2>7. Disclaimer</h2>
+      <h2 id="terms-disclaimer">7. Disclaimer</h2>
       <p>
         The Bot is provided <strong>"as is" and "as available"</strong>, without warranties of any kind. This includes
         any warranty that it will be accurate, uninterrupted or error-free. Use it at your own risk.
       </p>
 
-      <h2>8. Limitation of liability</h2>
+      <h2 id="terms-liability">8. Limitation of liability</h2>
       <p>
         To the fullest extent permitted by law, the developer is not liable for any damages or losses
         arising from your use of, or inability to use, the Bot. This includes any loss related to your game
         account, game decisions or data provided by third-party services.
       </p>
 
-      <h2>9. Ending use</h2>
+      <h2 id="terms-ending">9. Ending use</h2>
       <ul>
         <li>You can stop using the Bot at any time: run <code>/logout</code> and remove it from your server.</li>
         <li>The developer may suspend or end access for anyone, at any time, especially for breaking these Terms.</li>
       </ul>
 
-      <h2>10. Changes to these Terms</h2>
+      <h2 id="terms-changes">10. Changes to these Terms</h2>
       <p>
         These Terms may be updated from time to time. The latest version, with its effective date, is
         always available in the Bot's repository. Continuing to use the Bot after a change means you accept
@@ -218,28 +399,30 @@
     </article>
 
     <!-- ===================== PRIVACY POLICY ===================== -->
-    <article id="privacy" hidden>
+    <article id="privacy">
       <h1>Privacy Policy</h1>
-      <p><strong>Effective date:</strong> October 2, 2026</p>
+      <p class="effective"><strong>Effective date:</strong> October 2, 2026</p>
       <p>
-        This Privacy Policy explains what information the <strong>MobileLegendsStats</strong> Discord bot (the "Bot")
+        This Privacy Policy explains what information the <strong>Freya</strong> Discord bot (the "Bot")
         collects, how it is used, and how you can have it deleted. The Bot is an unofficial fan project. It
         is not affiliated with or endorsed by Moonton or Discord.
       </p>
 
-      <h2>Summary</h2>
-      <ul>
-        <li>Hero stats commands (such as <code>/hero</code>, <code>/top</code>, <code>/counters</code>) <strong>store nothing about you</strong>.</li>
-        <li>
-          If you use <code>/login</code>, the Bot stores your <strong>Discord user ID</strong>, your <strong>Mobile Legends ID (ML ID)</strong>,
-          your <strong>server (zone) ID</strong> and an <strong>encrypted login token</strong> from the game.
-        </li>
-        <li>Your <strong>verification code is never stored</strong>.</li>
-        <li>Run <code>/logout</code> at any time to delete your stored login immediately.</li>
-        <li>The Bot does not read your messages, does not sell data, and does not use data for ads.</li>
-      </ul>
+      <section class="glance">
+        <h2 id="privacy-summary">Summary</h2>
+        <ul>
+          <li>Hero stats commands (such as <code>/hero</code>, <code>/top</code>, <code>/counters</code>) <strong>store nothing about you</strong>.</li>
+          <li>
+            If you use <code>/login</code>, the Bot stores your <strong>Discord user ID</strong>, your <strong>Mobile Legends ID (ML ID)</strong>,
+            your <strong>server (zone) ID</strong> and an <strong>encrypted login token</strong> from the game.
+          </li>
+          <li>Your <strong>verification code is never stored</strong>.</li>
+          <li>Run <code>/logout</code> at any time to delete your stored login immediately.</li>
+          <li>The Bot does not read your messages, does not sell data, and does not use data for ads.</li>
+        </ul>
+      </section>
 
-      <h2>1. Information the Bot collects</h2>
+      <h2 id="privacy-collects">1. Information the Bot collects</h2>
 
       <h3>1.1 When you use any command</h3>
       <p>
@@ -259,7 +442,7 @@
 
       <h3>1.2 When you log in with <code>/login</code> (optional)</h3>
       <p>Logging in is optional and only needed for account features such as <code>/profile</code>.</p>
-      <div class="table-wrap">
+      <div class="table-wrap" tabindex="0" role="region" aria-label="Data stored when you log in">
         <table>
           <thead>
             <tr><th>Data</th><th>Why</th><th>How long it is kept</th></tr>
@@ -318,7 +501,7 @@
         limited to a small fixed size, so older entries are deleted after a short time.
       </p>
 
-      <h2>2. How information is used</h2>
+      <h2 id="privacy-use">2. How information is used</h2>
       <p>Your information is used only to run the Bot's features:</p>
       <ul>
         <li>to answer your commands;</li>
@@ -332,7 +515,7 @@
         <li>share it except as described in section 3.</li>
       </ul>
 
-      <h2>3. Third parties</h2>
+      <h2 id="privacy-third-parties">3. Third parties</h2>
       <p>The Bot relies on these services. Each has its own privacy policy.</p>
       <ul>
         <li><strong>Discord:</strong> delivers commands and replies.</li>
@@ -351,14 +534,14 @@
       </ul>
       <p>Images such as hero portraits are downloaded from the game's image servers. No information about you is included in those requests.</p>
 
-      <h2>4. Public replies</h2>
+      <h2 id="privacy-public">4. Public replies</h2>
       <p>
         Most account replies are <strong>private</strong> (only you can see them). The exception is <code>/profile</code> and the
         <strong>Post my profile</strong> button: they post your in-game name, ML ID, server, level, rank and avatar
         <strong>publicly in the channel</strong>, because you chose to share them. Hero statistics replies are also public.
       </p>
 
-      <h2>5. Security</h2>
+      <h2 id="privacy-security">5. Security</h2>
       <ul>
         <li>Login tokens are encrypted at rest.</li>
         <li>Secrets such as the encryption key are kept out of the code.</li>
@@ -367,54 +550,127 @@
       </ul>
       <p>No system is perfectly secure, but the Bot is designed to keep as little data as possible.</p>
 
-      <h2>6. Your choices and rights</h2>
+      <h2 id="privacy-rights">6. Your choices and rights</h2>
       <ul>
         <li><strong>Delete your login:</strong> run <code>/logout</code>. Your stored login is deleted at once.</li>
         <li><strong>Don't log in:</strong> all hero statistics commands work without logging in.</li>
         <li>
           <strong>Other requests:</strong> to ask what data is held about you, or to have any remaining data (such as
-          log entries) deleted, contact the developer (section 9).
+          log entries) deleted, contact the developer (<a href="#privacy-contact">section 9</a>).
         </li>
       </ul>
 
-      <h2>7. Children</h2>
+      <h2 id="privacy-children">7. Children</h2>
       <p>
         The Bot is meant for users who meet Discord's minimum age requirement (at least 13, or older where
         local law requires it). It does not knowingly collect information from anyone younger.
       </p>
 
-      <h2>8. Changes to this policy</h2>
+      <h2 id="privacy-changes">8. Changes to this policy</h2>
       <p>
         This policy may be updated when the Bot changes. The latest version is always available in the
         Bot's repository, with the effective date at the top. Continuing to use the Bot after a change
         means you accept the updated policy.
       </p>
 
-      
+      <h2 id="privacy-contact">9. Contact</h2>
+      <p>
+        Questions about this policy, and requests about your data, can be sent to the developer at
+        <a href="mailto:kyanbrix@yahoo.com">kyanbrix@yahoo.com</a>.
+      </p>
     </article>
   </main>
+  </div>
 
   <footer>
-    Mobile Legends: Bang Bang and its game data are &copy; Moonton. This is an unofficial project, not
-    affiliated with or endorsed by Moonton or Discord.
+    <p class="wrap">
+      Mobile Legends: Bang Bang and its game data are &copy; Moonton. This is an unofficial project, not
+      affiliated with or endorsed by Moonton or Discord.
+    </p>
   </footer>
 
   <script>
     const DEFAULT_DOC = "terms";
-    const docs = document.querySelectorAll("main article");
-    const buttons = document.querySelectorAll("nav button");
+    const docs = [...document.querySelectorAll("main article")];
+    const tabs = [...document.querySelectorAll(".tabs a")];
+    const toc = document.querySelector(".toc");
+    const tocList = toc.querySelector(".toc-list");
+    const toggle = toc.querySelector(".toc-toggle");
+    const toolbar = document.querySelector(".toolbar-inner");
+    const layout = document.querySelector(".layout");
+    const compact = window.matchMedia("(max-width: 56rem)");
 
-    function show() {
-      const key = location.hash.replace("#", "").toLowerCase();
-      const active = document.getElementById(key) && key !== "" ? key : DEFAULT_DOC;
-      docs.forEach(d => { d.hidden = d.id !== active; });
-      buttons.forEach(b => b.setAttribute("aria-pressed", String(b.dataset.doc === active)));
-      document.title = (active === "privacy" ? "Privacy Policy" : "Terms of Service") + " – MobileLegendsStats";
-      window.scrollTo({ top: 0 });
+    let heads = [];
+    let links = [];
+    let shown = null;
+
+    function setOpen(open) {
+      toc.classList.toggle("open", open);
+      toggle.setAttribute("aria-expanded", String(open));
     }
 
-    buttons.forEach(b => b.addEventListener("click", () => { location.hash = b.dataset.doc; }));
+    // The section list is a sidebar on wide screens and a toolbar menu on narrow ones
+    function place() {
+      setOpen(false);
+      if (compact.matches) toolbar.append(toc);
+      else layout.prepend(toc);
+    }
+
+    function buildToc(doc) {
+      heads = [...doc.querySelectorAll("h2[id]")];
+      tocList.replaceChildren(...heads.map(h => {
+        const li = document.createElement("li");
+        const a = document.createElement("a");
+        a.href = "#" + h.id;
+        a.textContent = h.textContent;
+        li.append(a);
+        return li;
+      }));
+      links = [...tocList.querySelectorAll("a")];
+    }
+
+    function show() {
+      const target = document.getElementById(location.hash.slice(1));
+      const doc = (target && target.closest("main article")) || document.getElementById(DEFAULT_DOC);
+      const section = target && target !== doc && doc.contains(target) ? target : null;
+      setOpen(false);
+      // Moving between sections of the open document is left to the browser
+      if (doc === shown && section) return;
+      shown = doc;
+      docs.forEach(d => { d.hidden = d !== doc; });
+      tabs.forEach(t => {
+        if (t.dataset.doc === doc.id) t.setAttribute("aria-current", "true");
+        else t.removeAttribute("aria-current");
+      });
+      document.title = (doc.id === "privacy" ? "Privacy Policy" : "Terms of Service") + " – Freya";
+      buildToc(doc);
+      if (section) section.scrollIntoView({ behavior: "instant" });
+      else window.scrollTo({ top: 0, behavior: "instant" });
+      spy();
+    }
+
+    let queued = false;
+    function spy() {
+      queued = false;
+      let current = -1;
+      heads.forEach((h, i) => { if (h.getBoundingClientRect().top <= 140) current = i; });
+      links.forEach((a, i) => {
+        if (i === current) a.setAttribute("aria-current", "true");
+        else a.removeAttribute("aria-current");
+      });
+    }
+
+    toggle.addEventListener("click", () => setOpen(!toc.classList.contains("open")));
+    tocList.addEventListener("click", e => { if (e.target.closest("a")) setOpen(false); });
+    document.addEventListener("keydown", e => { if (e.key === "Escape") setOpen(false); });
+    document.addEventListener("click", e => { if (!toc.contains(e.target)) setOpen(false); });
+    window.addEventListener("scroll", () => {
+      if (!queued) { queued = true; requestAnimationFrame(spy); }
+    }, { passive: true });
+    compact.addEventListener("change", place);
     window.addEventListener("hashchange", show);
+
+    place();
     show();
   </script>
 </body>
