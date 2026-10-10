@@ -3,114 +3,367 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Terms of Service – ConfessionBot</title>
-<meta name="description" content="The terms that apply to your use of ConfessionBot.">
+<title>Terms of Service – Confession</title>
+<meta name="description" content="The terms that apply to your use of Confession.">
+<meta name="theme-color" content="#eceaf3" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#16131f" media="(prefers-color-scheme: dark)">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Literata:ital,opsz,wght@0,7..72,400..700;1,7..72,400..700&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add("js");</script>
 <style>
   :root {
-    --bg: #fbfaf7;
-    --text: #1d1d1b;
-    --muted: #6a6862;
-    --rule: #dcd9d0;
-    --link: #1a4fa0;
-    --note-bg: #f2efe7;
+    --bg: #eceaf3;
+    --surface: #f6f5fa;
+    --text: #1f1b2e;
+    --muted: #5e5873;
+    --rule: #d3cfe0;
+    --accent: #6b4fa0;
+    --bar: #1f1b2e;
+    --bar-text: #eceaf3;
+
+    --display: "Bricolage Grotesque", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --body: "Literata", Georgia, "Times New Roman", serif;
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --bg: #17171a;
-      --text: #e6e4de;
-      --muted: #97948b;
-      --rule: #34343a;
-      --link: #8fb4f0;
-      --note-bg: #1f1f24;
+      --bg: #16131f;
+      --surface: #1e1a2b;
+      --text: #e7e3f2;
+      --muted: #a29bb8;
+      --rule: #322c45;
+      --accent: #b79cf0;
+      --bar: #e7e3f2;
+      --bar-text: #16131f;
     }
   }
 
   * { box-sizing: border-box; }
 
   html { -webkit-text-size-adjust: 100%; }
+  @media (prefers-reduced-motion: no-preference) {
+    html { scroll-behavior: smooth; }
+  }
 
   body {
     margin: 0;
     background: var(--bg);
     color: var(--text);
-    font: 17px/1.65 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font: 1.0625rem/1.7 var(--body);
   }
 
-  main {
-    max-width: 40rem;
+  ::selection { background: var(--bar); color: var(--bar-text); }
+
+  a { color: var(--accent); text-underline-offset: 0.18em; text-decoration-thickness: 1px; }
+  a:hover { text-decoration-thickness: 2px; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+  .wrap {
+    max-width: 60.5rem;
     margin: 0 auto;
-    padding: 3rem 1.25rem 5rem;
+    padding: 0 1.25rem;
   }
+
+  /* Masthead */
+  .topbar {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-top: 1.5rem;
+    font-family: var(--display);
+    font-size: 0.95rem;
+  }
+  .brand { font-weight: 700; font-size: 1.05rem; letter-spacing: -0.01em; }
+
+  .masthead { padding-bottom: clamp(2.5rem, 7vw, 4.5rem); }
 
   h1 {
-    font-size: 2rem;
-    line-height: 1.2;
-    margin: 0 0 0.35rem;
-    letter-spacing: -0.01em;
+    margin: clamp(2.5rem, 9vw, 6rem) 0 0;
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: clamp(2.75rem, 11.5vw, 6.5rem);
+    line-height: 0.95;
+    letter-spacing: -0.025em;
+  }
+  h1 span {
+    position: relative;
+    display: inline-block;
+  }
+  /* Each word starts under a redaction bar that lifts on load */
+  h1 span::after {
+    content: "";
+    position: absolute;
+    inset: 0.1em -0.05em 0.02em;
+    background: var(--bar);
+    transform-origin: right center;
+    animation: lift 0.7s cubic-bezier(0.7, 0, 0.2, 1) 0.45s both;
+  }
+  h1 span:nth-child(2)::after { animation-delay: 0.6s; }
+  h1 span:nth-child(3)::after { animation-delay: 0.75s; }
+  @keyframes lift { to { transform: scaleX(0); } }
+  @media (prefers-reduced-motion: reduce) {
+    h1 span::after { display: none; }
   }
 
   .meta {
-    margin: 0 0 2rem;
+    margin: 1.25rem 0 0;
     color: var(--muted);
-    font-size: 0.95rem;
+    font-family: var(--display);
+    font-size: 1rem;
   }
+
+  /* Page layout */
+  .layout {
+    display: grid;
+    grid-template-columns: 14rem minmax(0, 40rem);
+    gap: 4rem;
+    align-items: start;
+    border-top: 1px solid var(--rule);
+    padding-top: 2.5rem;
+    padding-bottom: 5rem;
+  }
+
+  /* Table of contents */
+  .toc {
+    position: sticky;
+    top: 2rem;
+    max-height: calc(100vh - 4rem);
+    overflow-y: auto;
+    font-family: var(--display);
+    font-size: 0.93rem;
+    line-height: 1.35;
+  }
+  .toc-toggle { display: none; }
+  .toc-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    counter-reset: toc;
+  }
+  .toc-list li { counter-increment: toc; }
+  .toc-list a {
+    display: grid;
+    grid-template-columns: 1.75rem 1fr;
+    padding: 0.4rem 0;
+    color: var(--muted);
+    text-decoration: none;
+  }
+  .toc-list a::before {
+    content: counter(toc);
+    font-variant-numeric: tabular-nums;
+  }
+  .toc-list a:hover { color: var(--text); }
+  .toc-list a[aria-current="true"] { color: var(--text); font-weight: 700; }
+  .toc-list a[aria-current="true"]::before { color: var(--accent); }
+
+  /* Document */
+  main > :first-child { margin-top: 0; }
+
+  .lede { font-size: 1.2rem; line-height: 1.6; }
 
   h2 {
-    font-size: 1.3rem;
-    line-height: 1.3;
-    margin: 2.75rem 0 0.75rem;
-    padding-top: 1.5rem;
+    display: grid;
+    grid-template-columns: 2.5rem 1fr;
+    margin: 3rem 0 0.9rem;
+    padding-top: 1.75rem;
     border-top: 1px solid var(--rule);
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 1.5rem;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+    scroll-margin-top: 1rem;
+  }
+  h2 .num { color: var(--accent); font-variant-numeric: tabular-nums; }
+
+  p { margin: 0 0 1.1rem; }
+
+  ul { margin: 0 0 1.1rem; padding-left: 1.25rem; }
+  li { margin-bottom: 0.5rem; padding-left: 0.2rem; }
+  li::marker { color: var(--accent); }
+
+  /* Section 3: who can still see the author */
+  .seen {
+    list-style: none;
+    padding: 0;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+  }
+  .seen li {
+    position: relative;
+    margin: 0;
+    padding: 0.9rem 1.1rem 0.9rem 3.1rem;
+  }
+  .seen li + li { border-top: 1px solid var(--rule); }
+  .seen li::before {
+    content: "";
+    position: absolute;
+    left: 1.1rem;
+    top: 1.15rem;
+    width: 1.25rem;
+    height: 1.25rem;
+    background: var(--accent);
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill-rule='evenodd' d='M12 5C6.5 5 2.5 9.5 1 12c1.5 2.5 5.5 7 11 7s9.5-4.5 11-7c-1.5-2.5-5.5-7-11-7zm0 11a4 4 0 110-8 4 4 0 010 8z'/%3E%3C/svg%3E") center / contain no-repeat;
+            mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill-rule='evenodd' d='M12 5C6.5 5 2.5 9.5 1 12c1.5 2.5 5.5 7 11 7s9.5-4.5 11-7c-1.5-2.5-5.5-7-11-7zm0 11a4 4 0 110-8 4 4 0 010 8z'/%3E%3C/svg%3E") center / contain no-repeat;
+  }
+  .warn {
+    margin-top: 1.25rem;
+    padding: 1rem 1.2rem;
+    background: var(--bar);
+    color: var(--bar-text);
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 1.1rem;
+    line-height: 1.4;
   }
 
-  p { margin: 0 0 1rem; }
+  footer {
+    border-top: 1px solid var(--rule);
+    padding-top: 1.25rem;
+    padding-bottom: 2.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.5rem 1.5rem;
+    color: var(--muted);
+    font-family: var(--display);
+    font-size: 0.93rem;
+  }
 
-  ul { margin: 0 0 1rem; padding-left: 1.25rem; }
-  li { margin-bottom: 0.4rem; }
+  /* Tablet and phone: contents collapse into a jump menu */
+  @media (max-width: 56rem) {
+    .layout {
+      display: block;
+      border-top: 0;
+      padding-top: 0;
+      padding-bottom: 3.5rem;
+    }
+    .toc {
+      position: static;
+      max-height: none;
+      overflow: visible;
+      margin: 0 -1.25rem 2rem;
+      padding: 0 1.25rem;
+      background: var(--bg);
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+    }
+    .toc-list { padding: 0.5rem 0; }
 
-  a { color: var(--link); text-underline-offset: 2px; }
+    .js .toc { position: sticky; top: 0; z-index: 10; }
+    .js .toc-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      width: 100%;
+      min-height: 3rem;
+      padding: 0;
+      border: 0;
+      background: none;
+      color: var(--text);
+      font: 600 0.98rem/1.3 var(--display);
+      text-align: left;
+      cursor: pointer;
+    }
+    .toc-toggle::after {
+      content: "";
+      flex: none;
+      width: 0.5rem;
+      height: 0.5rem;
+      margin-right: 0.2rem;
+      border-right: 2px solid var(--accent);
+      border-bottom: 2px solid var(--accent);
+      transform: translateY(-25%) rotate(45deg);
+    }
+    .toc-toggle[aria-expanded="true"]::after { transform: translateY(25%) rotate(225deg); }
+    .js .toc-list {
+      display: none;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 100%;
+      max-height: min(70vh, 28rem);
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      padding: 0.5rem 1.25rem 0.75rem;
+      background: var(--surface);
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      box-shadow: 0 1.5rem 2rem -1rem rgba(31, 27, 46, 0.35);
+    }
+    .js .toc.open .toc-list { display: block; }
+    .toc-list a { padding: 0.6rem 0; }
 
-  .placeholder {
-    background: #fff3b0;
-    color: #1d1d1b;
-    padding: 0.05em 0.3em;
+    h2 { scroll-margin-top: 4rem; }
   }
 
   @media (max-width: 30rem) {
-    body { font-size: 16px; }
-    h1 { font-size: 1.65rem; }
+    body { font-size: 1rem; }
+    .lede { font-size: 1.1rem; }
+    h2 { grid-template-columns: 2.1rem 1fr; font-size: 1.3rem; }
   }
 </style>
 </head>
 <body>
+
+<header class="masthead wrap">
+  <div class="topbar">
+    <span class="brand">Confession</span>
+    <a href="https://kyanbrix.com/privacy-policy">Privacy Policy</a>
+  </div>
+  <h1><span>Terms</span> <span>of</span> <span>Service</span></h1>
+  <p class="meta">Effective September 29, 2026</p>
+</header>
+
+<div class="layout wrap">
+
+<nav class="toc" aria-label="Sections">
+  <button type="button" class="toc-toggle" aria-expanded="false" aria-controls="toc-list">Jump to section</button>
+  <ol class="toc-list" id="toc-list">
+    <li><a href="#discord">Discord's rules come first</a></li>
+    <li><a href="#who">Who can use the bot</a></li>
+    <li><a href="#anonymous">What "anonymous" means</a></li>
+    <li><a href="#not-post">What you may not post</a></li>
+    <li><a href="#not-do">What you may not do</a></li>
+    <li><a href="#staff">For server owners and staff</a></li>
+    <li><a href="#content">Your content</a></li>
+    <li><a href="#enforcement">Moderation and enforcement</a></li>
+    <li><a href="#crisis">Not a crisis service</a></li>
+    <li><a href="#availability">Availability and changes</a></li>
+    <li><a href="#liability">Limitation of liability</a></li>
+    <li><a href="#changes">Changes to these terms</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ol>
+</nav>
+
 <main>
 
-<h1>Terms of Service</h1>
-<p class="meta">ConfessionBot &middot; Effective September 29, 2026</p>
+<p class="lede">These terms apply to your use of Confession ("the bot", "we", "us"), a Discord bot for posting anonymous confessions and replies. By adding the bot to a server or using any of its features, you agree to these terms and to our <a href="https://kyanbrix.com/privacy-policy">Privacy Policy</a>. If you do not agree, do not use the bot.</p>
 
-<p>These terms apply to your use of ConfessionBot ("the bot", "we", "us"), a Discord bot for posting anonymous confessions and replies. By adding the bot to a server or using any of its features, you agree to these terms and to our <a href="privacy.html">Privacy Policy</a>. If you do not agree, do not use the bot.</p>
-
-<h2 id="discord">1. Discord's rules come first</h2>
+<h2 id="discord"><span class="num">1.</span> Discord's rules come first</h2>
 
 <p>The bot runs on Discord, so you must also follow <a href="https://discord.com/terms">Discord's Terms of Service</a> and <a href="https://discord.com/guidelines">Community Guidelines</a>, as well as the rules of each server you use it in. Anything those rules forbid is also forbidden through the bot.</p>
 
-<h2 id="who">2. Who can use the bot</h2>
+<h2 id="who"><span class="num">2.</span> Who can use the bot</h2>
 
 <p>You must meet Discord's minimum age requirement (at least 13, or older where local law requires) and be allowed to use Discord.</p>
 
-<h2 id="anonymous">3. What "anonymous" means</h2>
+<h2 id="anonymous"><span class="num">3.</span> What "anonymous" means</h2>
 
 <p>An anonymous confession or reply hides your identity from the <strong>other members</strong> of the server. It does <strong>not</strong> hide your identity from:</p>
 
-<ul>
+<ul class="seen">
   <li><strong>server staff</strong> who can view the server's log channel or approval channel, which show the real author of every post so they can moderate;</li>
   <li><strong>the bot's operator</strong>, who can see stored data to run the bot and handle abuse; or</li>
-  <li><strong>Discord</strong>, or <strong>authorities with a valid legal request</strong> (see the <a href="privacy.html#who-sees">Privacy Policy</a>).</li>
+  <li><strong>Discord</strong>, or <strong>authorities with a valid legal request</strong> (see the <a href="https://kyanbrix.com/privacy-policy#who-sees">Privacy Policy</a>).</li>
 </ul>
 
-<p>Do not post anything you would not want server staff to be able to link to you.</p>
+<p class="warn">Do not post anything you would not want server staff to be able to link to you.</p>
 
-<h2 id="not-post">4. What you may not post</h2>
+<h2 id="not-post"><span class="num">4.</span> What you may not post</h2>
 
 <p>You may not use the bot to post, or to link to, content that:</p>
 
@@ -126,7 +379,7 @@
   <li>impersonates another person, server staff, or Discord.</li>
 </ul>
 
-<h2 id="not-do">5. What you may not do</h2>
+<h2 id="not-do"><span class="num">5.</span> What you may not do</h2>
 
 <ul>
   <li>Try to find out who wrote an anonymous post, or help others do so.</li>
@@ -135,7 +388,7 @@
   <li>Attack, disrupt, reverse-engineer or exploit the bot, its servers, or its database.</li>
 </ul>
 
-<h2 id="staff">6. For server owners and staff</h2>
+<h2 id="staff"><span class="num">6.</span> For server owners and staff</h2>
 
 <p>If you add the bot to a server or moderate with it:</p>
 
@@ -145,11 +398,11 @@
   <li>Your server's rules must be compatible with these terms.</li>
 </ul>
 
-<h2 id="content">7. Your content</h2>
+<h2 id="content"><span class="num">7.</span> Your content</h2>
 
-<p>You keep ownership of what you post. By posting through the bot, you give us permission to store, display, and process that content (including removing metadata from attachments) as needed to operate the bot, as described in the <a href="privacy.html">Privacy Policy</a>. You are solely responsible for what you post and confirm that you have the right to post it.</p>
+<p>You keep ownership of what you post. By posting through the bot, you give us permission to store, display, and process that content (including removing metadata from attachments) as needed to operate the bot, as described in the <a href="https://kyanbrix.com/privacy-policy">Privacy Policy</a>. You are solely responsible for what you post and confirm that you have the right to post it.</p>
 
-<h2 id="enforcement">8. Moderation and enforcement</h2>
+<h2 id="enforcement"><span class="num">8.</span> Moderation and enforcement</h2>
 
 <ul>
   <li>Server staff may delete confessions and replies, ban members from confessing, and pause confessions in their server.</li>
@@ -157,26 +410,67 @@
   <li>We may report content that breaks the law or Discord's rules to Discord or the appropriate authorities.</li>
 </ul>
 
-<h2 id="crisis">9. Not a crisis service</h2>
+<h2 id="crisis"><span class="num">9.</span> Not a crisis service</h2>
 
 <p>People sometimes confess serious things. The bot, its operator and server staff are not a substitute for professional help. If you or someone else is in danger, contact your local emergency services or a crisis line right away.</p>
 
-<h2 id="availability">10. Availability and changes</h2>
+<h2 id="availability"><span class="num">10.</span> Availability and changes</h2>
 
 <p>The bot is free and provided "as is" and "as available". We do not guarantee that it will always be online, error-free, or that stored data will never be lost. We may change, pause, or discontinue any part of the bot at any time.</p>
 
-<h2 id="liability">11. Limitation of liability</h2>
+<h2 id="liability"><span class="num">11.</span> Limitation of liability</h2>
 
 <p>To the fullest extent permitted by law, we are not responsible for content posted by users, for how servers or their staff use the bot or the information it shows them, or for any indirect or consequential damages arising from your use of the bot. Some jurisdictions do not allow these limitations, so they may not all apply to you.</p>
 
-<h2 id="changes">12. Changes to these terms</h2>
+<h2 id="changes"><span class="num">12.</span> Changes to these terms</h2>
 
 <p>We may update these terms from time to time. The effective date at the top will change when we do. Continuing to use the bot after an update means you accept the new terms.</p>
 
-<h2 id="contact">13. Contact</h2>
+<h2 id="contact"><span class="num">13.</span> Contact</h2>
 
-<p>Questions about these terms can be sent to: <span class="placeholder">kyanbrix@yahoo.com</span></p>
+<p>Questions about these terms can be sent to: <a href="mailto:kyanbrix@yahoo.com">kyanbrix@yahoo.com</a></p>
 
 </main>
+</div>
+
+<footer class="wrap">
+  <span>Confession Terms of Service</span>
+  <a href="https://kyanbrix.com/privacy-policy">Privacy Policy</a>
+</footer>
+
+<script>
+  const toc = document.querySelector(".toc");
+  const toggle = toc.querySelector(".toc-toggle");
+  const links = [...toc.querySelectorAll(".toc-list a")];
+  const heads = links.map(a => document.getElementById(a.hash.slice(1)));
+  const idleLabel = toggle.textContent;
+
+  function setOpen(open) {
+    toc.classList.toggle("open", open);
+    toggle.setAttribute("aria-expanded", String(open));
+  }
+
+  toggle.addEventListener("click", () => setOpen(!toc.classList.contains("open")));
+  links.forEach(a => a.addEventListener("click", () => setOpen(false)));
+  document.addEventListener("keydown", e => { if (e.key === "Escape") setOpen(false); });
+  document.addEventListener("click", e => { if (!toc.contains(e.target)) setOpen(false); });
+
+  // Mark the section being read, and name it on the phone jump button
+  let queued = false;
+  function spy() {
+    queued = false;
+    let current = -1;
+    heads.forEach((h, i) => { if (h.getBoundingClientRect().top <= 140) current = i; });
+    links.forEach((a, i) => {
+      if (i === current) a.setAttribute("aria-current", "true");
+      else a.removeAttribute("aria-current");
+    });
+    toggle.textContent = current < 0 ? idleLabel : (current + 1) + ". " + links[current].textContent;
+  }
+  window.addEventListener("scroll", () => {
+    if (!queued) { queued = true; requestAnimationFrame(spy); }
+  }, { passive: true });
+  spy();
+</script>
 </body>
 </html>
